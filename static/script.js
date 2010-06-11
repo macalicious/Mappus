@@ -257,6 +257,7 @@ $mapper.plugins.facebook = (function(){
              + '<section class="last">'
              + '<fb:if-is-app-user>'
              + 'Verbunden'
+             + '<fb:facepile>'
              + '<fb:else><fb:login-button></fb:else>'
              + '</fb:if-is-app-user>'
              + '</section>' //<fb:intl>Connect with Facebook</fb:intl></fb:login-button>
