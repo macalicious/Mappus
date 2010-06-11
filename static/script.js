@@ -252,10 +252,7 @@ $mapper.plugins.facebook = (function(){
                  xfbml: true});
         
         
-        FB.getLoginStatus(facebook_dialog);
-        FB.Event.subscribe('auth.sessionChange', facebook_dialog);
-                 
-        var facebook_dialog =  function(response) {
+        var facebook_dialog =  function(response) {alert("f_dialog");
           var t = '<fieldset class="facebook">'
                 + '<legend>Facebook</legend>'
                 + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
@@ -271,11 +268,16 @@ $mapper.plugins.facebook = (function(){
           var x = $j("#dialog1 fieldset.facebook");
           if(x.length == 0){x[0].remove()};
           var obj = $j("#dialog1").append(t);
+          
+          FB.XFBML.parse();
        };
+       
+       FB.getLoginStatus(facebook_dialog);
+       FB.Event.subscribe('auth.sessionChange', facebook_dialog);
        
        //var obj = $j("#dialog1 section.plugins").append('<fieldset class="last"><legend>Facebook</legend><fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button></fieldset>');
        
-       FB.XFBML.parse();
+       
       };
       
     var fb_root = $j("body").append('<div id="fb-root"></div>');
