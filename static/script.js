@@ -282,8 +282,8 @@ $mapper.plugins.facebook = (function(){
             friends.each(function(item){
                 b += "<tr>"
                   +  "<td>" + item.name + "</td>"
-                  +  "<td>" + item.hometown_location ? item.hometown_location : "-" + "</td>"
-                  +  "<td>" + item.current_location ? item.current_location : "-" + "</td>"
+                  +  "<td>" + item.hometown_location ? item.hometown_location.city + ", " + item.hometown_location.country : "-" + "</td>"
+                  +  "<td>" + item.current_location ? item.current_location.city + ", " + item.current_location.country : "-" + "</td>"
                   +  "</tr>"; 
                   console.log(item);
             });
