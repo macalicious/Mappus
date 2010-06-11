@@ -255,12 +255,12 @@ $mapper.plugins.facebook = (function(){
              + '<legend>Facebook</legend>'
              + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
              + '<section class="last">'
-             + '<fb:if-is-verified>'
+             + '<fb:if-is-app-user>'
              + 'Verbunden'
              + '<fb:else><fb:login-button></fb:else>'
              + '</fb:if-is-verified>'
              + '</section>' //<fb:intl>Connect with Facebook</fb:intl></fb:login-button>
-             + '</fieldset>';
+             + '</fb:if-is-app-user>';
        
        var obj = $j("#dialog1").append(t);
        //var obj = $j("#dialog1 section.plugins").append('<fieldset class="last"><legend>Facebook</legend><fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button></fieldset>');
