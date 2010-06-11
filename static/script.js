@@ -288,13 +288,15 @@ $mapper.plugins.facebook = (function(){
                   }else{
                 b += "-";
                   }; 
-                b += "</td>";
+                b += "</td>"
+                  +  "<td>";
                   if(item.current_location){
                     b += item.current_location.city + ", " + item.current_location.country
                   }else{
                 b += "-";
                   };
-                b += "</tr>"; 
+                b += "</td>"
+                  +  "</tr>"; 
             });
                 b += "</table>";  
                 
