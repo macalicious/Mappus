@@ -302,9 +302,7 @@ $mapper.plugins.facebook = (function(){
                 
           
           
-            $j("header").append('<a href="#">Facebook</a>').click(function(){
-              query();
-            }).fancybox({	
+            $j("header").append('<a href="#">Facebook</a>').fancybox({	
               'transitionIn'	: 'none',
               'transitionOut'	: 'fade',
               'overlayOpacity' : 0.15,
@@ -331,7 +329,7 @@ $mapper.plugins.facebook = (function(){
   
   function query(fn){
     var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-     query.wait(function(result){ fn(result); });
+        query.wait(function(result){ fn(result); });
   };
   
   return {
