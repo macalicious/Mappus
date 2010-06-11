@@ -1,0 +1,56 @@
+body {
+    height: 100%; display: -webkit-box;  -webkit-box-orient: vertical;
+    background: #5c6570 url(bg.jpg) no-repeat top center;
+}
+
+
+#map_canvas {
+	background: red;
+	-webkit-box-flex: 1;
+	height: 100px;
+	margin-top:30px;
+}
+#map_canvas {z-index:10;}
+
+header {
+    /*-webkit-box-shadow: 0px 1px 5px #999;*/
+    z-index:2000;
+    position: absolute;
+    width: 100%;
+    height: 22px;
+    margin-bottom:-7px;
+    background:url(headerbg.png) repeat-x;
+    padding-top:8px;
+    line-height: 18px;
+}
+
+header a {
+    color: #BABCBF;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    text-decoration: none;
+}
+#headerline{
+    width:100%;
+    height:1px;
+    border:0;
+    margin:0;
+    background: url(headerbg.png) bottom repeat-x;
+}
+
+#fancybox-outer {
+    border: 5px solid #fff !important;
+	-webkit-border-radius:10px;
+}
+
+h1 {margin:10px 0 10px 0; font-size:1.8em;}
+
+#dialog1 section.plugins {}
+#dialog1 fieldset { margin-right: 15px;}
+#dialog1 fieldset section {position: relative; width:47%; float:left; margin-right:6%;}
+#dialog1 fieldset section.last {margin-right:0px;}
+
+#dialog1 fieldset section { }
+#dialog1 fieldset.last {margin-right: 0px;}
