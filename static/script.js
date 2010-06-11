@@ -254,7 +254,12 @@ $mapper.plugins.facebook = (function(){
        var t = '<fieldset>'
              + '<legend>Facebook</legend>'
              + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
-             + '<section class="last"><fb:login-button></section>' //<fb:intl>Connect with Facebook</fb:intl></fb:login-button>
+             + '<section class="last">'
+             + '<fb:if-is-verified>'
+             + 'Verbunden'
+             + '<fb:else><fb:login-button></fb:else>'
+             + '</fb:if-is-verified>'
+             + '</section>' //<fb:intl>Connect with Facebook</fb:intl></fb:login-button>
              + '</fieldset>';
        
        var obj = $j("#dialog1").append(t);
