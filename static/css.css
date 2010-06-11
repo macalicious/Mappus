@@ -49,8 +49,8 @@ h1 {margin:10px 0 10px 0; font-size:1.8em;}
 
 #dialog1 section.plugins {}
 #dialog1 fieldset { margin-right: 15px;}
-#dialog1 fieldset section {position: relative; width:47%; float:left; margin-right:6%;}
-#dialog1 fieldset section.last {margin-right:0px;}
+#dialog1 fieldset section {position: relative; width:300px; float:left; margin-right:10px;}
+#dialog1 fieldset section.last {margin-right:0px; width:400px;}
 
 #dialog1 fieldset section { }
 #dialog1 fieldset.last {margin-right: 0px;}
