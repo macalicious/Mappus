@@ -286,19 +286,21 @@ $mapper.plugins.facebook = (function(){
                   if(item.hometown_location){
                     b += item.hometown_location.city + ", " + item.hometown_location.country
                   }else{
-                b += "-"
+                b += "-";
                   }; 
-                b += "</td>"
-                  //+  "<td>" + item.current_location ? item.current_location.city + ", " + item.current_location.country : "-" + "</td>"
-                  +  "</tr>"; 
-                  console.log(item);
+                b += "</td>";
+                  if(item.current_location){
+                    b += item.current_location.city + ", " + item.current_location.country
+                  }else{
+                b += "-";
+                  };
+                b += "</tr>"; 
             });
                 b += "</table>";  
                 
           
           
             $j("header").append('<a href="#">Facebook</a>').click(function(){
-              alert(1);
               query();
             }).fancybox({	
               'transitionIn'	: 'none',
