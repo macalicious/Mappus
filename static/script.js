@@ -252,14 +252,13 @@ $mapper.plugins.facebook = (function(){
                  xfbml: true});
         
         
-        var facebook_dialog =  function(response) {alert("f_dialog");
+        var facebook_dialog =  function(response) {
           var t = '<fieldset class="facebook">'
                 + '<legend>Facebook</legend>'
                 + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
                 + '<section class="last">';
           if (response.session) {
-              t += 'Verbunden'
-                +  '<fb:facepile>';
+              t += 'Verbunden';
           } else {
              t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
           };
