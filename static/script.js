@@ -260,6 +260,7 @@ $mapper.plugins.facebook = (function(){
              + '<fb:facepile>'
              + '<fb:else><fb:login-button></fb:else>'
              + '</fb:if-is-app-user>'
+             + '<fb:if-is-verified> 1 <fb:else> 2 <fb:else</fb:if-is-verified>'
              + '</section>' //<fb:intl>Connect with Facebook</fb:intl></fb:login-button>
              + '<fb:login-button width="200" max-rows="1"></fb:login-button>';
        
