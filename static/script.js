@@ -269,14 +269,16 @@ $mapper.plugins.facebook = (function(){
           var obj = $j("#dialog1").append(t);
           
           FB.XFBML.parse();
+          
+          $j("header").append('<a href="#">Facebook</a>').click(function(){
+            alert(1);
+            query();
+          });
        };
        
        FB.getLoginStatus(facebook_dialog);
        FB.Event.subscribe('auth.sessionChange', facebook_dialog);
-       
-       //var obj = $j("#dialog1 section.plugins").append('<fieldset class="last"><legend>Facebook</legend><fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button></fieldset>');
-       
-       
+          
       };
       
     var fb_root = $j("body").append('<div id="fb-root"></div>');
@@ -284,7 +286,14 @@ $mapper.plugins.facebook = (function(){
         e.src = 'http:' + //document.location.protocol
           '//connect.facebook.net/en_US/all.js';
     fb_root.append(e);
+    
+    
        
+  };
+  
+  function query(){
+    var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+     query.wait(function(result){console.log(result);});
   };
   
   return {
