@@ -270,15 +270,36 @@ $mapper.plugins.facebook = (function(){
           
           FB.XFBML.parse();
           
-          $j("header").append('<a href="#">Facebook</a>').click(function(){
-            alert(1);
-            query();
-          }).fancybox({	
-            'transitionIn'	: 'none',
-            'transitionOut'	: 'fade',
-            'overlayOpacity' : 0.15,
-            'autoDimensions': false,
-            'content' : "blabla"
+          query(function(friends){
+            var b = "<h1>Facebook</h1>" 
+                  + "<hr />"
+                  + "<table>"
+                  + "<thead>"
+                  + "<tr>"
+                  + "<th>Name</th>" + "<th>Heimatort</th>" + "<th>Wohnort</th>"
+                  + "</tr>"
+                  + "</thead>";
+            friends.each(function(item){
+                b += "<tr>"
+                  +  "<td>" + item.name + "</td>"
+                  +  "<td>" + item.hometown_location + "</td>"
+                  +  "<td>" + item.current_location + "</td>"
+                  +  "</tr>"; 
+            });
+                b += "</table>";  
+                
+          
+          
+            $j("header").append('<a href="#">Facebook</a>').click(function(){
+              alert(1);
+              query();
+            }).fancybox({	
+              'transitionIn'	: 'none',
+              'transitionOut'	: 'fade',
+              'overlayOpacity' : 0.15,
+              'autoDimensions': false,
+              'content' : b
+            });
           });
        };
        
@@ -297,9 +318,9 @@ $mapper.plugins.facebook = (function(){
        
   };
   
-  function query(){
+  function query(fn){
     var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-     query.wait(function(result){console.log(result);});
+     query.wait(function(result){ fn(result); });
   };
   
   return {
