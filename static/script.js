@@ -258,9 +258,9 @@ $mapper.plugins.facebook = (function(){
              + '<fb:if-is-app-user>'
              + 'Verbunden'
              + '<fb:else><fb:login-button></fb:else>'
-             + '</fb:if-is-verified>'
+             + '</fb:if-is-app-user>'
              + '</section>' //<fb:intl>Connect with Facebook</fb:intl></fb:login-button>
-             + '</fb:if-is-app-user>';
+             + '<fb:login-button width="200" max-rows="1"></fb:login-button>';
        
        var obj = $j("#dialog1").append(t);
        //var obj = $j("#dialog1 section.plugins").append('<fieldset class="last"><legend>Facebook</legend><fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button></fieldset>');
