@@ -250,12 +250,16 @@ $mapper.plugins.facebook = (function(){
     window.fbAsyncInit = function() {
         FB.init({appId: '116990711651134', status: true, cookie: true,
                  xfbml: true});
-      
-        FB.getLoginStatus(function(response) {
-          var t = '<fieldset>'
-                 + '<legend>Facebook</legend>'
-                 + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
-                 + '<section class="last">';
+        
+        
+        FB.getLoginStatus(facebook_dialog);
+        FB.Event.subscribe('auth.sessionChange', facebook_dialog);
+                 
+        var facebook_dialog =  function(response) {
+          var t = '<fieldset class="facebook">'
+                + '<legend>Facebook</legend>'
+                + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
+                + '<section class="last">';
           if (response.session) {
               t += 'Verbunden'
                 +  '<fb:facepile>';
@@ -263,11 +267,11 @@ $mapper.plugins.facebook = (function(){
              t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
           };
           t += '</section>'; 
+          
+          var x = $j("#dialog1 fieldset.facebook");
+          if(x.length == 0){x[0].remove()};
           var obj = $j("#dialog1").append(t);
-        });
-                 
-       
-       
+       };
        
        //var obj = $j("#dialog1 section.plugins").append('<fieldset class="last"><legend>Facebook</legend><fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button></fieldset>');
        
