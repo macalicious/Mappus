@@ -251,20 +251,24 @@ $mapper.plugins.facebook = (function(){
         FB.init({appId: '116990711651134', status: true, cookie: true,
                  xfbml: true});
       
-       var t = '<fieldset>'
-             + '<legend>Facebook</legend>'
-             + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
-             + '<section class="last">'
-             + '<fb:if-is-app-user>'
-             + 'Verbunden'
-             + '<fb:facepile>'
-             + '<fb:else><fb:login-button></fb:else>'
-             + '</fb:if-is-app-user>'
-             + '<fb:if-is-verified> 1 <fb:else> 2 <fb:else</fb:if-is-verified>'
-             + '</section>' //<fb:intl>Connect with Facebook</fb:intl></fb:login-button>
-             + '<fb:login-button width="200" max-rows="1"></fb:login-button>';
+        FB.getLoginStatus(function(response) {
+          var t = '<fieldset>'
+                 + '<legend>Facebook</legend>'
+                 + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
+                 + '<section class="last">';
+          if (response.session) {
+              t += 'Verbunden'
+                +  '<fb:facepile>';
+          } else {
+             t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
+          };
+          t += '</section>'; 
+          var obj = $j("#dialog1").append(t);
+        });
+                 
        
-       var obj = $j("#dialog1").append(t);
+       
+       
        //var obj = $j("#dialog1 section.plugins").append('<fieldset class="last"><legend>Facebook</legend><fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button></fieldset>');
        
        FB.XFBML.parse();
