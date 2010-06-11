@@ -258,7 +258,7 @@ $mapper.plugins.facebook = (function(){
                 + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
                 + '<section class="last">';
           if (response.session) {
-              t += 'Verbunden';
+              t += '<fb:facepile>';
           } else {
              t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
           };
