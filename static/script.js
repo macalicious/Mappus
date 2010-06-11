@@ -282,9 +282,10 @@ $mapper.plugins.facebook = (function(){
             friends.each(function(item){
                 b += "<tr>"
                   +  "<td>" + item.name + "</td>"
-                  +  "<td>" + item.hometown_location + "</td>"
-                  +  "<td>" + item.current_location + "</td>"
+                  +  "<td>" + item.hometown_location ? item.hometown_location : "-" + "</td>"
+                  +  "<td>" + item.current_location ? item.current_location : "-" + "</td>"
                   +  "</tr>"; 
+                  console.log(item);
             });
                 b += "</table>";  
                 
