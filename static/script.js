@@ -265,8 +265,8 @@ $mapper.plugins.facebook = (function(){
           };
           t += '</section>'; 
           
-          var x = $j("#dialog1 fieldset.facebook");
-          if(x.length == 0){x[0].remove()};
+        
+          if($j("#dialog1 fieldset.facebook").length != 0){ $j("#dialog1 fieldset.facebook").remove() };
           var obj = $j("#dialog1").append(t);
           
           FB.XFBML.parse();
