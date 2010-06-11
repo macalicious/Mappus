@@ -302,7 +302,7 @@ $mapper.plugins.facebook = (function(){
                 
           
           
-            $j("header").append('<a href="#">Facebook</a>').closest("a").fancybox({	
+            $j("header").append('<a href="#">Facebook</a>').first().fancybox({	
               'transitionIn'	: 'none',
               'transitionOut'	: 'fade',
               'overlayOpacity' : 0.15,
