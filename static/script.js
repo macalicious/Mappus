@@ -164,7 +164,7 @@ Object.prototype.each = function(fn){
   };
 };
 $extend = function(orginal, extended){
-	for (var key in (extended || {})) orginal[key] = extended[key];
+	for (var key in (extended || {})) {orginal[key] = extended[key]};
 	return orginal;
 };
 
@@ -204,7 +204,7 @@ var $mapper = (function(){
   };
   
   function map(array){
-    var locations = array.map(function(item){ return {'query': item} });
+    var locations = array.map(function(item){ return {'query': item}; });
     array_to_points(locations, function(result){
       array_to_marker(result);
       console.log(result);
@@ -226,7 +226,7 @@ var $mapper = (function(){
     locations.each(function(item, index){
       geocode(item.query, function(results){
         $extend(locations[index], results)
-        if(index+1==locations.length) fn(locations);
+        if(index+1==locations.length) {fn(locations)};
       });
     });
   };
@@ -298,8 +298,8 @@ var $mapper = (function(){
     };
       
     if(typeof(parm) == "string"){ parse_marker(parm); };
-    if(typeof(parm) == "array"){ parm.each(function(item){ parse_marker(item); })};
-    if(typeof(parm) == "object"){ parm.each(function(index, item){ parse_marker(item); })};
+    if(typeof(parm) == "array"){ parm.each(function(item){ parse_marker(item); }); };
+    if(typeof(parm) == "object"){ parm.each(function(index, item){ parse_marker(item); });};
   };
   
   var toolbar = [];
@@ -369,14 +369,14 @@ $mapper.plugins.facebook = (function(){
           +  "<td>" + item.name + "</td>"
           +  "<td>";
           if(item.hometown_location){
-            b += item.hometown_location.city + ", " + item.hometown_location.country
+            b += item.hometown_location.city + ", " + item.hometown_location.country;
           }else{
         b += "-";
           }; 
         b += "</td>"
           +  "<td>";
           if(item.current_location){
-            b += item.current_location.city + ", " + item.current_location.country
+            b += item.current_location.city + ", " + item.current_location.country;
           }else{
         b += "-";
           };
@@ -387,7 +387,7 @@ $mapper.plugins.facebook = (function(){
         
     
     var link = $j("header").append('<a href="#">Facebook</a>').children("a").last();
-    $mapper.dialog( link., b );
+    $mapper.dialog(link, b);
     FB.XFBML.parse();
   };
   
