@@ -153,7 +153,7 @@ var FriendMap = new Class({
 
 Array.prototype.each = function(fn){this.forEach(fn);};
 Object.prototype.each = function(fn){
-  if(fn.arity==1){
+  if(fn.length==1){
     for(x in this){
       fn(x);
     };
@@ -164,7 +164,7 @@ Object.prototype.each = function(fn){
   };
 };
 $extend = function(orginal, extended){
-	for (var key in (extended || {})) {orginal[key] = extended[key]};
+	for (var key in (extended || {})) {orginal[key] = extended[key];};
 	return orginal;
 };
 
@@ -225,8 +225,8 @@ var $mapper = (function(){
   function array_to_points(locations, fn){
     locations.each(function(item, index){
       geocode(item.query, function(results){
-        $extend(locations[index], results)
-        if(index+1==locations.length) {fn(locations)};
+        $extend(locations[index], results);
+        if(index+1==locations.length) {fn(locations);};
       });
     });
   };
