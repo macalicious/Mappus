@@ -297,9 +297,9 @@ var $mapper = (function(){
       });
     };
       
-    if(parm.typeof == String){ parse_marker(parm); };
-    if(parm.typeof == Array){ parm.each(function(item){ parse_marker(item); })};
-    if(parm.typeof == Object){ parm.each(function(index, item){ parse_marker(item); })};
+    if(typeof(parm) == "string"){ parse_marker(parm); };
+    if(typeof(parm) == "array"){ parm.each(function(item){ parse_marker(item); })};
+    if(typeof(parm) == "object"){ parm.each(function(index, item){ parse_marker(item); })};
   };
   
   var toolbar = [];
