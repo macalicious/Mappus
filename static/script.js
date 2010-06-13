@@ -269,7 +269,7 @@ var $mapper = (function(){
   
   
     //gobale markerzuordnung fehlt noch
-  };
+  //};
   
   function set_marker(parm){
     
