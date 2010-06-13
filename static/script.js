@@ -152,6 +152,17 @@ var FriendMap = new Class({
 */
 
 Array.prototype.each = function(fn){this.forEach(fn);};
+Object.prototype.each = function(fn){
+  if(fn.arity==1){
+    for(x in this){
+      fn(x);
+    };
+  }else if(fn.arity==1){
+      for(x in this){
+        fn(x, this[x]);
+      };
+  };
+};
 $extend = function(orginal, extended){
 	for (var key in (extended || {})) orginal[key] = extended[key];
 	return orginal;
@@ -181,7 +192,15 @@ var $mapper = (function(){
       //try { this.plugins[plugin].initialize(); }
       //catch(e){ console.log(e)}; 
       this.plugins[plugin].initialize();
+      if(this.plugins[plugin].settings_ui){
+        add_settings_ui( this.plugins[plugin].settings_ui() ); 
+      };
+      
     };
+  };
+  
+  function add_settings_ui(html){
+    
   };
   
   function map(array){
@@ -237,94 +256,139 @@ var $mapper = (function(){
     });
   };
   
+  function dialog(obj, html){
+    obj.fancybox({	
+      'transitionIn'	: 'none',
+      'transitionOut'	: 'fade',
+      'overlayOpacity' : 0.15,
+      'autoDimensions': false,
+      'content' : html
+    });
+    return obj;
+  };
+  
+  
+    //gobale markerzuordnung fehlt noch
+  };
+  
+  function set_marker(parm){
+    
+    var parse_marker = function(ort){
+      geocode(ort, function(results){
+        var marker = new google.maps.Marker({
+          map: gmap, 
+          position: results[0].geometry.location,
+          title: ort     
+        });
+
+        var contentString = '<h2>'+ort+'</h2>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        google.maps.event.addListener(marker, 'mouseover', function() {
+          infowindow.open(gmap,marker);
+        });
+        google.maps.event.addListener(marker, 'mouseout', function() {
+          infowindow.close(gmap,marker);
+        });
+
+      });
+    };
+      
+    if(parm.typeof == String){ parse_marker(parm); };
+    if(parm.typeof == Array){ parm.each(function(item){ parse_marker(item); })};
+    if(parm.typeof == Object){ parm.each(function(index, item){ parse_marker(item); })};
+  };
+  
+  var toolbar = [];
+      toolbar.add_item = function(){};
+  
   return {
     map: map,
     initialize: initialize,
-    plugins: plugins
+    plugins: plugins,
+    dialog: dialog,
+    set_marker: set_marker
   };
 })();
  
 $mapper.plugins.facebook = (function(){
   
   function initialize(){
-    window.fbAsyncInit = function() {
-        FB.init({appId: '116990711651134', status: true, cookie: true,
-                 xfbml: true});
-        
-        
-        var facebook_dialog =  function(response) {
-          var t = '<fieldset class="facebook">'
-                + '<legend>Facebook</legend>'
-                + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
-                + '<section class="last">';
-          if (response.session) {
-              t += '<fb:facepile>';
-          } else {
-             t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
-          };
-          t += '</section>'; 
-          
-        
-          if($j("#dialog1 fieldset.facebook").length != 0){ $j("#dialog1 fieldset.facebook").remove() };
-          var obj = $j("#dialog1").append(t);
-          
-          FB.XFBML.parse();
-          
-          query(function(friends){
-            var b = "<h1>Facebook</h1>" 
-                  + "<hr />"
-                  + "<table>"
-                  + "<thead>"
-                  + "<tr>"
-                  + "<th>Name</th>" + "<th>Heimatort</th>" + "<th>Wohnort</th>"
-                  + "</tr>"
-                  + "</thead>";
-            friends.each(function(item){
-                b += "<tr>"
-                  +  "<td>" + item.name + "</td>"
-                  +  "<td>";
-                  if(item.hometown_location){
-                    b += item.hometown_location.city + ", " + item.hometown_location.country
-                  }else{
-                b += "-";
-                  }; 
-                b += "</td>"
-                  +  "<td>";
-                  if(item.current_location){
-                    b += item.current_location.city + ", " + item.current_location.country
-                  }else{
-                b += "-";
-                  };
-                b += "</td>"
-                  +  "</tr>"; 
-            });
-                b += "</table>";  
-                
-          
-          
-            $j("header").append('<a href="#">Facebook</a>').children("a").last().fancybox({	
-              'transitionIn'	: 'none',
-              'transitionOut'	: 'fade',
-              'overlayOpacity' : 0.15,
-              'autoDimensions': false,
-              'content' : b
-            });
-          });
-       };
-       
-       FB.getLoginStatus(facebook_dialog);
-       FB.Event.subscribe('auth.sessionChange', facebook_dialog);
-          
+    load_dependencies(function(){  
+      var set_current_user = function(response){
+        if (response.session){ current_user = true; } else { current_user = false; };
       };
+      FB.getLoginStatus(set_current_user);
+      FB.Event.subscribe('auth.sessionChange', set_current_user); 
+      
+      query(window);
+    });
+  };
+  
+  function load_dependencies(fn){
+    window.fbAsyncInit = function() {
+      FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
+      fn();
+    };
       
     var fb_root = $j("body").append('<div id="fb-root"></div>');
     var e = document.createElement('script'); e.async = true;
         e.src = 'http:' + //document.location.protocol
           '//connect.facebook.net/en_US/all.js';
     fb_root.append(e);
+  };
+  
+  var current_user = false;
     
+  function settings_ui(){
+    var t = '<fieldset id="facebook_settings">'
+          + '<legend>Facebook</legend>'
+          + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
+          + '<section class="last">';
+    if (current_user) {
+        t += '<fb:facepile>';
+    } else {
+       t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
+    };
+    t += '</section>';
+    return t;
+  };
+  
+  function window(friends){
+    var b = "<h1>Facebook</h1>" 
+          + "<hr />"
+          + "<table> <thead> <tr>"
+          + "<th>Name</th>" + "<th>Heimatort</th>" + "<th>Wohnort</th>"
+          + "</tr> </thead>";
+          
+    friends.each(function(item){
+        b += "<tr>"
+          +  "<td>" + item.name + "</td>"
+          +  "<td>";
+          if(item.hometown_location){
+            b += item.hometown_location.city + ", " + item.hometown_location.country
+          }else{
+        b += "-";
+          }; 
+        b += "</td>"
+          +  "<td>";
+          if(item.current_location){
+            b += item.current_location.city + ", " + item.current_location.country
+          }else{
+        b += "-";
+          };
+        b += "</td>"
+          +  "</tr>"; 
+    });
+        b += "</table>";  
+        
     
-       
+    var link = $j("header").append('<a href="#">Facebook</a>').children("a").last();
+    $mapper.dialog( link., b );
+    FB.XFBML.parse();
   };
   
   function query(fn){
@@ -333,7 +397,8 @@ $mapper.plugins.facebook = (function(){
   };
   
   return {
-    initialize: initialize
+    initialize: initialize,
+    settings_ui: settings_ui
   };
 })();
 
@@ -341,21 +406,7 @@ $mapper.plugins.facebook = (function(){
 $j(document).ready(function($){
   
     $mapper.initialize();
-    /*
-    var address = "Wiesbaden"
-    geocoder = new google.maps.Geocoder();
-    geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              gmap.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                  map: gmap, 
-                  position: results[0].geometry.location
-              });
-            } else {
-              alert("Geocode was not successful for the following reason: " + status);
-            }
-    });
-    */
+
     
     $j("a").fancybox({	
       'transitionIn'	: 'none',
@@ -367,12 +418,4 @@ $j(document).ready(function($){
 
 
 
-var friendmapper = null;
-//window.fbAsyncInit = function() { friendmapper= new FriendMap(); };
 
-
-
-
-
-// var current_user = FB._session.uid;
-// var querry = FB.Data.query("select uid2 from friend where uid1={0}", current_user);
