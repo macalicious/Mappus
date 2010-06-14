@@ -317,6 +317,7 @@ var $mapper = (function(){
   $mapper.plugins.facebook = (function(){
     
     function initialize(){
+      d("load facebook plugin");
       load_dependencies(function(){  
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
