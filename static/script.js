@@ -315,7 +315,8 @@ var $mapper = (function(){
 })();
  
   $mapper.plugins.facebook = (function(){
-    d("outer", this);
+    var parent = $mapper;
+    
     function initialize(){
       d("inner", this);
       d("load facebook plugin");
@@ -344,6 +345,10 @@ var $mapper = (function(){
     };
     
     var current_user = false;
+    
+    function register_ui_elements(){
+      
+    };
       
     function settings_ui(){
       var t = '<fieldset id="facebook_settings">'
@@ -359,7 +364,7 @@ var $mapper = (function(){
       return t;
     };
     
-    function window(friends){
+    function window(friends){ alert("window");
       var b = "<h1>Facebook</h1>" 
             + "<hr />"
             + "<table> <thead> <tr>"
