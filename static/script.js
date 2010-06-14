@@ -313,96 +313,96 @@ var $mapper = (function(){
     set_marker: set_marker
   };
 })();
+ // 
+ // $mapper.plugins.facebook = (function(){
+ //   
+ //   function initialize(){
+ //     load_dependencies(function(){  
+ //       var set_current_user = function(response){
+ //         if (response.session){ current_user = true; } else { current_user = false; };
+ //       };
+ //       FB.getLoginStatus(set_current_user);
+ //       FB.Event.subscribe('auth.sessionChange', set_current_user); 
+ //       
+ //       query(window);
+ //     });
+ //   };
+ //   
+ //   function load_dependencies(fn){
+ //     window.fbAsyncInit = function() {
+ //       FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
+ //       fn();
+ //     };
+ //       
+ //     var fb_root = $j("body").append('<div id="fb-root"></div>');
+ //     var e = document.createElement('script'); e.async = true;
+ //         e.src = 'http:' + //document.location.protocol
+ //           '//connect.facebook.net/en_US/all.js';
+ //     fb_root.append(e);
+ //   };
+ //   
+ //   var current_user = false;
+ //     
+ //   function settings_ui(){
+ //     var t = '<fieldset id="facebook_settings">'
+ //           + '<legend>Facebook</legend>'
+ //           + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
+ //           + '<section class="last">';
+ //     if (current_user) {
+ //         t += '<fb:facepile>';
+ //     } else {
+ //        t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
+ //     };
+ //     t += '</section>';
+ //     return t;
+ //   };
+ //   
+ //   function window(friends){
+ //     var b = "<h1>Facebook</h1>" 
+ //           + "<hr />"
+ //           + "<table> <thead> <tr>"
+ //           + "<th>Name</th>" + "<th>Heimatort</th>" + "<th>Wohnort</th>"
+ //           + "</tr> </thead>";
+ //           
+ //     friends.each(function(item){
+ //         b += "<tr>"
+ //           +  "<td>" + item.name + "</td>"
+ //           +  "<td>";
+ //           if(item.hometown_location){
+ //             b += item.hometown_location.city + ", " + item.hometown_location.country;
+ //           }else{
+ //         b += "-";
+ //           }; 
+ //         b += "</td>"
+ //           +  "<td>";
+ //           if(item.current_location){
+ //             b += item.current_location.city + ", " + item.current_location.country;
+ //           }else{
+ //         b += "-";
+ //           };
+ //         b += "</td>"
+ //           +  "</tr>"; 
+ //     });
+ //         b += "</table>";  
+ //         
+ //     
+ //     var link = $j("header").append('<a href="#">Facebook</a>').children("a").last();
+ //     $mapper.dialog(link, b);
+ //     FB.XFBML.parse();
+ //   };
+ //   
+ //   function query(fn){
+ //     var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+ //         query.wait(function(result){ fn(result); });
+ //   };
+ //   
+ //   return {
+ //     initialize: initialize,
+ //     settings_ui: settings_ui
+ //   };
+ // })();
+ // 
  
-$mapper.plugins.facebook = (function(){
-  
-  function initialize(){
-    load_dependencies(function(){  
-      var set_current_user = function(response){
-        if (response.session){ current_user = true; } else { current_user = false; };
-      };
-      FB.getLoginStatus(set_current_user);
-      FB.Event.subscribe('auth.sessionChange', set_current_user); 
-      
-      query(window);
-    });
-  };
-  
-  function load_dependencies(fn){
-    window.fbAsyncInit = function() {
-      FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
-      fn();
-    };
-      
-    var fb_root = $j("body").append('<div id="fb-root"></div>');
-    var e = document.createElement('script'); e.async = true;
-        e.src = 'http:' + //document.location.protocol
-          '//connect.facebook.net/en_US/all.js';
-    fb_root.append(e);
-  };
-  
-  var current_user = false;
-    
-  function settings_ui(){
-    var t = '<fieldset id="facebook_settings">'
-          + '<legend>Facebook</legend>'
-          + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
-          + '<section class="last">';
-    if (current_user) {
-        t += '<fb:facepile>';
-    } else {
-       t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
-    };
-    t += '</section>';
-    return t;
-  };
-  
-  function window(friends){
-    var b = "<h1>Facebook</h1>" 
-          + "<hr />"
-          + "<table> <thead> <tr>"
-          + "<th>Name</th>" + "<th>Heimatort</th>" + "<th>Wohnort</th>"
-          + "</tr> </thead>";
-          
-    friends.each(function(item){
-        b += "<tr>"
-          +  "<td>" + item.name + "</td>"
-          +  "<td>";
-          if(item.hometown_location){
-            b += item.hometown_location.city + ", " + item.hometown_location.country;
-          }else{
-        b += "-";
-          }; 
-        b += "</td>"
-          +  "<td>";
-          if(item.current_location){
-            b += item.current_location.city + ", " + item.current_location.country;
-          }else{
-        b += "-";
-          };
-        b += "</td>"
-          +  "</tr>"; 
-    });
-        b += "</table>";  
-        
-    
-    var link = $j("header").append('<a href="#">Facebook</a>').children("a").last();
-    $mapper.dialog(link, b);
-    FB.XFBML.parse();
-  };
-  
-  function query(fn){
-    var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-        query.wait(function(result){ fn(result); });
-  };
-  
-  return {
-    initialize: initialize,
-    settings_ui: settings_ui
-  };
-})();
-
-
 $j(document).ready(function($){
   
     $mapper.initialize();
