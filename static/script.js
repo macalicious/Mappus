@@ -332,7 +332,7 @@ var $mapper = (function(){
         FB.getLoginStatus(set_current_user);
         FB.Event.subscribe('auth.sessionChange', set_current_user); 
         
-        query(window);
+        query(dialoggg);
       });
     };
     
@@ -343,7 +343,7 @@ var $mapper = (function(){
         FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
         fn();
       };
-      d(1, window);  
+        
       var fb_root = $j("body").append('<div id="fb-root"></div>');
       var e = document.createElement('script'); e.async = true;
           e.src = 'http:' + //document.location.protocol
