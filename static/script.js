@@ -350,7 +350,7 @@ var $mapper = (function(){
             '//connect.facebook.net/en_US/all.js';
       d(1, e);
       alert("");
-      $j("#fb-root").append(e);
+      // $j("#fb-root").append(e);
       d(1, $j("#fb-root"));
       alert("");
     };
