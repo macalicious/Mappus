@@ -343,14 +343,14 @@ var $mapper = (function(){
         FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
         fn();
       };
-      d(1, window.fbAsyncInit);  
+      d(1, window);  
       var fb_root = $j("body").append('<div id="fb-root"></div>');
       var e = document.createElement('script'); e.async = true;
           e.src = 'http:' + //document.location.protocol
             '//connect.facebook.net/en_US/all.js';
-      d(1, window.fbAsyncInit);
+      
       $j("#fb-root").append(e);
-      d(1, window.fbAsyncInit);
+      
     };
     
     var current_user = false;
