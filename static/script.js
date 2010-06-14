@@ -348,8 +348,9 @@ var $mapper = (function(){
       var e = document.createElement('script'); e.async = true;
           e.src = 'http:' + //document.location.protocol
             '//connect.facebook.net/en_US/all.js';
-      
+      d(1, window.fbAsyncInit);
       $j("#fb-root").append(e);
+      d(1, window.fbAsyncInit);
     };
     
     var current_user = false;
