@@ -302,6 +302,10 @@ var $mapper = (function(){
     if(typeof(parm) == "object"){ parm.each(function(index, item){ parse_marker(item); });};
   };
   
+  function logger(nr, msg){
+    console.log("debug: " + msg);
+  };
+  
   var toolbar = [];
       toolbar.add_item = function(){};
   
@@ -310,7 +314,8 @@ var $mapper = (function(){
     initialize: initialize,
     plugins: plugins,
     dialog: dialog,
-    set_marker: set_marker
+    set_marker: set_marker,
+    logger, log
   };
 })();
  
@@ -318,8 +323,7 @@ var $mapper = (function(){
     var parent = $mapper;
     
     function initialize(){
-      d("inner", this);
-      d("load facebook plugin");
+      parent.log("init facebook plugin");
       load_dependencies(function(){  
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
@@ -332,6 +336,7 @@ var $mapper = (function(){
     };
     
     function load_dependencies(fn){
+      parent.log("facebook plugin: load_dependencies");
       window.fbAsyncInit = function() {
         FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
         fn();
@@ -351,6 +356,7 @@ var $mapper = (function(){
     };
       
     function settings_ui(){
+      parent.log("facebook plugin: settings_ui");
       var t = '<fieldset id="facebook_settings">'
             + '<legend>Facebook</legend>'
             + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
@@ -364,7 +370,8 @@ var $mapper = (function(){
       return t;
     };
     
-    function window(friends){ alert("window");
+    function window(friends){ 
+      parent.log("facebook plugin: window");
       var b = "<h1>Facebook</h1>" 
             + "<hr />"
             + "<table> <thead> <tr>"
@@ -399,6 +406,7 @@ var $mapper = (function(){
     };
     
     function query(fn){
+      parent.log("facebook plugin: query");
       var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
           query.wait(function(result){ fn(result); });
     };
