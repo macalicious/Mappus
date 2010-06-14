@@ -315,7 +315,7 @@ var $mapper = (function(){
     plugins: plugins,
     dialog: dialog,
     set_marker: set_marker,
-    logger, log
+    logger: log
   };
 })();
  
