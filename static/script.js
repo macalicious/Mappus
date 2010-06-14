@@ -193,7 +193,7 @@ var $mapper = (function(){
       //catch(e){ console.log(e)}; 
       this.plugins[plugin].initialize();
       if(this.plugins[plugin].settings_ui){
-        add_settings_ui( this.plugins[plugin].settings_ui() ); 
+        // add_settings_ui( this.plugins[plugin].settings_ui() ); 
       };
       
     };
