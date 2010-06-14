@@ -348,7 +348,11 @@ var $mapper = (function(){
       var e = document.createElement('script'); e.async = true;
           e.src = 'http:' + //document.location.protocol
             '//connect.facebook.net/en_US/all.js';
-      $j("fb-root").append(e);
+      d(1, e);
+      alert("");
+      $j("#fb-root").append(e);
+      d(1, $j("#fb-root"));
+      alert("");
     };
     
     var current_user = false;
