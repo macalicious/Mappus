@@ -152,17 +152,17 @@ var FriendMap = new Class({
 */
 
 Array.prototype.each = function(fn){this.forEach(fn);};
-Object.prototype.jeach = function(fn){
-  if(fn.length==1){
-    for(x in this){
-      fn(x);
-    };
-  }else if(fn.length==2){
-      for(x in this){
-        fn(x, this[x]);
-      };
-  };
-};
+// Object.prototype.jeach = function(fn){
+//   if(fn.length==1){
+//     for(x in this){
+//       fn(x);
+//     };
+//   }else if(fn.length==2){
+//       for(x in this){
+//         fn(x, this[x]);
+//       };
+//   };
+// };
 $extend = function(orginal, extended){
 	for (var key in (extended || {})) {orginal[key] = extended[key];};
 	return orginal;
