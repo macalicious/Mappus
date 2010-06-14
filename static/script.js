@@ -339,6 +339,7 @@ var $mapper = (function(){
     function load_dependencies(fn){
       parent.log(1, "facebook plugin: load_dependencies");
       window.fbAsyncInit = function() {
+        parent.log(2, "facebook plugin: dependencies loaded 2");
         FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
         fn();
       };
