@@ -315,8 +315,9 @@ var $mapper = (function(){
 })();
  
   $mapper.plugins.facebook = (function(){
-    
+    d("outer", this);
     function initialize(){
+      d("inner", this);
       d("load facebook plugin");
       load_dependencies(function(){  
         var set_current_user = function(response){
