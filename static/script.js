@@ -374,7 +374,7 @@ var $mapper = (function(){
       return t;
     };
     
-    function window(friends){ 
+    function dialoggg(friends){ 
       parent.log(1, "facebook plugin: window");
       var b = "<h1>Facebook</h1>" 
             + "<hr />"
