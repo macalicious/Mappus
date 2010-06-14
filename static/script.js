@@ -325,6 +325,7 @@ var $mapper = (function(){
     function initialize(){
       parent.log(1, "init facebook plugin");
       load_dependencies(function(){  
+        parent.log(2, "facebook plugin: dependencies loaded");
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
         };
