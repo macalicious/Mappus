@@ -248,7 +248,7 @@ var $mapper = (function(){
           r += '<div id="headerline"></div>';
           r += '<div id="map_canvas"></div>';
       $j('body').append(r);
-      log(1, "body html ready")
+      logger(1, "body html ready")
     },
     map: function(){
       var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
