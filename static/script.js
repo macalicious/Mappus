@@ -365,7 +365,7 @@ var $mapper = (function(){
     map: map,
     initialize: initialize,
     plugins: plugins,
-    ui.dialog: ui.dialog,
+    dialog: ui.dialog,
     set_marker: set_marker,
     log: logger,
     settings_ui: settings_ui
