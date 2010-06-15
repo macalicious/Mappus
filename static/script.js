@@ -227,12 +227,12 @@ var $mapper = (function(){
     };
   };
   
-  var settings_ui = {
+  var ui = {
     add_plugin_section: function(name, html){
       this.plugin_sections.push({name: name, html:html});
       this.render(); /////////////////////////////////////////////////________________
     },
-    render: function(){
+    settings_html: function(){
       var r  = '<h1>Dingsen</h1>';
           r += '<hr />';
           r += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
@@ -245,7 +245,29 @@ var $mapper = (function(){
           r += '</section>';
       return r;
     },
-    plugin_sections: []
+    plugin_sections: [],
+    dialog: function(obj, html){
+      obj.fancybox({	
+        'transitionIn'	: 'none',
+        'transitionOut'	: 'fade',
+        'overlayOpacity' : 0.15,
+        'autoDimensions': false,
+        'content' : html
+      });
+      return obj;
+    },
+    toolbar: {
+      add_item: function(text, name){
+        
+      },
+      remove_item: function(name){},
+      render: function(){
+        var header = $j('<header></header>').appendTo($j('body'));
+        var link = $j('<a href="javascript:void(0);">settings</a>').appendTo(header);
+        ui.dialog(link, ui.settings_html());
+      }
+    }
+    
   };
   
   function map(array){
@@ -301,18 +323,6 @@ var $mapper = (function(){
     });
   };
   
-  function dialog(obj, html){
-    obj.fancybox({	
-      'transitionIn'	: 'none',
-      'transitionOut'	: 'fade',
-      'overlayOpacity' : 0.15,
-      'autoDimensions': false,
-      'content' : html
-    });
-    return obj;
-  };
-  
-  
     //gobale markerzuordnung fehlt noch
   //};
   
@@ -350,9 +360,6 @@ var $mapper = (function(){
   function logger(nr, msg){
     console.log("debug("+nr+"): " + msg);
   };
-  
-  var toolbar = [];
-      toolbar.add_item = function(){};
   
   return {
     map: map,
@@ -471,16 +478,7 @@ var $mapper = (function(){
   
  
 $j(document).ready(function($){
-  
-    $mapper.initialize();
-
-    
-    $j("a").fancybox({	
-      'transitionIn'	: 'none',
-			'transitionOut'	: 'fade',
-			'overlayOpacity' : 0.15,
-			'autoDimensions': false
-		});
+  $mapper.initialize();
 });
 
 
