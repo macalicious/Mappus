@@ -245,7 +245,7 @@ var $mapper = (function(){
           r += '</section>';
       return r;
     },
-    plugin_sections: [];
+    plugin_sections: []
   };
   
   function map(array){
