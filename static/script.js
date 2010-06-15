@@ -250,7 +250,7 @@ var $mapper = (function(){
       $j('body').append(r);
       log(1, "body html ready")
     },
-    function map(){
+    map: function(){
       var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
       var myOptions = {
         zoom: 5,
