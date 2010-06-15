@@ -167,6 +167,34 @@ $extend = function(orginal, extended){
 	for (var key in (extended || {})) {orginal[key] = extended[key];};
 	return orginal;
 };
+function Getter(fn){
+    var result;
+    var fns = [];
+        
+    set = function(arg){//kjbb
+        result = arg; 
+        fns.forEach(function(x){
+            x(result)
+            //x(result);
+        });
+        return;
+    };
+    
+    fn();
+    
+    function get(get_fn){
+        if(result){
+            get_fn(result);
+        }else{
+            fns.push(get_fn);
+        };
+    };
+    
+    return {
+        get: get
+    };
+};
+
 
 var $j = jQuery.noConflict();
 
@@ -199,8 +227,25 @@ var $mapper = (function(){
     };
   };
   
-  function add_settings_ui(html){
-    
+  var settings_ui = {
+    add_plugin_section: function(name, html){
+      this.plugin_sections.push({name: name, html:html});
+      this.render(); /////////////////////////////////////////////////________________
+    },
+    render: function(){
+      var r  = '<h1>Dingsen</h1>';
+          r += '<hr />';
+          r += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+          r += '<section class="plugins">'
+          for(var plugin in this.plugin_sections){
+            r += '<section id="' + plugin.name + 'plugin">';
+            r += plugin.html;
+            r += '</section>';
+          };
+          r += '</section>';
+      return r;
+    },
+    plugin_sections: [];
   };
   
   function map(array){
@@ -333,6 +378,8 @@ var $mapper = (function(){
         FB.Event.subscribe('auth.sessionChange', set_current_user); 
         
         query(dialoggg);
+        
+        $mapper.settings_ui.add_section("facebook", settings_ui());
       });
     };
     
