@@ -194,7 +194,28 @@ function Getter(fn){
         get: get
     };
 };
-
+function Hash(obj){
+  var hash = obj || {};
+  
+  function get(name){
+    return hash['name'];
+  };
+  
+  function set(key, value){
+    hash[key] = value;
+    return hash;
+  };
+  
+  function all(){
+    return hash;
+  };
+  
+  return {
+    set: set, 
+    get: get,
+    all: all
+  };
+};
 
 var $j = jQuery.noConflict();
 
@@ -205,17 +226,11 @@ var gmap;
 
 var $mapper = (function(){
   var geocoder;
-  var plugins = {};
   
   function initialize(){
-    var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
-    var myOptions = {
-      zoom: 5,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    gmap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-     
+    ui.body();
+    ui.map();
+ 
     for(var plugin in plugins){ //init plugins
       //try { this.plugins[plugin].initialize(); }
       //catch(e){ console.log(e)}; 
@@ -228,6 +243,23 @@ var $mapper = (function(){
   };
   
   var ui = {
+    body: function(){
+      var r  = '<header></header>';
+          r += '<div id="headerline"></div>';
+          r += '<div id="map_canvas"></div>';
+      $j('body').append(r);
+      log(1, "body html ready")
+    },
+    function map(){
+      var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
+      var myOptions = {
+        zoom: 5,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      gmap = new google.maps.Map($j('#map_canvas'), myOptions);
+      return gmap
+    },
     add_plugin_section: function(name, html){
       this.plugin_sections.push({name: name, html:html});
       this.render(); /////////////////////////////////////////////////________________
@@ -268,6 +300,12 @@ var $mapper = (function(){
       }
     }
     
+  };
+  
+  var plugins = {
+    add: function(){
+      
+    },
   };
   
   function map(array){
