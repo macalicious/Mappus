@@ -360,7 +360,8 @@ var $mapper = (function(){
     plugins: plugins,
     dialog: dialog,
     set_marker: set_marker,
-    log: logger
+    log: logger,
+    settings_ui: settings_ui
   };
 })();
  
