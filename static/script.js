@@ -470,6 +470,7 @@ var $mapper = (function(){
          t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
       };
       t += '</section>';
+      FB.XFBML.parse(t);
       return t;
     };
     
@@ -501,11 +502,6 @@ var $mapper = (function(){
             +  "</tr>"; 
       });
           b += "</table>";  
-          
-      
-      var link = $j("header").append('<a href="#">Facebook</a>').children("a").last();
-      $mapper.ui.dialog(link, b);
-      FB.XFBML.parse();
     };
     
     function query(fn){
