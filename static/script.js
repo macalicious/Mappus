@@ -151,7 +151,7 @@ var FriendMap = new Class({
 
 */
 
-Array.prototype.each = function(fn){this.forEach(fn);};
+//Array.prototype.each = function(fn){this.forEach(fn);};
 var each = function(obj, fn){
   if(fn.length==1){
     for(x in obj){
