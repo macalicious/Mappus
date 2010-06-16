@@ -155,7 +155,7 @@ Array.prototype.each = function(fn){this.forEach(fn);};
 var each = function(obj, fn){
   if(fn.length==1){
     for(x in obj){
-      fn(x);
+      fn(obj[x]);
     };
   }else if(fn.length==2){
       for(x in obj){
