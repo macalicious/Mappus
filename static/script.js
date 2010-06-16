@@ -251,6 +251,7 @@ var $mapper = (function(){
           r += '<div id="headerline"></div>';
           r += '<div id="map_canvas"></div>';
       $j('body').append(r);
+      this.toolbar.render();
       logger(1, "body html ready")
     },
     map: function(){
@@ -292,11 +293,11 @@ var $mapper = (function(){
     },
     toolbar: {
       add_item: function(text, name){
-        
+        var r = '<a id="toolbarlink_' + name + '" href="javascript:void(0);">' + text + '</a>'
+        return $j(r).appendTo($('header'));
       },
       remove_item: function(name){},
       render: function(){
-        var header = $j('<header></header>').appendTo($j('body'));
         var link = $j('<a href="javascript:void(0);">settings</a>').appendTo(header);
         ui.dialog(link, ui.settings_html());
       }
