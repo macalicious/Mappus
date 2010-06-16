@@ -527,7 +527,3 @@ var $mapper = (function(){
 $j(document).ready(function($){
   $mapper.initialize();
 });
-
-
-
-
