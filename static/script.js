@@ -470,10 +470,11 @@ var $mapper = (function(){
          t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
       };
       t += '</section>';
+      
       var x = $j('<div id="temp"><div>').appendTo($j('body')).css("display", "none");
       var y = $j(t).appendTo(x);
       FB.XFBML.parse(x[0]);
-      var html = y.html();
+      var html = x.html();
       x.remove();
       
       alert(html);
