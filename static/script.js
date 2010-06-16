@@ -472,7 +472,7 @@ var $mapper = (function(){
       t += '</section>';
       var x = $j('<div id="temp"><div>').appendTo($j('body')).css("display", "none");
       var y = $j(t).appendTo(x);
-      FB.XFBML.parse($j("#temp"));
+      FB.XFBML.parse($j("#temp")[0]);
       var html = y.html();
       x.remove();
       
