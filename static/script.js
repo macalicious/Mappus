@@ -470,8 +470,13 @@ var $mapper = (function(){
          t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
       };
       t += '</section>';
-      FB.XFBML.parse(t);
-      return t;
+      var x = $j('<div><div>').appendTo($j('body')).css("display", "none");
+      var y = t.appendTo(x);
+      FB.XFBML.parse("temp");
+      var html = y.html();
+      x.remove();
+      
+      return html;
     };
     
     function dialoggg(friends){ 
