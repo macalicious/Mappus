@@ -264,6 +264,7 @@ var $mapper = (function(){
     },
     add_plugin_section: function(name, html){
       this.plugin_sections.push({name: name, html:html});
+      console.log("maha");
     },
     settings_html: function(){
       var r  = '<h1>Dingsen</h1>';
