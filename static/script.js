@@ -286,7 +286,7 @@ var $mapper = (function(){
       remove_item: function(name){},
       render: function(){
         var link = $j('<a href="javascript:void(0);">settings</a>').appendTo($j('header'));
-        ui.dialog(link, ui.settings_html());
+        ui.dialog(link, function(){$mapper.ui.settings_html();});
       }
     }
   };
