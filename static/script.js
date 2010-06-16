@@ -234,7 +234,9 @@ var $mapper = (function(){
     for(var plugin in plugins.all()){ //init plugins
       //try { this.plugins[plugin].initialize(); }
       //catch(e){ console.log(e)}; 
-      
+      console.log(this.plugins.get(plugin));
+      console.log(plugin);
+      console.log(this.plugins);
       this.plugins.get(plugin).initialize();
       if(this.plugins.get(plugin).settings_ui){
         // add_settings_ui( this.plugins[plugin].settings_ui() ); 
