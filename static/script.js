@@ -265,7 +265,6 @@ var $mapper = (function(){
     },
     add_plugin_section: function(name, html){
       this.plugin_sections.push({name: name, html:html});
-      this.render(); /////////////////////////////////////////////////________________
     },
     settings_html: function(){
       var r  = '<h1>Dingsen</h1>';
@@ -508,7 +507,7 @@ var $mapper = (function(){
           
       
       var link = $j("header").append('<a href="#">Facebook</a>').children("a").last();
-      $mapper.dialog(link, b);
+      $mapper.ui.dialog(link, b);
       FB.XFBML.parse();
     };
     
