@@ -476,6 +476,7 @@ var $mapper = (function(){
       var html = y.html();
       x.remove();
       
+      alert(html);
       return html;
     };
     
