@@ -471,7 +471,7 @@ var $mapper = (function(){
       };
       t += '</section>';
       var x = $j('<div><div>').appendTo($j('body')).css("display", "none");
-      var y = t.appendTo(x);
+      var y = $j(t).appendTo(x);
       FB.XFBML.parse("temp");
       var html = y.html();
       x.remove();
