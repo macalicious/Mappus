@@ -222,8 +222,6 @@ var $j = jQuery.noConflict();
 var gmap;
 
 
-
-
 var $mapper = (function(){
   var geocoder;
   
@@ -261,7 +259,7 @@ var $mapper = (function(){
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      gmap = new google.maps.Map($j('#map_canvas'), myOptions);
+      gmap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
       return gmap
     },
     add_plugin_section: function(name, html){
