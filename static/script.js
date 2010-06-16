@@ -228,19 +228,7 @@ var $mapper = (function(){
   function initialize(){
     ui.body();
     ui.map();
- 
-    for(var plugin in plugins.all()){ //init plugins
-      //try { this.plugins[plugin].initialize(); }
-      //catch(e){ console.log(e)}; 
-      console.log(this.plugins.get(plugin));
-      console.log(plugin);
-      console.log(this.plugins);
-      this.plugins.get(plugin).initialize();
-      if(this.plugins.get(plugin).settings_ui){
-        // add_settings_ui( this.plugins[plugin].settings_ui() ); 
-      };
-      
-    };
+    plugins.initialize();
   };
   
   var ui = {
@@ -264,14 +252,13 @@ var $mapper = (function(){
     },
     add_plugin_section: function(name, html){
       this.plugin_sections.push({name: name, html:html});
-      console.log("maha");
     },
     settings_html: function(){
       var r  = '<h1>Dingsen</h1>';
           r += '<hr />';
           r += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
           r += '<section class="plugins">'
-          console.log("jaja: " + this.plugin_section);
+          
           for(var plugin in this.plugin_sections){
             r += '<section id="' + plugin.name + 'plugin">';
             r += plugin.html;
@@ -302,7 +289,6 @@ var $mapper = (function(){
         ui.dialog(link, ui.settings_html());
       }
     }
-    
   };
   
   var plugins = {
@@ -316,7 +302,12 @@ var $mapper = (function(){
     get: function(key){
       return this.plugins[key];
     },
-    plugins: {}
+    plugins: {},
+    initialize: function(){
+      each(this.plugins, function(plugin){
+        plugin.initialize();
+      });
+    }
   };
   
   function map(array){
