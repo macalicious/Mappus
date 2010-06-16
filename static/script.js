@@ -305,13 +305,13 @@ var $mapper = (function(){
   
   var plugins = {
     add: function(name, fn){
-      this.plugins[name] = fn;
+      this.plugins.plugins[name] = fn;
     },
     all: function(){
-      return this.plugins;
+      return this.plugins.plugins;
     },
     get: function(key){
-      return this.plugins[key];
+      return this.plugins.plugins[key];
     },
     plugins: {}
   };
