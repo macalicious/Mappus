@@ -311,7 +311,7 @@ var $mapper = (function(){
       return this.plugins;
     },
     get: function(key){
-      return this.plugin[key];
+      return this.plugins[key];
     },
     plugins: {}
   };
