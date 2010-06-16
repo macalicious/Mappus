@@ -261,11 +261,11 @@ var $mapper = (function(){
           
           console.log("sdgsdgsdgsdg");
           console.log(this.plugin_sections);
-          for(var plugin in this.plugin_sections){
+          each(this.plugin_sections, function(plugin)){
             r += '<section id="' + plugin.name + 'plugin">';
             r += plugin.html;
             r += '</section>';
-          };
+          });
           r += '</section>';
       return r;
     },
