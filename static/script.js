@@ -237,7 +237,7 @@ var $mapper = (function(){
       console.log(this.plugins.get(plugin));
       console.log(plugin);
       console.log(this.plugins);
-      this.plugins.get(plugin).initialize();
+      this.plugins.get(plugin)().initialize();
       if(this.plugins.get(plugin).settings_ui){
         // add_settings_ui( this.plugins[plugin].settings_ui() ); 
       };
