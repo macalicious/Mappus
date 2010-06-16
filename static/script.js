@@ -260,11 +260,12 @@ var $mapper = (function(){
           r += '<section class="plugins">'
           
           console.log("sdgsdgsdgsdg");
-          console.log(this.plugin_sections);
+          
           each(this.plugin_sections, function(plugin){
             r += '<section id="' + plugin.name + 'plugin">';
             r += plugin.html;
             r += '</section>';
+            console.log(plugin);
           });
           r += '</section>';
       return r;
