@@ -237,7 +237,7 @@ var $mapper = (function(){
       console.log(this.plugins.get(plugin));
       console.log(plugin);
       console.log(this.plugins);
-      this.plugins.get(plugin)().initialize();
+      this.plugins.get(plugin).initialize();
       if(this.plugins.get(plugin).settings_ui){
         // add_settings_ui( this.plugins[plugin].settings_ui() ); 
       };
@@ -420,7 +420,7 @@ var $mapper = (function(){
   };
 })();
  
-  $mapper.plugins.add('facebook', function(){
+  $mapper.plugins.add('facebook', (function(){
     var parent = $mapper;
     
     function initialize(){
@@ -522,7 +522,7 @@ var $mapper = (function(){
       initialize: initialize,
       settings_ui: settings_ui
     };
-  });
+  })());
   
  
 $j(document).ready(function($){
