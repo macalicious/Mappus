@@ -231,11 +231,12 @@ var $mapper = (function(){
     ui.body();
     ui.map();
  
-    for(var plugin in plugins){ //init plugins
+    for(var plugin in plugins.all()){ //init plugins
       //try { this.plugins[plugin].initialize(); }
       //catch(e){ console.log(e)}; 
-      this.plugins[plugin].initialize();
-      if(this.plugins[plugin].settings_ui){
+      
+      this.plugins.get(plugin).initialize();
+      if(this.plugins.get(plugin).settings_ui){
         // add_settings_ui( this.plugins[plugin].settings_ui() ); 
       };
       
@@ -303,9 +304,16 @@ var $mapper = (function(){
   };
   
   var plugins = {
-    add: function(){
-      
+    add: function(name, fn){
+      this.plugins[name] = fn;
     },
+    all: function(){
+      return this.plugins;
+    },
+    get: function(key){
+      return this.plugin[key];
+    },
+    plugins: {}
   };
   
   function map(array){
@@ -409,7 +417,7 @@ var $mapper = (function(){
   };
 })();
  
-  $mapper.plugins.facebook = (function(){
+  $mapper.plugins.add('facebook', function(){
     var parent = $mapper;
     
     function initialize(){
@@ -511,7 +519,7 @@ var $mapper = (function(){
       initialize: initialize,
       settings_ui: settings_ui
     };
-  })();
+  });
   
  
 $j(document).ready(function($){
