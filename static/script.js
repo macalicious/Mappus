@@ -305,8 +305,9 @@ var $mapper = (function(){
     plugins: {},
     initialize: function(){
       each(this.plugins, function(plugin){
-        plugin.initialize();
         console.log(plugin);
+        plugin.initialize();
+        
       });
     }
   };
