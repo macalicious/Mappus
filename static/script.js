@@ -238,6 +238,7 @@ var $mapper = (function(){
           r += '<div id="map_canvas"></div>';
       $j('body').append(r);
       
+      this.settings();
       this.toolbar.render();
       logger(1, "body html ready")
     },
@@ -288,7 +289,7 @@ var $mapper = (function(){
       remove_item: function(name){},
       render: function(){
         var link = $j('<a href="javascript:void(0);">settings</a>').appendTo($j('header'));
-        ui.dialog(link, function(){return $mapper.ui.settings();});
+        ui.dialog(link, $j('#settings_ui'));
       }
     }
   };
