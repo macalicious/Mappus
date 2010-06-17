@@ -421,6 +421,8 @@ var $mapper = (function(){
         parent.log(2, "facebook plugin: dependencies loaded");
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
+          console.log("current_user");
+          console.log(current_user);
         };
         FB.getLoginStatus(set_current_user);
         FB.Event.subscribe('auth.sessionChange', set_current_user); 
