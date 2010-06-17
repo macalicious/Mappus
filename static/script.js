@@ -462,6 +462,7 @@ var $mapper = (function(){
             + '<legend>Facebook</legend>'
             + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
             + '<section class="last">';
+      console.log("rrr: " + current_user)
       if (current_user) {
           t += '<fb:facepile>';
       } else {
