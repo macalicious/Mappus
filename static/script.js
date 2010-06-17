@@ -266,6 +266,9 @@ var $mapper = (function(){
               
       each(this.plugin_sections, function(plugin){
           $j(plugin).appendTo($j('#settings_ui .plugins'));
+          console.log("plugin");
+          console.log($j(plugin));
+          console.log(plugin);
       });
          
       return obj;
