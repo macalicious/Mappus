@@ -438,7 +438,7 @@ var $mapper = (function(){
         
         query(dialoggg);
         
-        $mapper.ui.add_plugin_section("facebook", settings_ui());
+        $mapper.ui.add_plugin_section("facebook", function(){settings_ui();});
       });
     };
     
