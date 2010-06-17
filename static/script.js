@@ -265,11 +265,9 @@ var $mapper = (function(){
       var obj = $j('<div id="settings_ui"></div>').appendTo($j('#hidden')).append(r);
               
       each(this.plugin_sections, function(plugin){
-          $j(plugin).appendTo(obj);
+          $j(plugin).appendTo($j('#settings_ui .plugins'));
       });
-      
-      console.log("settingsui");
-      console.log(obj);    
+         
       return obj;
     },
     plugin_sections: [],
