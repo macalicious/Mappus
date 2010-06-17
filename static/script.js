@@ -266,7 +266,7 @@ var $mapper = (function(){
       console.log("plugin____");      
       console.log(this.plugin_sections);  
       each(this.plugin_sections, function(plugin){
-          $j(plugin).appendTo($j('#settings_ui .plugins'));
+          //$j(plugin).appendTo($j('#settings_ui .plugins'));
           console.log("plugin");
           console.log($j(plugin));
           console.log(plugin);
