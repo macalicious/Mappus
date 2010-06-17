@@ -236,7 +236,7 @@ var $mapper = (function(){
       var r  = '<header></header>';
           r += '<div id="headerline"></div>';
           r += '<div id="map_canvas"></div>';
-          r += '<div id="hidden" style="display:hidden;"></div>';
+          r += '<div id="hidden" style="display:none;"></div>';
       $j('body').append(r);
       
       this.settings();
