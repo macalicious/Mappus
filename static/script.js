@@ -300,6 +300,7 @@ var $mapper = (function(){
   
   var plugins = {
     add: function(name, fn){
+      console.log("plugininin");
       console.log(this);
       this.plugins[name] = fn;
     },
