@@ -303,7 +303,7 @@ var $mapper = (function(){
       console.log("plugininin");
       console.log(name);
       console.log(fn);
-      $j(fn.settiungs_ui()).appendTo($j('#settings_ui .plugins'));;
+      $j(fn.settings_ui()).appendTo($j('#settings_ui .plugins'));;
       this.plugins[name] = fn;
     },
     all: function(){
