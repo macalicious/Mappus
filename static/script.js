@@ -253,8 +253,9 @@ var $mapper = (function(){
       gmap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
       return gmap
     },
-    add_plugin_section: function(name, html){
-      this.plugin_sections.push({name: name, html:html});
+    add_plugin_section: function(obj){
+      //this.plugin_sections.push({name: name, html:html});
+      $j(obj).appendTo($j('#settings_ui .plugins'));
     },
     settings: function(){
       var r  = '<h1>Dingsen</h1>';
@@ -292,10 +293,6 @@ var $mapper = (function(){
   
   var plugins = {
     add: function(name, fn){
-      console.log("plugininin");
-      console.log(name);
-      console.log(fn);
-      //$j(fn.settings_ui()).appendTo($j('#settings_ui .plugins'));;
       this.plugins[name] = fn;
     },
     all: function(){
@@ -430,7 +427,7 @@ var $mapper = (function(){
         
         query(dialoggg);
         
-        $mapper.ui.add_plugin_section("facebook", function(){settings_ui();});
+        $mapper.ui.add_plugin_section( settings_ui() );
       });
     };
     
