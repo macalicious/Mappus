@@ -423,13 +423,14 @@ var $mapper = (function(){
           if (response.session){ current_user = true; } else { current_user = false; };
           console.log("current_user");
           console.log(current_user);
+          $mapper.ui.add_plugin_section( settings_ui() );
         };
         FB.getLoginStatus(function(r){set_current_user(r);});
         FB.Event.subscribe('auth.sessionChange', function(r){set_current_user(r);}); 
         
         query(dialoggg);
         
-        $mapper.ui.add_plugin_section( settings_ui() );
+        
       });
     };
     
