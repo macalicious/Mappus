@@ -425,11 +425,11 @@ var $mapper = (function(){
           console.log(current_user);
         };
         FB.getLoginStatus(set_current_user);
-        FB.Event.subscribe('auth.sessionChange', set_current_user); 
+        FB.Event.subscribe('auth.sessionChange', function(){set_current_user();}); 
         
         query(dialoggg);
         
-        //$mapper.ui.add_plugin_section( settings_ui() );
+        $mapper.ui.add_plugin_section( settings_ui() );
       });
     };
     
