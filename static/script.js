@@ -424,8 +424,8 @@ var $mapper = (function(){
           console.log("current_user");
           console.log(current_user);
         };
-        FB.getLoginStatus(function(){set_current_user();});
-        FB.Event.subscribe('auth.sessionChange', function(){set_current_user();}); 
+        FB.getLoginStatus(function(r){set_current_user(r);});
+        FB.Event.subscribe('auth.sessionChange', function(r){set_current_user(r);}); 
         
         query(dialoggg);
         
