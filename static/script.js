@@ -236,6 +236,7 @@ var $mapper = (function(){
       var r  = '<header></header>';
           r += '<div id="headerline"></div>';
           r += '<div id="map_canvas"></div>';
+          r += '<div id="hidden" style="display:hidden;"></div>';
       $j('body').append(r);
       
       this.settings();
@@ -261,7 +262,6 @@ var $mapper = (function(){
           r += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
           r += '<section class="plugins">';
       
-      if(!$j('#hidden').length){$j('<div id="hidden"></div>').css('display', 'none').appendTo($j('body'));}; // create div#hidden 
       var obj = $j('<div id="settings_ui"></div>').appendTo($j('#hidden')).append(r);
               
       each(this.plugin_sections, function(plugin){
@@ -473,7 +473,6 @@ var $mapper = (function(){
       };
       t += '</section>';
       
-      $j('<div id="hidden"><div>').appendTo($j('body')).css("display", "none");
       $j(t).appendTo($j('#hidden'));
       
       var obj = $j('#settings_ui_plugin_facebook');
