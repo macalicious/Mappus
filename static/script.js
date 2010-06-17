@@ -429,7 +429,7 @@ var $mapper = (function(){
         
         query(dialoggg);
         
-        $mapper.ui.add_plugin_section( settings_ui() );
+        //$mapper.ui.add_plugin_section( settings_ui() );
       });
     };
     
