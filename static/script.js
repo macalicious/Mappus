@@ -237,6 +237,7 @@ var $mapper = (function(){
           r += '<div id="headerline"></div>';
           r += '<div id="map_canvas"></div>';
       $j('body').append(r);
+      
       this.toolbar.render();
       logger(1, "body html ready")
     },
@@ -253,22 +254,20 @@ var $mapper = (function(){
     add_plugin_section: function(name, html){
       this.plugin_sections.push({name: name, html:html});
     },
-    settings_html: function(){
+    settings: function(){
       var r  = '<h1>Dingsen</h1>';
           r += '<hr />';
           r += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
-          r += '<section class="plugins">'
-          
-          console.log("sdgsdgsdgsdg");
-          
-          each(this.plugin_sections, function(plugin){
-            r += '<section id="' + plugin.name + 'plugin">';
-            r += plugin.html;
-            r += '</section>';
-            console.log(plugin);
-          });
-          r += '</section>';
-      return r;
+          r += '<section class="plugins">';
+      
+      var obj = $j('<div id="settings_ui"></div>').appendTo($j('#hidden')).append(r);
+              
+      each(this.plugin_sections, function(plugin){
+          $j(plugin).appendTo(obj);
+      });
+      
+      console.log("settingsui" + obj);    
+      return obj;
     },
     plugin_sections: [],
     dialog: function(obj, html){
@@ -289,7 +288,7 @@ var $mapper = (function(){
       remove_item: function(name){},
       render: function(){
         var link = $j('<a href="javascript:void(0);">settings</a>').appendTo($j('header'));
-        ui.dialog(link, function(){return $mapper.ui.settings_html();});
+        ui.dialog(link, $mapper.ui.settings());
       }
     }
   };
@@ -460,7 +459,7 @@ var $mapper = (function(){
       
     function settings_ui(){
       parent.log(1, "facebook plugin: settings_ui");
-      var t = '<fieldset id="facebook_settings">'
+      var t = '<fieldset id="settings_ui_plugin_facebook">'
             + '<legend>Facebook</legend>'
             + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
             + '<section class="last">';
@@ -471,14 +470,12 @@ var $mapper = (function(){
       };
       t += '</section>';
       
-      var x = $j('<div id="temp"><div>').appendTo($j('body')).css("display", "none");
-      var y = $j(t).appendTo(x);
-      FB.XFBML.parse(x[0]);
-      var html = x.html();
-      x.remove();
+      $j('<div id="hidden"><div>').appendTo($j('body')).css("display", "none");
+      $j(t).appendTo($j('#hidden'));
       
-      alert(html);
-      return html;
+      var obj = $j('#settings_ui_plugin_facebook');
+      FB.XFBML.parse(obj[0]);
+      return obj;
     };
     
     function dialoggg(friends){ 
