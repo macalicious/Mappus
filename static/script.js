@@ -226,9 +226,9 @@ var $mapper = (function(){
   var geocoder;
   
   function initialize(){
+    plugins.initialize();
     ui.body();
     ui.map();
-    plugins.initialize();
   };
   
   var ui = {
@@ -267,7 +267,8 @@ var $mapper = (function(){
           $j(plugin).appendTo(obj);
       });
       
-      console.log("settingsui" + obj);    
+      console.log("settingsui");
+      console.log(obj);    
       return obj;
     },
     plugin_sections: [],
