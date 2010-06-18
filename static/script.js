@@ -226,9 +226,9 @@ var $mapper = (function(){
   var geocoder;
   
   function initialize(){
-    plugins.initialize();
     ui.body();
     ui.map();
+    //plugins.initialize();
   };
   
   var ui = {
@@ -238,10 +238,10 @@ var $mapper = (function(){
           r += '<div id="map_canvas"></div>';
           r += '<div id="hidden" style="display:none;"></div>';
       $j('body').append(r);
-      
-      this.settings();
-      this.toolbar.render();
       logger(1, "body html ready")
+      
+      //this.settings();
+      //this.toolbar.render();
     },
     map: function(){
       var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
@@ -250,8 +250,7 @@ var $mapper = (function(){
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      gmap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-      return gmap
+      gmap = new google.maps.Map($j("#map_canvas")[0]), myOptions);
     },
     add_plugin_section: function(obj){
       //this.plugin_sections.push({name: name, html:html});
