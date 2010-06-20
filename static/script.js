@@ -226,31 +226,40 @@ var $mapper = (function(){
   var geocoder;
   
   function initialize(){
+    $j('#progress').animate({backgroundPosition: '0% 30%'}, 30000);
     ui.body();
     ui.map();
-    //plugins.initialize();
+    plugins.initialize();
   };
   
   var ui = {
     body: function(){
-      var r  = '<header></header>';
+      var r  = '<div id="view2">';
+          r += '<header></header>';
           r += '<div id="headerline"></div>';
           r += '<div id="map_canvas"></div>';
           r += '<div id="hidden" style="display:none;"></div>';
-      $j('body').append(r);
+          r += '</div>';
+      $j(r).appendTo('body').css({visibility:'hidden'});
       logger(1, "body html ready")
       
       //this.settings();
       //this.toolbar.render();
     },
     map: function(){
+      <script type="text/javascript" src=""></script>
+      $j.getScript("http:////maps.google.com/maps/api/js?sensor=false", function(){
+        alert("geladen");
+      });
+      /*
       var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
       var myOptions = {
         zoom: 5,
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
-      gmap = new google.maps.Map($j("#map_canvas")[0]), myOptions);
+      };
+      gmap = new google.maps.Map($j("#map_canvas")[0], myOptions);
+      */
     },
     add_plugin_section: function(obj){
       //this.plugin_sections.push({name: name, html:html});
@@ -287,6 +296,9 @@ var $mapper = (function(){
         var link = $j('<a href="javascript:void(0);">settings</a>').appendTo($j('header'));
         ui.dialog(link, $j('#settings_ui'));
       }
+    },
+    bootscreen: function(){
+      
     }
   };
   
@@ -307,6 +319,13 @@ var $mapper = (function(){
         plugin.initialize();
         
       });
+    }
+  };
+  
+  var events = {
+    app_ready: function(){
+      $j("#view1").hide();
+      $j('#view2').css('visibility', 'visible');
     }
   };
   
