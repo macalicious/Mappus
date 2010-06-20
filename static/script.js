@@ -247,7 +247,7 @@ var $mapper = (function(){
       //this.toolbar.render();
     },
     map: function(){
-      <script type="text/javascript" src=""></script>
+      
       $j.getScript("http:////maps.google.com/maps/api/js?sensor=false", function(){
         alert("geladen");
       });
