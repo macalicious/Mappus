@@ -43,6 +43,8 @@ class MyApp < Sinatra::Base
 end
 
 
+
+
 # $j.ajax({
 #       url: "test/",
 #       data: ({jupitermap : ["Wiesbaden","Hamburg","München"]}),
