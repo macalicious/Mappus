@@ -449,7 +449,7 @@ var $mapper = (function(){
       load_dependencies(function(){  
         parent.log(2, "facebook plugin: dependencies loaded");
         
-        /*
+        
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
           $mapper.ui.add_plugin_section( settings_ui() );
@@ -458,11 +458,9 @@ var $mapper = (function(){
         FB.Event.subscribe('auth.sessionChange', function(r){set_current_user(r);}); 
         
         //query(dialoggg);
-        fn();
-        */
         
         parent.ui.dialog(parent.ui.toolbar.add_item("Facebook Settings", "fb_settings"),function(){
-          return 555;
+          return settingsui();
         });
         fn();
       });
