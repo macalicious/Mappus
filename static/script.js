@@ -404,7 +404,7 @@ var $mapper = (function(){
         window.r = results;
         var marker = new google.maps.Marker({
           map: gmap, 
-          position: results[0].geometry.location,
+          position: results.geometry.location,
           title: ort     
         });
 
