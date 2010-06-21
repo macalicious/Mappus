@@ -347,15 +347,51 @@ var $mapper = (function(){
     });
   };
   
-  function geocode(querry, fn){
-    geocoder = geocoder || new google.maps.Geocoder();
-    geocoder.geocode( { 'address': querry}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        fn(results[0]);
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
+  function geocode(query, gfn){
+    
+    function geocode_serverside(array, fn){
+      var string = "";
+      each(array, function(item){ 
+        if(string!=""){string+=",";};
+        string+=item;
+      });
+      
+      $j.ajax({
+        url: "geocode",
+        dataType: "json",
+        data: ({jupitermap : string}),
+        success: function(result){
+          var points = {};
+          each(result, function(index, string){
+            var a = string.split(",");
+            var point = new google.maps.LatLng(a[1],a[0], 0);
+            points[index] = point;
+          });
+          fn(points);
+        },
+        error: function(a, b, c){
+          alert("Geocode was not successful for the following reason: " + b + "/n" + a);
+        }
+      });
+    };
+    function geocode_clintside(string, fn){
+      geocoder = geocoder || new google.maps.Geocoder();
+      geocoder.geocode( { 'address': string}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var point = results[0].geometry.location;
+          window.xx = results;
+          var res = {};
+          res[string] = point;
+          fn(res);
+        }else{
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    };
+    
+    if(typeof(query) == "string"){ geocode_clintside(query, gfn); };
+    if(typeof(query) == "object"){ geocode_serverside(query, gfn); };
+    
   };
   
   function array_to_points(locations, fn){
@@ -397,36 +433,46 @@ var $mapper = (function(){
   
   function set_marker(parm){
     
+    function add_marker_to_map(point){
+      console.log(point);
+    
+      var marker = new google.maps.Marker({
+        map: gmap, 
+        //position: point.geometry.location,
+        position: point,
+        title: "ort"     
+      });
+
+      var contentString = '<h2>+ort+</h2>';
+
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+
+      google.maps.event.addListener(marker, 'mouseover', function() {
+        infowindow.open(gmap,marker);
+      });
+      google.maps.event.addListener(marker, 'mouseout', function() {
+        infowindow.close(gmap,marker);
+      });
+    };
     var parse_marker = function(ort){
       console.log("tamtamtam");
       geocode(ort, function(results){
-        console.log(results);
-        window.r = results;
-        var marker = new google.maps.Marker({
-          map: gmap, 
-          position: results.geometry.location,
-          title: ort     
-        });
-
-        var contentString = '<h2>'+ort+'</h2>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        google.maps.event.addListener(marker, 'mouseover', function() {
-          infowindow.open(gmap,marker);
-        });
-        google.maps.event.addListener(marker, 'mouseout', function() {
-          infowindow.close(gmap,marker);
-        });
-
+        add_marker_to_map(results);
       });
     };
       
     if(typeof(parm) == "string"){ parse_marker(parm); };
-    if(typeof(parm) == "array"){ parm.each(function(item){ parse_marker(item); }); };
-    if(typeof(parm) == "object"){ parm.each(function(index, item){ parse_marker(item); });};
+    if(typeof(parm) == "object"){ 
+      var string = "";
+      each(parm, function(item){
+        if (string!=""){string+=","};
+        string+= item;
+      });
+      
+      
+    };
   };
   
   function logger(nr, msg){
@@ -440,7 +486,8 @@ var $mapper = (function(){
     set_marker: set_marker,
     log: logger,
     ui: ui,
-    events: events
+    events: events,
+    geocode: geocode
   };
 })();
  
@@ -529,6 +576,30 @@ var $mapper = (function(){
       
       
       query(function(friends){
+        
+        var orte = [];
+        each(friends, function(friend){
+          if(friend.hometown_location){orte.push(friend.hometown_location.city);}
+          if(friend.current_location){orte.push(friend.current_location.city);}
+        });
+        parent.geocode(orte, function(points){
+          each(friends, function(friend){
+            each(points, function(index, point){
+              if(index==friend.hometown_location){ 
+                if(!points[index].hometown_location){points[index].hometown_location = []; };
+                points[index].hometown_location.push(friend); };
+              if(index==friend.current_location){ 
+                if(!points[index].current_location){points[index].current_location = []; };
+                points[index].current_location.push(friend); 
+              }
+            });
+          };
+          console.log(friends);
+          window.tt = friends;
+        });
+        
+        
+        
         function gL(obj){
           if(obj){
             var loc = obj.city +", "+ obj.country;
