@@ -506,10 +506,10 @@ var $mapper = (function(){
       
       $j(t).appendTo($j('#hidden'));
       
-      window.t = t;
-      var obj = $j('#settings_ui_plugin_facebook');
-      FB.XFBML.parse(obj[0]);
-      return obj;
+      window.t = current_user;
+      
+      FB.XFBML.parse(t[0]);
+      return t;
     };
     
     function dialoggg(friends){ 
