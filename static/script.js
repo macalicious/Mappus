@@ -297,7 +297,7 @@ var $mapper = (function(){
     toolbar: {
       add_item: function(text, name){
         var r = '<a id="toolbarlink_' + name + '" href="javascript:void(0);">' + text + '</a>'
-        return $j(r).appendTo($('header'));
+        return $j(r).appendTo($j('header'));
       },
       remove_item: function(name){},
       render: function(){
