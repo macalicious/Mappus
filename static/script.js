@@ -289,7 +289,7 @@ var $mapper = (function(){
         'transitionIn'	: 'none',
         'transitionOut'	: 'fade',
         'overlayOpacity' : 0.15,
-        'autoDimensions': false,
+        'autoDimensions': true,
         'content' : html
       });
       return obj;
