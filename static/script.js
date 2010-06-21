@@ -583,6 +583,7 @@ var $mapper = (function(){
           if(friend.current_location){orte.push(friend.current_location.city);}
         });
         parent.geocode(orte, function(points){
+          console.log(["fb_points", points]);
           each(friends, function(friend){
             each(points, function(index, point){
               if(index==friend.hometown_location){ 
@@ -603,7 +604,7 @@ var $mapper = (function(){
         function gL(obj){
           if(obj){
             var loc = obj.city +", "+ obj.country;
-            parent.set_marker(obj.city); 
+            //parent.set_marker(obj.city); 
             return loc;
           }
           else {return "-";};
