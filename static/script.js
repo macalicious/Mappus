@@ -502,7 +502,7 @@ var $mapper = (function(){
          $j('<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>').appendTo(secl);
       };
       
-      $j('<button>weiter</button>').attr('disabled', current_user?"false":"true").appendTo(t).click(function(){alert("jojo");});
+      $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(t).click(function(){alert("jojo");});
       
       $j(t).appendTo($j('#hidden'));
       
