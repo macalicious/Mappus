@@ -527,7 +527,11 @@ var $mapper = (function(){
       
       query(function(friends){
         function gL(obj){
-          if(obj){return obj.city +", "+ obj.country;}
+          if(obj){
+            var loc = obj.city +", "+ obj.country;
+            parent.set_marker(loc); 
+            return loc;
+          }
           else {return "-";};
         };      
         each(friends, function(item){
