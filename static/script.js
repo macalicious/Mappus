@@ -400,6 +400,8 @@ var $mapper = (function(){
     var parse_marker = function(ort){
       console.log("tamtamtam");
       geocode(ort, function(results){
+        console.log(results);
+        window.r = results;
         var marker = new google.maps.Marker({
           map: gmap, 
           position: results[0].geometry.location,
