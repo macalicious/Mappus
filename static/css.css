@@ -74,10 +74,10 @@ header a {
 
 h1 {margin:10px 0 10px 0; font-size:1.8em;}
 
-.settings_ui_plugin_facebook {}
-.settings_ui_plugin_facebook fieldset { margin-right: 15px;}
-.settings_ui_plugin_facebook section {position: relative; width:47%; float:left; margin-right:6%;}
-.settings_ui_plugin_facebook section.last {margin-right:0px;}
+#settings_ui_plugin_facebook {}
+#settings_ui_plugin_facebook fieldset { margin-right: 15px;}
+#settings_ui_plugin_facebook section {position: relative; width:47%; float:left; margin-right:6%;}
+#settings_ui_plugin_facebook section.last {margin-right:0px;}
 
 #dialog1 fieldset section { }
-.settings_ui_plugin_facebook fieldset.last {margin-right: 0px;}
+#settings_ui_plugin_facebook fieldset.last {margin-right: 0px;}
