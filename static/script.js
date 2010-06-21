@@ -491,7 +491,8 @@ var $mapper = (function(){
       
     function settings_ui(){
       parent.log(1, "facebook plugin: settings_ui");
-      var t = $j('<fieldset id="settings_ui_plugin_facebook"></fieldset>');
+      var box = $j('<div><div>');
+      var t = $j('<fieldset id="settings_ui_plugin_facebook"></fieldset>').appendTo(box);
       $j('<legend>Facebook</legend>').appendTo(t);
       $j('<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>').appendTo(t);
       var secl = $j('<section class="last"></section>').appendTo(t);
@@ -502,14 +503,14 @@ var $mapper = (function(){
          $j('<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>').appendTo(secl);
       };
       
-      $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(t).click(function(){alert("jojo");});
+      $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(box).click(function(){alert("jojo");});
       
-      $j(t).appendTo($j('#hidden'));
+      $j(box).appendTo($j('#hidden'));
       
       window.t = current_user;
       
-      FB.XFBML.parse(t[0]);
-      return t;
+      FB.XFBML.parse(box[0]);
+      return box;
     };
     
     function dialoggg(friends){ 
