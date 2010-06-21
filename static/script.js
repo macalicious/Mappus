@@ -227,16 +227,11 @@ var $mapper = (function(){
   
   function initialize(){
     $j('#progress').animate({backgroundPosition: '0% 30%'}, 30000);
-    alert();
     ui.body(function(){
-      alert();
-      ui.map(function(){
-        alert();
-        events.app_ready();
-        
-        //plugins.initialize(function(){
-          
-        //});
+      ui.map(function(){ 
+        plugins.initialize(function(){
+          events.app_ready();
+        });
       });
     });
   };
@@ -453,6 +448,8 @@ var $mapper = (function(){
       parent.log(1, "init facebook plugin");
       load_dependencies(function(){  
         parent.log(2, "facebook plugin: dependencies loaded");
+        
+        /*
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
           $mapper.ui.add_plugin_section( settings_ui() );
@@ -460,8 +457,13 @@ var $mapper = (function(){
         FB.getLoginStatus(function(r){set_current_user(r);});
         FB.Event.subscribe('auth.sessionChange', function(r){set_current_user(r);}); 
         
-        query(dialoggg);
+        //query(dialoggg);
         fn();
+        */
+        
+        parent.ui.dialog(parent.ui.toolbar.add_item("Facebook Settings", "fb_settings"),function(){
+          return 555;
+        });
         
       });
     };
