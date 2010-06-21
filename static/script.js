@@ -491,20 +491,22 @@ var $mapper = (function(){
       
     function settings_ui(){
       parent.log(1, "facebook plugin: settings_ui");
-      var t = '<fieldset id="settings_ui_plugin_facebook">'
-            + '<legend>Facebook</legend>'
-            + '<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>'
-            + '<section class="last">';
-      console.log("rrr: " + current_user)
+      var t = $j('<fieldset id="settings_ui_plugin_facebook"></fieldset>');
+      $j('<legend>Facebook</legend>').appendTo(t);
+      $j('<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>').appendTo(t);
+      var secl = $j('<section class="last"></section>').appendTo(t);
+    
       if (current_user) {
-          t += '<fb:facepile>';
+          $j('<fb:facepile>').appendTo(secl);
       } else {
-         t += '<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>';
+         $j('<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>').appendTo(secl);
       };
-      t += '</section>';
+      
+      $j('<button></button>').attr('disabled', current_user).appendTo(t).click(function(){alert("jojo");});
       
       $j(t).appendTo($j('#hidden'));
       
+      window.t = t;
       var obj = $j('#settings_ui_plugin_facebook');
       FB.XFBML.parse(obj[0]);
       return obj;
