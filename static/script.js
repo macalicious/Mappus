@@ -503,7 +503,7 @@ var $mapper = (function(){
          $j('<img alt="" src="fb_login.gif" />').appendTo(secl).click(function(){FB.login();});
       };
       
-      $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(box).fancybox({content:"jaja"});
+      $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(box).fancybox({content:fb_data_win});
       
       $j(box).appendTo($j('#hidden'));
       
@@ -513,34 +513,31 @@ var $mapper = (function(){
       return box;
     };
     
-    function dialoggg(friends){ 
+    
+    function fb_data_win(){ 
       parent.log(1, "facebook plugin: window");
-      var b = "<h1>Facebook</h1>" 
-            + "<hr />"
-            + "<table> <thead> <tr>"
-            + "<th>Name</th>" + "<th>Heimatort</th>" + "<th>Wohnort</th>"
-            + "</tr> </thead>";
-            
-      each(friends, function(item){
-          b += "<tr>"
-            +  "<td>" + item.name + "</td>"
-            +  "<td>";
-            if(item.hometown_location){
-              b += item.hometown_location.city + ", " + item.hometown_location.country;
-            }else{
-          b += "-";
-            }; 
-          b += "</td>"
-            +  "<td>";
-            if(item.current_location){
-              b += item.current_location.city + ", " + item.current_location.country;
-            }else{
-          b += "-";
-            };
-          b += "</td>"
-            +  "</tr>"; 
+      
+      var result = $j('<div></div>');
+      $j('<h1>Facebook</h1><hr />').appendTo(result);
+      var tabel = $j('<table></table>').appendTo(result);
+      var thead = $j('<thead></thead>').appendTo(table);
+      $j('<tr></tr>').appendTo(thead).append('<th>Name</th>').append('<th>Heimatort</th>').append('<th>Wohnort</th>');;    
+      
+      
+      
+      query(function(friends){
+        function gL(obj){
+          if(obj){return obj.city +", "+ obj.country;}
+          else {return "-";};
+        };      
+        each(friends, function(item){
+            var tr = $j('<tr></tr>').appendTo(table);
+            $j('<td>'+ item.name +'</td>').appendTo(tr);    
+            $j('<td>'+ gL(item.hometown_location) +'</td>').appendTo(tr);
+            $j('<td>'+ gL(item.current_location) +'</td>').appendTo(tr);
+        });
       });
-          b += "</table>";  
+        
     };
     
     function query(fn){
