@@ -537,7 +537,8 @@ var $mapper = (function(){
             $j('<td>'+ gL(item.current_location) +'</td>').appendTo(tr);
         });
       });
-        
+      
+      return result;  
     };
     
     function query(fn){
