@@ -529,7 +529,7 @@ var $mapper = (function(){
         function gL(obj){
           if(obj){
             var loc = obj.city +", "+ obj.country;
-            parent.set_marker(loc); 
+            parent.set_marker(obj.city); 
             return loc;
           }
           else {return "-";};
