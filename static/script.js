@@ -227,8 +227,11 @@ var $mapper = (function(){
   
   function initialize(){
     $j('#progress').animate({backgroundPosition: '0% 30%'}, 30000);
+    alert();
     ui.body(function(){
+      alert();
       ui.map(function(){
+        alert();
         events.app_ready();
         
         //plugins.initialize(function(){
