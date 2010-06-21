@@ -500,7 +500,7 @@ var $mapper = (function(){
       if (current_user) {
           $j('<fb:facepile>').appendTo(secl);
       } else {
-         $j('<fb:login-button><fb:intl>Connect with Facebook</fb:intl></fb:login-button>').appendTo(secl);
+         $j('<img alt="" src="fb_login.gif" />').appendTo(secl).click(function(){FB.login();});
       };
       
       $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(box).click(function(){alert("jojo");});
