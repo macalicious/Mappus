@@ -217,6 +217,7 @@ function Hash(obj){
   };
 };
 
+
 var $j = jQuery.noConflict();
 
 var gmap;
@@ -227,13 +228,17 @@ var $mapper = (function(){
   
   function initialize(){
     $j('#progress').animate({backgroundPosition: '0% 30%'}, 30000);
-    ui.body();
-    ui.map();
-    plugins.initialize();
+    ui.body(function(){
+      ui.map(function(){
+        plugins.initialize(function(){
+          events.app_ready();
+        });
+      });
+    });
   };
   
   var ui = {
-    body: function(){
+    body: function(fn){
       var r  = '<div id="view2">';
           r += '<header></header>';
           r += '<div id="headerline"></div>';
@@ -241,25 +246,24 @@ var $mapper = (function(){
           r += '<div id="hidden" style="display:none;"></div>';
           r += '</div>';
       $j(r).appendTo('body').css({visibility:'hidden'});
-      logger(1, "body html ready")
-      
+      logger(1, "body ready")
+      fn();
       //this.settings();
       //this.toolbar.render();
     },
-    map: function(){
+    map: function(fn){
       
       $j.getScript("http:////maps.google.com/maps/api/js?sensor=false", function(){
-        alert("geladen");
+        var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
+        var myOptions = {
+          zoom: 5,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        gmap = new google.maps.Map($j("#map_canvas")[0], myOptions);
+        logger(1, 'map ready');
+        fn();
       });
-      /*
-      var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
-      var myOptions = {
-        zoom: 5,
-        center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      gmap = new google.maps.Map($j("#map_canvas")[0], myOptions);
-      */
     },
     add_plugin_section: function(obj){
       //this.plugin_sections.push({name: name, html:html});
@@ -313,11 +317,9 @@ var $mapper = (function(){
       return this.plugins[key];
     },
     plugins: {},
-    initialize: function(){
+    initialize: function(fn){
       each(this.plugins, function(plugin){
-        console.log(plugin);
-        plugin.initialize();
-        
+        plugin.initialize(fn);
       });
     }
   };
@@ -433,21 +435,19 @@ var $mapper = (function(){
   $mapper.plugins.add('facebook', (function(){
     var parent = $mapper;
     
-    function initialize(){
+    function initialize(fn){
       parent.log(1, "init facebook plugin");
       load_dependencies(function(){  
         parent.log(2, "facebook plugin: dependencies loaded");
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
-          console.log("current_user");
-          console.log(current_user);
           $mapper.ui.add_plugin_section( settings_ui() );
         };
         FB.getLoginStatus(function(r){set_current_user(r);});
         FB.Event.subscribe('auth.sessionChange', function(r){set_current_user(r);}); 
         
         query(dialoggg);
-        
+        fn();
         
       });
     };
