@@ -222,8 +222,6 @@ var $j = jQuery.noConflict();
 
 var gmap;
 
-function testest(){alert(11111);};
-
 var $mapper = (function(){
   var geocoder;
   
@@ -256,7 +254,7 @@ var $mapper = (function(){
       
       var e = document.createElement('script'); 
           e.async = true;
-          e.src = 'http://maps.google.com/maps/api/js?sensor=false&callback=testest';
+          e.src = 'http://maps.google.com/maps/api/js?sensor=false&callback=$mapper.events.map_ready';
       $j("body").append(e);
       /*
       $j.getScript("http:////maps.google.com/maps/api/js?sensor=false&async=2&callback=googleCallback", function(){
@@ -335,6 +333,9 @@ var $mapper = (function(){
     app_ready: function(){
       $j("#view1").hide();
       $j('#view2').css('visibility', 'visible');
+    },
+    map_ready: function(){
+      console.log("map ready");
     }
   };
   
@@ -435,7 +436,8 @@ var $mapper = (function(){
     plugins: plugins,
     set_marker: set_marker,
     log: logger,
-    ui: ui
+    ui: ui,
+    events: events
   };
 })();
  
