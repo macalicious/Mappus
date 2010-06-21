@@ -254,7 +254,8 @@ var $mapper = (function(){
     },
     map: function(fn){
       //&async=2&callback=googleCallback
-      $j('<script type="text/javascript" src="http:////maps.google.com/maps/api/js?sensor=false&async=2&callback=googleCallback"></script>').appendTo($j("body"));
+      console.log("load gmap");
+      $j('<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&callback=googleCallback"></script>').appendTo($j("body"));
       /*
       $j.getScript("http:////maps.google.com/maps/api/js?sensor=false&async=2&callback=googleCallback", function(){
         var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
