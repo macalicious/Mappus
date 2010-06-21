@@ -503,7 +503,7 @@ var $mapper = (function(){
          $j('<img alt="" src="fb_login.gif" />').appendTo(secl).click(function(){FB.login();});
       };
       
-      $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(box).fancybox("jaja");
+      $j('<button>weiter</button>').attr('disabled', current_user?"":"true").appendTo(box).fancybox({content:"jaja"});
       
       $j(box).appendTo($j('#hidden'));
       
