@@ -464,7 +464,7 @@ var $mapper = (function(){
         parent.ui.dialog(parent.ui.toolbar.add_item("Facebook Settings", "fb_settings"),function(){
           return 555;
         });
-        
+        fn();
       });
     };
     
