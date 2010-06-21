@@ -519,7 +519,7 @@ var $mapper = (function(){
       
       var result = $j('<div></div>');
       $j('<h1>Facebook</h1><hr />').appendTo(result);
-      var tabel = $j('<table></table>').appendTo(result);
+      var table = $j('<table></table>').appendTo(result);
       var thead = $j('<thead></thead>').appendTo(table);
       $j('<tr></tr>').appendTo(thead).append('<th>Name</th>').append('<th>Heimatort</th>').append('<th>Wohnort</th>');;    
       
