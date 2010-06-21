@@ -256,13 +256,13 @@ var $mapper = (function(){
       //this.toolbar.render();
     },
     map: function(fn){
-      $mapper.tempmapfn = fn;
+      
       var e = document.createElement('script'); 
           e.async = true;
           e.src = 'http://maps.google.com/maps/api/js?sensor=false&callback=$mapper.events.map_ready';
       $j("body").append(e);
-      /*
-      $j.getScript("http:////maps.google.com/maps/api/js?sensor=false&async=2&callback=googleCallback", function(){
+      
+      $mapper.tempmapfn = function(){
         var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
         var myOptions = {
           zoom: 5,
@@ -272,8 +272,7 @@ var $mapper = (function(){
         gmap = new google.maps.Map($j("#map_canvas")[0], myOptions);
         logger(1, 'map ready');
         fn();
-      });
-      */
+      };
     },
     add_plugin_section: function(obj){
       //this.plugin_sections.push({name: name, html:html});
