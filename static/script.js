@@ -460,7 +460,7 @@ var $mapper = (function(){
         //query(dialoggg);
         
         parent.ui.dialog(parent.ui.toolbar.add_item("Facebook Settings", "fb_settings"),function(){
-          return settingsui();
+          return settings_ui();
         });
         fn();
       });
