@@ -229,9 +229,11 @@ var $mapper = (function(){
     $j('#progress').animate({backgroundPosition: '0% 30%'}, 30000);
     ui.body(function(){
       ui.map(function(){
-        plugins.initialize(function(){
-          events.app_ready();
-        });
+        events.app_ready();
+        
+        //plugins.initialize(function(){
+          
+        //});
       });
     });
   };
