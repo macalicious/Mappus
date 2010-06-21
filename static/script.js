@@ -251,7 +251,7 @@ var $mapper = (function(){
       //this.toolbar.render();
     },
     map: function(fn){
-      
+      $mapper.tempmapfn = fn;
       var e = document.createElement('script'); 
           e.async = true;
           e.src = 'http://maps.google.com/maps/api/js?sensor=false&callback=$mapper.events.map_ready';
@@ -336,6 +336,7 @@ var $mapper = (function(){
     },
     map_ready: function(){
       console.log("map ready");
+      $mapper.tempmapfn();
     }
   };
   
