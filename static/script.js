@@ -535,7 +535,7 @@ var $mapper = (function(){
                 if(!points[index].current_location){points[index].current_location = []; };
                 points[index].current_location.push(friend); 
               }
-              console.log([index,friend.current_location]);
+              //console.log([index,friend.current_location]);
             });
           });
           console.log(["fb_points", points]);
