@@ -408,7 +408,8 @@ var $mapper = (function(){
         });
         google.maps.event.addListener(marker, 'click', function() {
           if(window.openinfowindow){window.openinfowindow.close();};
-          window.openinfowindow = infowindow.open(gmap,marker);
+          infowindow.open(gmap,marker);
+          window.openinfowindow = infowindow;
         });
       };
       
