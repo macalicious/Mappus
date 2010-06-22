@@ -339,13 +339,6 @@ var $mapper = (function(){
     }
   };
   
-  function map(array){
-    var locations = array.map(function(item){ return {'query': item}; });
-    array_to_points(locations, function(result){
-      array_to_marker(result);
-      console.log(result);
-    });
-  };
   
   function geocode(query, gfn){
     
@@ -394,57 +387,19 @@ var $mapper = (function(){
     
   };
   
-  function array_to_points(locations, fn){
-    locations.each(function(item, index){
-      geocode(item.query, function(results){
-        $extend(locations[index], results);
-        if(index+1==locations.length) {fn(locations);};
-      });
-    });
-  };
-  
-  function array_to_marker(locations){
-    locations.each(function(item){   
-      var marker = new google.maps.Marker({
-        map: gmap, 
-        position: item.geometry.location,
-        title: item.query     
-      });
-      
-      var contentString = '<h2>'+item.query+'</h2>';
-
-      var infowindow = new google.maps.InfoWindow({
-          content: contentString
-      });
-
-      google.maps.event.addListener(marker, 'mouseover', function() {
-        infowindow.open(gmap,marker);
-      });
-      google.maps.event.addListener(marker, 'mouseout', function() {
-        infowindow.close(gmap,marker);
-      });
-      
-      
-    });
-  };
-  
-    //gobale markerzuordnung fehlt noch
-  //};
-  
   function set_marker(parm){
     
     function add_marker_to_map(point){
-      console.log(point);
-    
+      for (first in point) break;
+      point = point[first];
+      
       var marker = new google.maps.Marker({
         map: gmap, 
-        //position: point.geometry.location,
         position: point,
         title: "ort"     
       });
 
       var contentString = '<h2>+ort+</h2>';
-
       var infowindow = new google.maps.InfoWindow({
           content: contentString
       });
@@ -456,23 +411,10 @@ var $mapper = (function(){
         infowindow.close(gmap,marker);
       });
     };
-    var parse_marker = function(ort){
-      console.log("tamtamtam");
-      geocode(ort, function(results){
-        add_marker_to_map(results);
-      });
-    };
+    
+    if(typeof(parm) == "string"){ geocode(parm, add_marker_to_map); };
+    if(typeof(parm) == "object"){ add_marker_to_map(parm); };
       
-    if(typeof(parm) == "string"){ parse_marker(parm); };
-    if(typeof(parm) == "object"){ 
-      var string = "";
-      each(parm, function(item){
-        if (string!=""){string+=","};
-        string+= item;
-      });
-      
-      
-    };
   };
   
   function logger(nr, msg){
@@ -594,7 +536,7 @@ var $mapper = (function(){
                 points[index].current_location.push(friend); 
               }
             });
-          };
+          });
           console.log(friends);
           window.tt = friends;
         });
