@@ -387,9 +387,11 @@ var $mapper = (function(){
     
   };
   
-  function set_marker(parm){
+  function set_marker(parm, opt){
     
     function add_marker_to_map(point){
+      var opt = opt || {};
+      
       for (first in point) break;
       point = point[first];
       
@@ -398,18 +400,21 @@ var $mapper = (function(){
         position: point,
         title: "ort"     
       });
+      
+      if(opt.html){
+        var infowindow = new google.maps.InfoWindow({
+            content: opt.html
+        });
+      };
+      
+      
 
-      var contentString = '<h2>+ort+</h2>';
-      var infowindow = new google.maps.InfoWindow({
-          content: contentString
-      });
-
-      google.maps.event.addListener(marker, 'mouseover', function() {
-        infowindow.open(gmap,marker);
-      });
-      google.maps.event.addListener(marker, 'mouseout', function() {
-        infowindow.close(gmap,marker);
-      });
+      // google.maps.event.addListener(marker, 'mouseover', function() {
+      //         infowindow.open(gmap,marker);
+      //       });
+      //       google.maps.event.addListener(marker, 'mouseout', function() {
+      //         infowindow.close(gmap,marker);
+      //       });
     };
     
     if(typeof(parm) == "string"){ geocode(parm, add_marker_to_map); };
@@ -539,7 +544,9 @@ var $mapper = (function(){
             });
           });
           console.log(["fb_points", points]);
-          window.tt = friends;
+          points.each(function(item){
+            parent.set_marker(item, {html: "blabla"});
+          });
         });
         
         
