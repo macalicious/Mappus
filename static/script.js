@@ -544,7 +544,7 @@ var $mapper = (function(){
             });
           });
           console.log(["fb_points", points]);
-          points.each(function(item){
+          each(points, function(item){
             parent.set_marker(item, {html: "blabla"});
           });
         });
