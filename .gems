@@ -1,2 +1,2 @@
 json
-HTTParty --source  http://rubyforge.org/frs/download.php/63685/httparty-0.4.5.gem
+httparty 
