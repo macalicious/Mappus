@@ -395,14 +395,13 @@ var $mapper = (function(){
       for (first in point) break;
       point = point[first];
       
-      console.log(point);
+      //console.log(point);
       var marker = new google.maps.Marker({
         map: gmap, 
         position: point,
         title: "ort"     
       });
       
-      console.log(["_______", opt]);
       if(opt.html){
         var infowindow = new google.maps.InfoWindow({
             content: opt.html
@@ -551,7 +550,24 @@ var $mapper = (function(){
           console.log(["fb_points", points]);
           each(points, function(index, item){
             var point = new google.maps.LatLng(item.b,item.c, 0);
-            parent.set_marker({index: point}, {html: "blabla"});
+            var html = $j('<div></div>');
+            html.append($j('<h2>'+index+'<h2>')).append($j('<hr />'));
+            html.append($j('<h4>hometown_location:</h4>'));
+            if(item.hometown_location){
+              each(item.hometown_location, function(friend){
+                html.append($j(friend.name));
+              });
+            }else{
+              html.append($j(' - '));
+            };
+            if(item.current_location){
+              each(item.current_location, function(friend){
+                html.append($j(friend.name));
+              });
+            }else{
+              html.append($j(' - '));
+            };
+            parent.set_marker({index: point}, {html: html[0]});
           });
         });
         
