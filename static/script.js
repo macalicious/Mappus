@@ -388,7 +388,7 @@ var $mapper = (function(){
   };
   
   function set_marker(parm, opt){
-    
+    console.log(["____ggg___", opt]);
     function add_marker_to_map(point){
       var opt = opt || {};
       
