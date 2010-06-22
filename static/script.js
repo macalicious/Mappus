@@ -551,24 +551,22 @@ var $mapper = (function(){
           each(points, function(index, item){
             var point = new google.maps.LatLng(item.b,item.c, 0);
             var html = $j('<div></div>');
-            html.append($j('<h2>'+index+'<h2>')).append($j('<hr />'));
-            html.append($j('<h4>hometown_location:</h4>'));
+            html.append($j('<h3>'+index+'<h3>'));
+            html.append($j('<div>hometown_location:</div>'));
             if(item.hometown_location){
               each(item.hometown_location, function(friend){
                 html.append("<fb:profile-pic uid="+friend.uid+" />​");
               });
             }else{
-              html.append($j(' - '));
+              html.append(' - ');
             };
-            html.append($j('<h4>current_location:</h4>'));
+            html.append($j('<div>current_location:</div>'));
             if(item.current_location){
               each(item.current_location, function(friend){
-                //console.log([".....", friend]);
-                //console.log(["#####", friend.name]);
                 html.append("<fb:profile-pic uid="+friend.uid+" />​");
               });
             }else{
-              html.append($j(' - '));
+              html.append(' - ');
             };
             $j(html).appendTo($j('#hidden'));
             FB.XFBML.parse(html[0]);
