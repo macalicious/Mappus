@@ -402,6 +402,7 @@ var $mapper = (function(){
         title: "ort"     
       });
       
+      console.log(["_______", opt]);
       if(opt.html){
         var infowindow = new google.maps.InfoWindow({
             content: opt.html
