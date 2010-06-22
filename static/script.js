@@ -1,7 +1,7 @@
 function d(a,b){
    console.log(b,a);
 }
-alert("scheiße");
+
 /*
 var Map = new Class({
   options: {
@@ -422,7 +422,7 @@ var $mapper = (function(){
   };
   
   return {
-    map: map,
+    
     initialize: initialize,
     plugins: plugins,
     set_marker: set_marker,
