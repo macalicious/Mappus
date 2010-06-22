@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra/base'
 require 'json'
-require 'HTTParty'
+require HTTParty
 
 # class Google
 #   include HTTParty
