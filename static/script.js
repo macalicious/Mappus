@@ -555,7 +555,7 @@ var $mapper = (function(){
             html.append($j('<h4>hometown_location:</h4>'));
             if(item.hometown_location){
               each(item.hometown_location, function(friend){
-                html.append($j(friend.name));
+                html.append("<fb:profile-pic uid="+friend.uid+" />​");
               });
             }else{
               html.append($j(' - '));
@@ -563,13 +563,14 @@ var $mapper = (function(){
             html.append($j('<h4>current_location:</h4>'));
             if(item.current_location){
               each(item.current_location, function(friend){
-                console.log([".....", friend]);
-                console.log(["#####", friend.name]);
-                html.append(friend.name + ", ");
+                //console.log([".....", friend]);
+                //console.log(["#####", friend.name]);
+                html.append("<fb:profile-pic uid="+friend.uid+" />​");
               });
             }else{
               html.append($j(' - '));
             };
+            FB.XFBML.parse(html[0]);
             parent.set_marker({index: point}, {html: html[0]});
           });
         });
