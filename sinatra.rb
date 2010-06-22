@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'sinatra/base'
 
-# require 'json'
-# require 'HTTParty'
-# 
+require 'json'
+require 'HTTParty'
+
 # class Google
 #   include HTTParty
 #   format :xml
