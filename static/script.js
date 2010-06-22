@@ -544,8 +544,9 @@ var $mapper = (function(){
             });
           });
           console.log(["fb_points", points]);
-          each(points, function(item){
-            parent.set_marker(item, {html: "blabla"});
+          each(points, function(index, item){
+            
+            parent.set_marker({index: {b: item.b, c:item.c}}, {html: "blabla"});
           });
         });
         
