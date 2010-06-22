@@ -546,8 +546,8 @@ var $mapper = (function(){
           });
           console.log(["fb_points", points]);
           each(points, function(index, item){
-            
-            parent.set_marker({index: {b: item.b, c:item.c}}, {html: "blabla"});
+            var point = new google.maps.LatLng(item.b,item.c, 0);
+            parent.set_marker({index: point}, {html: "blabla"});
           });
         });
         
