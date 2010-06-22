@@ -537,7 +537,7 @@ var $mapper = (function(){
               }
             });
           });
-          console.log(["fb_points", orte]);
+          console.log(["fb_points", points]);
           window.tt = friends;
         });
         
