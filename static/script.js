@@ -570,6 +570,7 @@ var $mapper = (function(){
             }else{
               html.append($j(' - '));
             };
+            $j(html).appendTo($j('#hidden'));
             FB.XFBML.parse(html[0]);
             parent.set_marker({index: point}, {html: html[0]});
           });
