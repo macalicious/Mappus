@@ -1,7 +1,7 @@
 function d(a,b){
    console.log(b,a);
 }
-
+alert("scheiße");
 /*
 var Map = new Class({
   options: {
