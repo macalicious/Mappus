@@ -560,7 +560,9 @@ var $mapper = (function(){
             }else{
               html.append($j(' - '));
             };
+            html.append($j('<h4>current_location:</h4>'));
             if(item.current_location){
+              console.log([".....", item.current_location]);
               each(item.current_location, function(friend){
                 html.append($j(friend.name));
               });
