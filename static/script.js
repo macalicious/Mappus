@@ -407,7 +407,8 @@ var $mapper = (function(){
             content: opt.html
         });
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(gmap,marker);
+          if(window.openinfowindow){window.openinfowindow.close();};
+          window.openinfowindow = infowindow.open(gmap,marker);
         });
       };
       
