@@ -406,6 +406,9 @@ var $mapper = (function(){
         var infowindow = new google.maps.InfoWindow({
             content: opt.html
         });
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(gmap,marker);
+        });
       };
       
       
