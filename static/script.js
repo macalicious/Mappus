@@ -565,7 +565,7 @@ var $mapper = (function(){
               each(item.current_location, function(friend){
                 console.log([".....", friend]);
                 console.log(["#####", friend.name]);
-                html.append($j(friend.name));
+                html.append(friend.name + ", ");
               });
             }else{
               html.append($j(' - '));
