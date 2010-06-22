@@ -395,6 +395,7 @@ var $mapper = (function(){
       for (first in point) break;
       point = point[first];
       
+      console.log(point);
       var marker = new google.maps.Marker({
         map: gmap, 
         position: point,
