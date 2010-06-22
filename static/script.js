@@ -528,10 +528,10 @@ var $mapper = (function(){
           
           each(friends, function(friend){
             each(points, function(index, point){
-              if(index==friend.hometown_location){ 
+              if(index==friend.hometown_location.city){ 
                 if(!points[index].hometown_location){points[index].hometown_location = []; };
                 points[index].hometown_location.push(friend); };
-              if(index==friend.current_location){ 
+              if(index==friend.current_location.city){ 
                 if(!points[index].current_location){points[index].current_location = []; };
                 points[index].current_location.push(friend); 
               }
