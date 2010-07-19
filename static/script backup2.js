@@ -1,7 +1,155 @@
-if(!console){var console = {};console.log = function(){};};
-function cl(a,b){console.log(b,a);}
+function d(a,b){
+   console.log(b,a);
+}
 
+/*
+var Map = new Class({
+  options: {
+    geocoder: false,
+    map: false
+  },
+  initialize: function(obj){
+    if (GBrowserIsCompatible()) {
+      this.options.map = new GMap2(document.getElementById("map_canvas"));
+      this.options.map.addControl(new GSmallMapControl());
+            
+      this.options.geocoder = new GClientGeocoder();
+      this.options.geocoder.getLatLng("Deutschland", function(point){
+        this.options.map.setCenter(point, 1);
+      }.bind(this));  
+    }
+  },
+  set_marker: function(point, overlay_fc){
+    var gpoint = new GLatLng(point[1],point[0],point[2]);
+    var marker = new GMarker( gpoint );
+    this.options.map.addOverlay(marker);
+    GEvent.addListener(marker, "click", overlay_fc.bind(this, marker));
+  }
+});
 
+var FriendMap = new Class({
+  options: {
+    api_key: '3fad1c03fea2d32fd681ae71e3f7800d',
+    channel_path: 'xd_receiver.htm',
+    debug: true,
+    oid: "map",
+    loadimg: "images/ejut8v2y.png"
+  },
+  Implements: Chain,
+  dbug: function(){
+    console.log( arguments[1] + ": " + arguments[0] )
+  },
+  initialize: function(){
+    this.dbug("init", "position"); 
+    
+    this.chain([ 
+      this.facebook_request, 
+      this.server_request, 
+      this.start_markering, 
+      this.geladen,
+      function(){console.log("geladen");} 
+    ]);
+    
+    FB.init({
+      appId: "111427725556783",
+      xfbml: true,
+      cookie: true,
+      status: true
+    });
+    
+    this.element = $(this.options.oid)
+    var size = this.element.getSize();
+    this.loadimg = new Element('img', {
+      'src': this.options.loadimg, 
+      'class': 'loadimg', 
+      'styles':{
+        'top': '50%', 'left': '50%',
+        'margin-top': -16,
+        'margin-left': -16,
+        'position': 'absolute'  
+      }
+    });
+    this.element.adopt( this.loadimg )
+    this.gmap = new Element('div', {
+      'id': 'map_canvas',
+      'styles': { 
+        'visibility': 'hidden',
+        'height': size.y, 
+        'width': size.x 
+      } 
+    });
+    this.element.adopt( this.gmap );
+    
+    this.map = new Map();
+    this.current_user = FB.Helper.getLoggedInUser();
+    
+    this.callChain(); 
+  },
+  facebook_request: function(){
+    this.dbug("facebook_request", "position");
+    var querry = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", this.current_user);
+    querry.wait(function(result){
+        this.friends = result; 
+        this.callChain();
+      }.bind(this), 
+      function(e){ console.log(e + "error"); }
+    ); 
+  },
+  start_markering: function(){
+    this.dbug("merkering", "position");
+    var set_marker = function(user, adresse){
+      this.map.set_marker(adresse.point, function(marker){
+        var markup = '<div class="marker"><fb:profile-pic size="square" uid="'+ user.uid + '" facebook-logo="true">' + ' </fb:profile-pic>' + adresse.city + '</div>'; 
+        marker.openInfoWindowHtml(markup);
+        $$(".marker").each(function(item){ FB.XFBML.parse(item);  });
+      }.bind(this));
+    }.bind(this);
+    
+    var temp = [];
+    this.friends.each(function(item){
+      if(item.current_location && !(temp.contains(item.current_location.city))){
+        set_marker(item, item.current_location);
+        temp.push(item.current_location.city);
+      }
+      if(item.hometown_location && !(temp.contains(item.hometown_location.city))){
+        set_marker(item, item.hometown_location);
+        temp.push(item.hometown_location.city);
+      }
+    }, this); 
+    this.callChain();
+  }, 
+  server_request: function(){ //addr_to_lng
+    this.dbug("server_request", "position");
+    var adressen = [];
+    this.friends.each(function(item){
+      if (item.current_location) {adressen.push(item.current_location.city);}
+      if (item.hometown_location) {adressen.push(item.hometown_location.city);}
+    });
+    
+    var onSuccess = function(json){
+      this.friends.each(function(item){
+        if (item.current_location) {$extend(item.current_location, {point:json[item.current_location.city].split(",")});}
+        if (item.hometown_location) {$extend(item.hometown_location, {point:json[item.hometown_location.city].split(",")});}
+      });
+      
+      this.callChain();
+    }.bind(this);
+    
+    var jsonRequest = new Request.JSON({
+      url: '/facebooks/get_cord/', 
+      data: {friendmapper: adressen},
+      onSuccess: onSuccess
+    }).post();
+     
+  },
+  geladen: function(){
+    this.loadimg.setStyle('display', 'none');
+    this.gmap.setStyle('visibility', 'visible');
+    this.callChain();
+  }
+});
+
+*/
 String.prototype.test = function(regex, params){
 	return ((typeof regex == 'string') ? new RegExp(regex, params) : regex).test(this);
 }
@@ -71,192 +219,47 @@ function Hash(obj){
   };
 };
 
-var DataRecord = function(options){
-  this.data = {};
-  this.id_counter = 0;
+function DataRecord(){
   
-  for(var option in options){
-    this[option] = options[options];
-  };
-
-  this.raise = function(event, obj){
-    if( typeof( this[event] ) == "function"){
-      var ret = this[event](obj);
-      if(ret){return ret;}else{return obj;};
-    }else{return obj;};
-  };
-};
-DataRecord.prototype.add = function(obj){
-  obj.id = this.id_counter++;
-  obj = this.raise('before_add', obj);
-  obj.id = this.id_counter++;
-  this.data[obj.id] = obj;
+  var data = {}; 
+  var id_counter = 0;
   
-  obj = this.raise('after_add', obj);
-
-  return obj;
-};
-DataRecord.prototype.find = function(param){
-  var _this = this;
-  
-  function find_by_string(query){
-    var records = [];
-    
-    $j.each(_this.data, function(k, item){records.push(item);});
-    
-    query = query.toLowerCase().split(" "); 
-    
-    var record_auswahl = $j.grep(records, function(record){
-    
-      // setzte adressstring zusammen: Hans Müller 65781 Neuhausen
-      var adresse = "";
-      $j.each(record, function(key, value){
-        if(typeof(value)=='string'){adresse += value + " ";};
-      });
-      adresse = adresse.toLowerCase();
-    
-      for(var key in query){
-        if(!adresse.test(query[key])){return false;};
-      };
-      return true;
-    });
-      
-    return record_auswahl;
-  };
-  function find_by_function(fn){
-    var result = [];
-    for(var key in _this.data){
-      if(fn(this.data[key])){result.push(_this.data[key]);};
-    };
-    return result;
+  this.find = function(param){
+    if(typeof(param) == 'numer'){ return data[param]; };
+    if(typeof(param) == 'string'){};
+    if(typeof(param) == 'object'){};
   };
   
-  if(typeof(param)=='string'){return find_by_string(param);};
-  if(typeof(param)=='function'){return find_by_function(param);};
+  this.neuu = function(obj){
+    data[id_counter] = obj;
+    id_counter ++;
+  };
+  
+  this.all = function(){
+    return data;
+  };
 };
-DataRecord.prototype.find_by = function(key_string, value_string){
-  return find(function(item){
-    return item[key_string] == value_string;
-  });
-};
-DataRecord.prototype.all = function(){return this.data};
-DataRecord.prototype.set = function(id, key, val){this.data[id][key] = val;};
-DataRecord.prototype.remove = function(key){return delete this.data[key];};
-DataRecord.prototype.search = function(param){return this.find(param);};
-
 
 var $j = jQuery.noConflict();
+
 var gmap;
 
-
-function t3(){
-  console.log(3);
-  
-  this.is.done();
-};
-
-
-/*  Chain:
- 
- *  var fn = function(){
- *    //do some stuff 
- *    this.is.done();
- *  }
- *  var chain = new Chain([fn, ...]);
- *  chain.start();
-
-*/
-
-function Chain(functions){
-  $this = this;
-  this.functions = functions || [];
-  
-  this.is = {};
-  this.is.done = function(){ 
-    var x = $this.functions.shift(); 
-    if (x) {x.call($this);};
-  };
-  this.start = function(){this.is.done();};
-};
-
-
-/*  Log:
- 
- *  var log = new Log();
- *
- *  log(0, "nuntia") <=> log.trace("nuntia") 
- *  => trace: nuntia 
- *  
- *  0: trace
- *  1: debug
- *  2: info
- *  3: warning
- *  4: error
- *  5: fatal
-
-*/
-
-function Log(){
-   var level_name = {
-     0: "trace",
-     1: "debug",
-     2: "info",
-     3: "warning",
-     4: "error",
-     5: "fatal"
-   };
-   this.log = function(level, o1, o2, o3, o4, o5){
-     console.log(
-       level_name[level] + ": ", 
-       o1 ? o1 : "",
-       o2 ? o2 : "",
-       o3 ? o3 : "",
-       o4 ? o4 : "",
-       o5 ? o5 : ""
-     );
-   };
-   
-   this.log.trace       = function(o1, o2, o3, o4, o5){this(0, o1, o2, o3, o4, o5)};
-   this.log.debug   = function(o1, o2, o3, o4, o5){this(1, o1, o2, o3, o4, o5)};
-   this.log.info    = function(o1, o2, o3, o4, o5){this(2, o1, o2, o3, o4, o5)};
-   this.log.warning = function(o1, o2, o3, o4, o5){this(3, o1, o2, o3, o4, o5)};
-   this.log.error   = function(o1, o2, o3, o4, o5){this(4, o1, o2, o3, o4, o5)};
-   this.log.fatal   = function(o1, o2, o3, o4, o5){this(5, o1, o2, o3, o4, o5)};
-   
-   return this.log;
-};
-
-
-
-
-
 var $mapper = (function(){
-  
   var geocoder;
-  var $this = this;
   
-  this.options = {
-    cluster: true,
-    gridSize: 30,
-    maxZoom: 12
-  };
-  
-  
-  this.initialize = function(){
+  function initialize(){
     $j('#progress').animate({backgroundPosition: '0% 30%'}, 30000);
-    
-    var chain = new Chain([
-      ui.body,
-      ui.map,
-      plugins.initialize,
-      events.app_ready
-    ]);
-    chain.start();
-    
+    ui.body(function(){
+      ui.map(function(){ 
+        plugins.initialize(function(){
+          events.app_ready();
+        });
+      });
+    });
   };
   
-  this.ui = {
-    body: function(){
+  var ui = {
+    body: function(fn){
       var r  = '<div id="view2">';
           //r += '<header></header>';
           //r += '<div id="headerline"></div>';
@@ -272,90 +275,22 @@ var $mapper = (function(){
           r += '</div>';
       $j(r).appendTo('body').css({visibility:'hidden'});
       $j("#searchbar input").keydown(function(e) {
-        if(e.keyCode == 13) {
-          var result = record.find(this.value);
-          
-          ui.sidebar.show(result);
-        }
+      	if(e.keyCode == 13) {
+      		var result = record.find(this.value);
+      		ui.sidebar.show(result);
+      	}
       });
-      
-      function set_height(){
-        var h = $j("#aside").height();
-        $j('#aside').find('.content').css('height', h-75);
-      };
-      $j(window).resize(set_height);
-      set_height();
-      
-      log.info("ui.body ready");
-      
-      this.is.done();
+      logger(1, "body ready")
+      fn();
+      //this.settings();
+      //this.toolbar.render();
     },
     map: function(fn){
-      _this = this;
       
       var e = document.createElement('script'); 
           e.async = true;
           e.src = 'http://maps.google.com/maps/api/js?sensor=false&callback=$mapper.events.map_ready';
       $j("body").append(e);
-      
-      var stylez = [
-        {
-          featureType: "water",
-          elementType: "all",
-          stylers: [
-            { gamma: 1.08 },
-            { lightness: 22 },
-            { saturation: 56 }
-          ]
-        },{
-          featureType: "poi.park",
-          elementType: "all",
-          stylers: [
-            { gamma: 0.98 },
-            { lightness: 28 },
-            { saturation: 3 }
-          ]
-        },{
-          featureType: "road.highway",
-          elementType: "geometry",
-          stylers: [
-            { hue: "#ff001a" },
-            { visibility: "simplified" },
-            { saturation: -21 },
-            { lightness: 62 }
-          ]
-        },{
-          featureType: "road.arterial",
-          elementType: "all",
-          stylers: [
-            { hue: "#eeff00" },
-            { gamma: 1.17 },
-            { saturation: -29 },
-            { lightness: 46 }
-          ]
-        },{
-          featureType: "administrative.country",
-          elementType: "geometry",
-          stylers: [
-            { lightness: 20 },
-            { saturation: -44 }
-          ]
-        },{
-          featureType: "all",
-          elementType: "labels",
-          stylers: [
-            { saturation: -40 },
-            { lightness: 40 }
-          ]
-        },{
-          featureType: "water",
-          elementType: "labels",
-          stylers: [
-
-          ]
-        }
-      ];
-      
       
        $mapper.tempmapfn = function(){
           var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
@@ -365,19 +300,8 @@ var $mapper = (function(){
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
           gmap = new google.maps.Map($j("#map_canvas")[0], myOptions);
-          
-          var styledMapOptions = {
-                map: gmap,
-                name: "light"
-            }
-
-            var jayzMapType =  new google.maps.StyledMapType(stylez,styledMapOptions);
-
-            gmap.mapTypes.set('light', jayzMapType);
-            gmap.setMapTypeId('light');
-          
-          log.info('ui.map ready');
-          _this.is.done();
+          logger(1, 'map ready');
+          fn();
         };
     },
     add_plugin_section: function(obj){
@@ -405,17 +329,26 @@ var $mapper = (function(){
       });
       return obj;
     },
+    toolbar: {
+      add_item: function(text, name){
+        var r = '<a id="toolbarlink_' + name + '" href="javascript:void(0);">' + text + '</a>';
+        return $j(r).appendTo($j('header'));
+      },
+      remove_item: function(name){},
+      render: function(){
+        var link = $j('<a href="javascript:void(0);">settings</a>').appendTo($j('header'));
+        ui.dialog(link, $j('#settings_ui'));
+      }
+    },
     sidebar: {
       show: function(obj){
-        
         var ids = [];
         for(var item in obj){ids.push(obj[item].id);};
         
         var x = $j("#datenliste li").hide().filter(function(){
-          var id = $j(this).data("record_id");
+          var id = $j(this).find("var").text();
           var inarray = false;
           for(var item in ids){if(id==ids[item]){inarray=true;};};
-        
           return inarray
         }).show();
       }
@@ -425,80 +358,37 @@ var $mapper = (function(){
     }
   };
   
-  this.plugins = (function(){
-    
-    function add(name, fn){
-      plugins[name] = fn;
-    };
-    
-    function all(){
-      return plugins;
-    };
-    
-    function get(key){
-      return plugins[key];
-    };
-    
-    var plugins = {};
-    
-    function initialize(){ 
-      var _this = this;
-      each(plugins, function(plugin){
-        plugin.initialize(function(){
-          _this.is.done();
-        });
+  var plugins = {
+    add: function(name, fn){
+      this.plugins[name] = fn;
+    },
+    all: function(){
+      return this.plugins;
+    },
+    get: function(key){
+      return this.plugins[key];
+    },
+    plugins: {},
+    initialize: function(fn){
+      each(this.plugins, function(plugin){
+        plugin.initialize(fn);
       });
-    };
-    
-    return {
-      add: add,
-      all: all,
-      get: get,
-      initialize: initialize
-    };
-  })();
+    }
+  };
   
-  this.events = {
+  var events = {
     app_ready: function(){
       $j("#view1").hide();
       $j('#view2').css('visibility', 'visible');
-      this.is.done();
-      
-      if(document.location.hash.substring(1)=="gemeinde"){
-        $this.log.trace($this.plugins.get("gemeinde").render());
-      };
-      
-      var box = $j("<div></div>");
-      box.append($j("<h3>Facebook</h3><hr />"));
-      content = $j('<p></p>').appendTo(box);
-      $j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').appendTo(content).click(function(){
-        
-        FB.login(function(response) {
-            Log.info('FB.login callback', response);
-            if (response.session) {
-              Log.info('User is logged in');
-            } else {
-              Log.info('User is logged out');
-            }
-          });
-        
-      });
-      var footer = $j("<footer><hr/></footer>").appendTo(box);
-      var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
-      
-      modal = new Modal(box, true);
-      abbruch.click(modal.close);
     },
     map_ready: function(){
+      console.log("map ready");
       $mapper.tempmapfn();
     }
   };
-  this.fireEvent = function(event){
-    $this.log.info(event);
-    
-  };
   
-  this.geocode = function(query, gfn){
+  
+  function geocode(query, gfn){
     
     function geocode_serverside(array, fn){
       var string = "";
@@ -545,27 +435,40 @@ var $mapper = (function(){
     
   };
   
-
-  this.render_cluster = function(marker_array){
-    if($this.options.cluster){
-      var mcOptions = {gridSize: $this.options.gridSize, maxZoom: $this.options.maxZoom};
-      var markerCluster = new MarkerClusterer(gmap, marker_array, mcOptions);
-    };
-  };
-  
-  this.Marker = function(parm){
-
+  function set_marker(parm, opt){
     if(!opt){var opt = {};};
     
-    function add_marker_to_map(opt){
-      if(!opt.point){throw "$mapper.set_marker: point is not defined"};
+    function add_marker_to_map(point, opt){
       
-      var marker_options = {position: opt.point};
-      if(!$this.options.cluster){marker_options.map = gmap;};
-      if(opt.title){marker_options.title = opt.title;};       
-      var marker = new google.maps.Marker(marker_options);
+      for (first in point) break;
+      point = point[first];
+      
+      var marker = new google.maps.Marker({
+        map: gmap, 
+        position: point,
+        title: opt.title ? opt.title : ""     
+      });
+      
+      
+      if(opt.html){
+        var infowindow = new google.maps.InfoWindow({
+            content: opt.html
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          if(window.openinfowindow){window.openinfowindow.close();};
+          infowindow.open(gmap,marker);
+          window.openinfowindow = infowindow;
+        });
+      };
+      
       
       return marker;
+      // google.maps.event.addListener(marker, 'mouseover', function() {
+      //         infowindow.open(gmap,marker);
+      //       });
+      //       google.maps.event.addListener(marker, 'mouseout', function() {
+      //         infowindow.close(gmap,marker);
+      //       });
     };
     
     if(typeof(parm) == "string"){ return geocode(parm, add_marker_to_map); };
@@ -573,133 +476,99 @@ var $mapper = (function(){
       
   };
   
-  var xxmarker = {
-    devaul_t: function(){
-      var image = new google.maps.MarkerImage('yellow_marker_sprite.png',
-          // This marker is 20 pixels wide by 32 pixels tall.
-          new google.maps.Size(20, 34),
-          // The origin for this image is 0,0.
-          new google.maps.Point(0,0),
-          // The anchor for this image is the base of the flagpole at 0,32.
-          new google.maps.Point(10, 34));
-        
-      var shadow = new google.maps.MarkerImage('yellow_marker_sprite.png',
-          // The shadow image is larger in the horizontal dimension
-          // while the position and offset are the same as for the main image.
-          new google.maps.Size(54, 34),
-          new google.maps.Point(29,0),
-          new google.maps.Point(29, 34));
-               
-      // Shapes define the clickable region of the icon.
-      // The type defines an HTML &lt;area&gt; element 'poly' which
-      // traces out a polygon as a series of X,Y points. The final
-      // coordinate closes the poly by connecting to the first
-      // coordinate.
-      var shape = {
-          coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-          type: 'poly'
-      };
-      
-      return {image: image, shadow:shadow, shape:shape};
-   
-    },
-    yellow: ""
-  }
-  
-  this.Infowindow = function(opt){
-    if(opt.html){
-      var infowindow = new google.maps.InfoWindow({content: opt.html});
-      google.maps.event.addListener(opt.marker, 'click', function() {
-        
-        if(window.openinfowindow){window.openinfowindow.close();};
-        infowindow.open(gmap,opt.marker);
-        window.openinfowindow = infowindow;
-      });
-    };
-    return infowindow;
-  };
-
-
-  this.record = new DataRecord;
-  this.record.before_add = function(obj){
-    var Straße = obj.strasse ? obj.strasse : " - ";
-    var Ort = obj.plz && obj.ort ? obj.plz + " " + obj.ort : " - ";
-    var Land = obj.land ? obj.land : " - ";
-    var Adresse = Straße + ", " + Ort + ", " + Land;
-    obj.adresse = Adresse;
-    
-    return obj;
-  };
-  this.record.after_add = function(obj){
-    sidebar.add(obj);
-  };
-  
-  
-  var sidebar = {
+  var record = {
     add: function(obj){
+      obj.id = this.id_counter++; 
+      
+      obj.adresse = (function(){
+        var adresse  = (obj.strasse ? obj.strasse : "");
+            adresse += obj.strasse && obj.ort && obj.plz ? " ," : "";
+            adresse += obj.plz && obj.ort ? obj.plz + " " + obj.ort : "";
+            adresse += obj.ort && obj.plz && obj.land ? " ," : "";
+            adresse += obj.land ? obj.land : "";
+        return adresse;
+      })();
+      
+      obj.sidebaritem = this.sidebar_add(obj);
+      obj.marker = set_marker({point:obj.point}, obj);
+      
+      this.data[obj.id] = obj;
+    },
+    sidebar_add: function(obj){
       var li = $j('<li></li>').appendTo($j('#datenliste'));
+      $j('<var>'+obj.id+'</var>').appendTo(li);
       $j('<strong>'+obj.title+'</strong><br />').appendTo(li);
       $j('<small>'+obj.adresse+'</small><br />').appendTo(li);
       
-      $j(li).data("record_id", obj.id);
-      
-      li.click(this.click);
-      
+      li.click(function(){ 
+        var id = $j(this).find("var").text();
+        obj.marker.setIcon("yellow-dot.png");
+      });
       return li;
     },
-    click: function(){      
-      var id = $j(this).data("record_id");
-      var obj = record.all()[id];
+    remove: function(){
       
-      if(window.openinfowindow){window.openinfowindow.close();};
-      obj.infowindow.open(gmap,obj.marker);
-      window.openinfowindow = obj.infowindow;
-    }
-  };
-  
-  function Modal(html, init_open){
-    var el;
-    this.close = function(){
-      return el.hide();
-    };
-    
-    this.nevv = function(){
-      el = $j('<div id="modal"></div>').append($j(html)).appendTo($j("body")).hide();
-      if(init_open){this.open()};
-    };
-    
-    this.open = function(){
-      var h = $j(el).outerHeight(),
-          w = $j(el).outerWidth(),
-          w_sidebar = $j('#aside').outerWidth(),
-          css = {
-            'margin-left': -(w/2)-(w_sidebar/2),
-            'margin-top': -(h/2)
+    },
+    find: function(param){
+      var data = this.data;
+      function find_by_string(query){
+        var records = [];
+        $j.each(data, function(k, item){
+          records.push(item);
+        });
+      
+        query = query.toLowerCase().split(" "); 
+      
+        var record_auswahl = $j.grep(records, function(record){
+        
+          // setzte adressstring zusammen: Hans Müller 65781 Neuhausen
+          var adresse = "";
+          $j.each(record, function(key, value){
+            if(typeof(value)=='string'){adresse += value + " ";};
+          });
+          adresse = adresse.toLowerCase();
+        
+          for(var key in query){
+            if(!adresse.test(query[key])){return false;};
           };
-      $this.log.trace(w_sidebar);    
-      return el.css(css).show();
-    };
-    
-    this.nevv();
+          return true;
+        });
+      
+        return record_auswahl;
+      };
+      function find_by_function(fn){
+        var result = [];
+        for(var key in data){
+          if(fn(data[key])){result.push(data[key]);};
+        };
+        return result;
+      };
+      if(typeof(param)=='string'){return find_by_string(param);};
+      if(typeof(param)=='function'){return find_by_function(param);};
+    },
+    find_by: function(key_string, value_string){
+      return this.find(function(item){
+        return item[key_string] == value_string;
+      });
+    },
+    data: {},
+    id_counter: 0
   };
   
+  function logger(nr, msg){
+    console.log("debug("+nr+"): " + msg);
+  };
   
-  this.log = new Log();
-  
-  
- 
-  return { 
-      initialize: this.initialize,
-         plugins: this.plugins,
-          Marker: this.Marker,
-             log: this.log,
-              ui: this.ui,
-          events: this.events,
-         geocode: this.geocode,
-          record: this.record,
-         cluster: this.marker_cluster,
-  set_infowindow: this.Infowindow,
-  render_cluster: this.render_cluster
+  return {
+    
+    initialize: initialize,
+    plugins: plugins,
+    set_marker: set_marker,
+    log: logger,
+    ui: ui,
+    events: events,
+    geocode: geocode,
+    record: record
   };
 })();
  
@@ -707,9 +576,9 @@ var $mapper = (function(){
     var parent = $mapper;
     
     function initialize(fn){
-      parent.log.info("init facebook plugin");
+      parent.log(1, "init facebook plugin");
       load_dependencies(function(){  
-        parent.log.info("facebook plugin: dependencies loaded");
+        parent.log(2, "facebook plugin: dependencies loaded");
         
         
         var set_current_user = function(response){
@@ -721,15 +590,15 @@ var $mapper = (function(){
         
         //query(dialoggg);
         
-        //parent.ui.dialog(parent.ui.toolbar.add_item("Facebook Settings", "fb_settings"),function(){
-        //  return settings_ui();
-        //});
+        parent.ui.dialog(parent.ui.toolbar.add_item("Facebook Settings", "fb_settings"),function(){
+          return settings_ui();
+        });
         fn();
       });
     };
     
     function load_dependencies(fn){
-      parent.log.info("facebook plugin: load_dependencies");
+      parent.log(1, "facebook plugin: load_dependencies");
       window.fbAsyncInit = function() {
         parent.log(2, "facebook plugin: dependencies loaded 2");
         FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
@@ -752,7 +621,7 @@ var $mapper = (function(){
     };
       
     function settings_ui(){
-      parent.log.info("facebook plugin: settings_ui");
+      parent.log(1, "facebook plugin: settings_ui");
       var box = $j('<div><div>');
       var t = $j('<fieldset id="settings_ui_plugin_facebook"></fieldset>').appendTo(box);
       $j('<legend>Facebook</legend>').appendTo(t);
@@ -777,7 +646,7 @@ var $mapper = (function(){
     
     
     function fb_data_win(){ 
-      parent.log.info("facebook plugin: window");
+      parent.log(1, "facebook plugin: window");
       
       var result = $j('<div></div>');
       $j('<h1>Facebook</h1><hr />').appendTo(result);
@@ -857,7 +726,7 @@ var $mapper = (function(){
     };
     
     function query(fn){
-      parent.log.info("facebook plugin: query");
+      parent.log(1, "facebook plugin: query");
       var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
           query.wait(function(result){ fn(result); });
     };
@@ -871,11 +740,14 @@ var $mapper = (function(){
   
   $mapper.plugins.add('gemeinde', (function(){
     var parent = $mapper;
-    
     var menschen = [];
     function initialize(fn){
-      parent.log.info("init gemeinde plugin");
+      parent.log(1, "init gemeinde plugin");
       load_dependencies(function(){  
+        
+        parent.ui.toolbar.add_item("Gemeinde", "gemeinde").click(function(){
+          show_menschen();
+        }); 
         fn();
       });
       $j('#searchbar button').click(show_menschen);
@@ -908,7 +780,7 @@ var $mapper = (function(){
     };
     
     function show_menschen(){
-      var markers = [];
+      console.log(".mensch");
       $j.each(menschen, function(key, item){
         
         var html = $j("<address></address>");
@@ -916,31 +788,19 @@ var $mapper = (function(){
         html.append(item.strasse).append("<br />");
         html.append(item.plz + " " + item.ort).append("<br />");
         
-        var obj = {
+        parent.record.add({
           title: item.vorname + " " + item.nachname,
           plz: item.plz,
           ort: item.ort,
           point: item.point,
           html: html[0]
-        };
-        
-        var dataobj = parent.record.add(obj);
-        
-        var marker = new parent.Marker({point:item.point, title:obj.title});
-        parent.record.set(dataobj.id, "marker", marker);
-        markers.push(marker);
-        
-        var infowindow = new parent.set_infowindow(dataobj);
-        parent.record.set(dataobj.id, "infowindow", infowindow);
-        
+        });
       });
       
-      parent.render_cluster(markers);
     };
     
     return {
-      initialize: initialize,
-      render: show_menschen
+      initialize: initialize
     };
   })());
  

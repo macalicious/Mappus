@@ -1,3 +1,3 @@
 require 'sinatra'
 
-run MyApp.new
+MyApp.run! :host => 'localhost', :port => 9000

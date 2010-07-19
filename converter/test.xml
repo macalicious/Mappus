@@ -1,0 +1,3979 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+  <mensch>
+    <vorname>Nina</vorname>
+    <nachname>Airich</nachname>
+    <strasse>Westring 273</strasse>
+    <plz>55120</plz>
+    <ort>Mainz-Mombach</ort>
+    <geocode>
+      <address>Westring 273, 55120 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2137200,50.0167500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Annette</vorname>
+    <nachname>B&#228;der</nachname>
+    <strasse>Grund 31</strasse>
+    <plz>65366</plz>
+    <ort>Geisenheim</ort>
+    <geocode>
+      <address>Grund 31, 65366 Geisenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9794400,49.9970000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heidi</vorname>
+    <nachname>Balzer</nachname>
+    <strasse>Hofmannstr. 23</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hofmannstra&#223;e 23, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2807500,50.0836600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Udo</vorname>
+    <nachname>Balzer</nachname>
+    <strasse>Raiffeisenstr. 39</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Raiffeisenstra&#223;e 39, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2826300,50.0851800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Siegmar</vorname>
+    <nachname>Bauer</nachname>
+    <strasse>Goethestr. 36</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Goethestra&#223;e 36, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1541700,50.1488500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christoph</vorname>
+    <nachname>Baumann</nachname>
+    <strasse>Daimlerstr. 38</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Daimlerstra&#223;e 38, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2080100,50.0804600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Frank</vorname>
+    <nachname>Baumann</nachname>
+    <strasse>Prospekt Vernadskogo 103</strasse>
+    <plz>119526</plz>
+    <ort>Moskau/Korpus</ort>
+    <geocode>
+      <address>Ekonomiko-finansovyy Moskovskiy Institut Uchebnyy Korpus, ulitsa Udal'tsova, 21, &#1075;. &#1052;&#1086;&#1089;&#1082;&#1074;&#1072;, Russian Federation, 119415</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>37.5107201,55.6724298,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Helga</vorname>
+    <nachname>Berninger</nachname>
+    <strasse>Lahnstr. 50</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Lahnstra&#223;e 50, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2150400,50.0876200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Volker</vorname>
+    <nachname>Biallas</nachname>
+    <strasse>Am Weidenbusch 3</strasse>
+    <plz>65817</plz>
+    <ort>Eppstein</ort>
+    <geocode>
+      <address>Am Weidenbusch 3, 65817 Eppstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3620700,50.1369500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Bettina</vorname>
+    <nachname>Bill</nachname>
+    <strasse>Rudolf-Diesel-Str. 17</strasse>
+    <plz>65439</plz>
+    <ort>Fl&#246;rsheim</ort>
+    <geocode>
+      <address>Rudolf-Diesel-Stra&#223;e 17, 65439 Fl&#246;rsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4213900,50.0199500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerhard</vorname>
+    <nachname>Bill</nachname>
+    <strasse>Rudolf-Diesel-Str. 17</strasse>
+    <plz>65439</plz>
+    <ort>Fl&#246;rsheim</ort>
+    <geocode>
+      <address>Rudolf-Diesel-Stra&#223;e 17, 65439 Fl&#246;rsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4213900,50.0199500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Rosemarie</vorname>
+    <nachname>Bitterling</nachname>
+    <strasse>Carl-von-Ossietzky-Str. 13</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Carl-von-Ossietzky-Stra&#223;e 13, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2038900,50.0824700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dorothea</vorname>
+    <nachname>Bodis</nachname>
+    <strasse>Anne-Frank-Str. 11</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Anne-Frank-Stra&#223;e 11, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2070900,50.0829800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Marlies</vorname>
+    <nachname>Bohland</nachname>
+    <strasse>Wilhelm-Nesen-Str. 3</strasse>
+    <plz>56355</plz>
+    <ort>Nast&#228;tten</ort>
+    <geocode>
+      <address>Wilhelm-Nesen-Stra&#223;e 3, 56355 Nast&#228;tten, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.8599600,50.1948600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr.Christian-Friedrich</vorname>
+    <nachname>B&#246;hme</nachname>
+    <strasse>Zugspitzstr. 42</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Zugspitzstra&#223;e 42, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1975800,50.0842400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Michael</vorname>
+    <nachname>Brandenstein </nachname>
+    <strasse>Am Honigbaum 39</strasse>
+    <plz>65817</plz>
+    <ort>Eppstein</ort>
+    <geocode>
+      <address>Am Honigbaum 39, 65817 Eppstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3505400,50.1573800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hans-G&#252;nter</vorname>
+    <nachname>Brandstetter</nachname>
+    <strasse>Fritz-Kohl-Str. 12</strasse>
+    <plz>55122</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Fritz-Kohl-Stra&#223;e 12, 55122 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2518000,50.0045400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ruth</vorname>
+    <nachname>Brandt</nachname>
+    <strasse>Dotzheimer Str. 127</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Dotzheimer Stra&#223;e 127, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2155900,50.0771000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>G&#252;nter</vorname>
+    <nachname>Brater</nachname>
+    <strasse>In der Rheingewann</strasse>
+    <plz>55218</plz>
+    <ort>Ingelheim</ort>
+    <geocode>
+      <address>In der Rheingewann, 55218 Ingelheim am Rhein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0178038,49.9901334,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Andreas</vorname>
+    <nachname>Breetz</nachname>
+    <strasse>&#220;ber R&#252;ck 20</strasse>
+    <plz>55296</plz>
+    <ort>Harxheim</ort>
+    <geocode>
+      <address>&#220;ber R&#252;ck 20, 55296 Harxheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2660800,49.9028100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Astrid</vorname>
+    <nachname>Breetz</nachname>
+    <strasse>&#220;ber R&#252;ck 20</strasse>
+    <plz>55296</plz>
+    <ort>Harxheim</ort>
+    <geocode>
+      <address>&#220;ber R&#252;ck 20, 55296 Harxheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2660800,49.9028100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Bert</vorname>
+    <nachname>Breetz</nachname>
+    <strasse>Bismarckring 7</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bismarckring 7, 65183 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2302000,50.0790200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>G&#252;nter</vorname>
+    <nachname>Brucksch</nachname>
+    <strasse>Steckelburgstr. 15</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Steckelburgstra&#223;e 15, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2133600,50.0607200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hans-J&#252;rgen</vorname>
+    <nachname>Brucksch</nachname>
+    <strasse>Fischbacher Str. 6</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Fischbacher Stra&#223;e 6, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2107300,50.0755300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Johannes</vorname>
+    <nachname>Brucksch</nachname>
+    <strasse>Sonnenweg 6</strasse>
+    <plz>65510</plz>
+    <ort>H&#252;nstetten-G&#246;rsroth</ort>
+    <geocode>
+      <address>Sonnenweg 6, 65510 H&#252;nstetten, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2166700,50.2253400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Maria</vorname>
+    <nachname>Brucksch</nachname>
+    <strasse>Steckelburgstr. 15</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Steckelburgstra&#223;e 15, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2133600,50.0607200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wolfgang</vorname>
+    <nachname>Brucksch</nachname>
+    <strasse>Im Leimen 12 b</strasse>
+    <plz>55130</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Im Leimen 12, 55130 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2972700,49.9778500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Mathias</vorname>
+    <nachname>Br&#252;hl</nachname>
+    <strasse>Elsa-Brandstr&#246;mstr. 28</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Elsa-Br&#228;ndstr&#246;m-Stra&#223;e 28, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2295100,50.0400800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Frank - Martin</vorname>
+    <nachname>Brunn</nachname>
+    <strasse>Seckenheimer Hauptstr.80</strasse>
+    <plz>68239</plz>
+    <ort>Mannheim</ort>
+    <geocode>
+      <address>Seckenheimer Hauptstra&#223;e 80, 68239 Mannheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.5649200,49.4664100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Anneliese</vorname>
+    <nachname>Brunn </nachname>
+    <strasse>Tennelbachstr. 11</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Tennelbachstra&#223;e 11, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2558600,50.0949300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Michael</vorname>
+    <nachname>B&#252;tow</nachname>
+    <strasse>J&#228;gerstr. 24</strasse>
+    <plz>65187</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>J&#228;gerstra&#223;e 24, 65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2254700,50.0642000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ana</vorname>
+    <nachname>Cavalho-Munder</nachname>
+    <strasse>Oberbergstr. 22</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Oberbergstra&#223;e 22, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3387400,50.1124300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Siegfried</vorname>
+    <nachname>Clo&#223;</nachname>
+    <strasse>Wilhelm Trapp Str.19</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2441128,50.0399829,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Birgitt</vorname>
+    <nachname>Czech (Schrage)</nachname>
+    <strasse>Brunhildenstr. 47</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Brunhildenstra&#223;e 47, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2602000,50.0644100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Renate</vorname>
+    <nachname>Czesla-Fink</nachname>
+    <strasse>Haideweg 34</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Haideweg 34, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2726800,50.1044900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Herta</vorname>
+    <nachname>Dieban</nachname>
+    <strasse>Am K&#246;nigsflo&#223; 30</strasse>
+    <plz>55252</plz>
+    <ort>Mainz-Kastel</ort>
+    <geocode>
+      <address>Am K&#246;nigsflo&#223; 30, 55252 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2936700,50.0147400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Daniel</vorname>
+    <nachname>Dillmann</nachname>
+    <strasse>Rheinstr. 107</strasse>
+    <plz>65185</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Rheinstra&#223;e 107, 65185 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2317300,50.0775800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Marcus</vorname>
+    <nachname>Dillmann</nachname>
+    <strasse>Wilhelm-Leuschner-Str.4</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Wilhelm-Leuschner-Stra&#223;e 4, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1518200,50.1522000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Willi</vorname>
+    <nachname>Dillmann</nachname>
+    <strasse>Steinmetzstr. 2</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Steinmetzstra&#223;e 2, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2234600,50.0779000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Claudia</vorname>
+    <nachname>Donath</nachname>
+    <strasse>Nauroder Str. 13</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Nauroder Stra&#223;e 13, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2812500,50.0883700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Mykhaylo</vorname>
+    <nachname>Dumin</nachname>
+    <strasse>Albert-Schweitzer-Allee 45</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Albert-Schweitzer-Allee 45, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2315100,50.0446800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Klara</vorname>
+    <nachname>Dumina</nachname>
+    <strasse>Albert-Schweitzer-Allee 45</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Albert-Schweitzer-Allee 45, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2315100,50.0446800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Jakob</vorname>
+    <nachname>Ebert</nachname>
+    <strasse>Panoramastr. </strasse>
+    <plz>65321</plz>
+    <ort>Heidenrod-Grebenroth</ort>
+    <geocode>
+      <address>Panoramastra&#223;e, 65321 Heidenrod, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9334645,50.1975530,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christa</vorname>
+    <nachname>Ehlerding</nachname>
+    <strasse>Flemingstr. 15</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Flemingstra&#223;e 15, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2264000,50.0415800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerhard</vorname>
+    <nachname>Ehlerding</nachname>
+    <strasse>Flemingstr. 15</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Flemingstra&#223;e 15, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2264000,50.0415800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gabriele</vorname>
+    <nachname>Eibenberger</nachname>
+    <strasse>Rosenborn 2</strasse>
+    <plz>65719</plz>
+    <ort>Hofheim</ort>
+    <geocode>
+      <address>Rosenborn 2, 65719 Hofheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3975100,50.1075100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Thomas</vorname>
+    <nachname>Eibenberger</nachname>
+    <strasse>Frankenh&#246;he 32</strasse>
+    <plz>55288</plz>
+    <ort>Spiesheim</ort>
+    <geocode>
+      <address>Frankenh&#246;he 32, 55288 Spiesheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1342500,49.8130100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christine</vorname>
+    <nachname>Einig</nachname>
+    <strasse>Friedenstr. 45</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Friedenstra&#223;e 45, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2656700,50.0637200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Angelika</vorname>
+    <nachname>Eismann</nachname>
+    <strasse>Marienbaderstr. 10</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Marienbader Stra&#223;e 10, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1984300,50.1526500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Michael</vorname>
+    <nachname>Eismann</nachname>
+    <strasse>Marienbaderstr. 10</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Marienbader Stra&#223;e 10, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1984300,50.1526500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Richard</vorname>
+    <nachname>Eismann</nachname>
+    <strasse>Marienbaderstr. 10</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Marienbader Stra&#223;e 10, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1984300,50.1526500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Margarita</vorname>
+    <nachname>Elsner</nachname>
+    <strasse>Otto Wels Str. 56</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Otto-Wels-Stra&#223;e 56, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2029500,50.0902900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Martin</vorname>
+    <nachname>Emmel</nachname>
+    <strasse>Hochheimer Str. 2</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden-Nordenstadt</ort>
+    <geocode>
+      <address>An der Hochheimer Stra&#223;e 2, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3480000,50.0338000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Katrin</vorname>
+    <nachname>Engl</nachname>
+    <strasse>An der Helling 20e</strasse>
+    <plz>55252</plz>
+    <ort>Mainz-Kastel</ort>
+    <geocode>
+      <address>An der Helling 20, 55252 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2676412,50.0223450,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Doris</vorname>
+    <nachname>Fette</nachname>
+    <strasse>Laurentiusstr. 12</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden-Naurod</ort>
+    <geocode>
+      <address>Laurentiusstra&#223;e 12, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3054863,50.1357986,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Klaus-G&#252;nther</vorname>
+    <nachname>Fette</nachname>
+    <strasse>Laurentiusstr. 12</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden-Naurod</ort>
+    <geocode>
+      <address>Laurentiusstra&#223;e 12, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3054863,50.1357986,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sabine</vorname>
+    <nachname>Fette</nachname>
+    <strasse>Laurentiusstr. 12</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Laurentiusstra&#223;e 12, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3054863,50.1357986,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sonja</vorname>
+    <nachname>R&#246;mhildt-Fette</nachname>
+    <strasse>Goethestr. 11</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Goethestra&#223;e 11, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1519300,50.1477200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Andreas</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Bl&#252;tenstr. 21</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bl&#252;tenstra&#223;e 21, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2748500,50.1202200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Bettina</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Annenstr. 12</strasse>
+    <plz>20359</plz>
+    <ort>Hamburg</ort>
+    <geocode>
+      <address>Annenstra&#223;e 12, 20359 Hamburg, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>9.9638300,53.5533100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christoph</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Hermann-Brill-Str. 4</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hermann-Brill-Stra&#223;e 4, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1966700,50.0899800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Daniela</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Hermann-Brill-Str. 4</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hermann-Brill-Stra&#223;e 4, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1966700,50.0899800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Karin</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Hermann-Brill-Str. 4</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hermann-Brill-Stra&#223;e 4, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1966700,50.0899800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Manfred</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Kettelerstr. 12</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Kettelerstra&#223;e 12, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2521400,50.1030200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Walter</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Demminsweg 4</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Demminsweg 4, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2368600,50.0954000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Werner</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Bl&#252;tenstr. 21</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bl&#252;tenstra&#223;e 21, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2748500,50.1202200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wolfgang</vorname>
+    <nachname>Fink</nachname>
+    <strasse>Gernotstr. 13</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Gernotstra&#223;e 13, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2598100,50.0562300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Andrea</vorname>
+    <nachname>Fink-Billig</nachname>
+    <strasse>Rosselstr. 3</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Rosselstra&#223;e 3, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2440800,50.0912800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Lieselotte</vorname>
+    <nachname>Fink-Kauffmann</nachname>
+    <strasse>Rosselstr. 3</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Rosselstra&#223;e 3, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2440800,50.0912800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Cornelia</vorname>
+    <nachname>Fink-Sandk&#246;tter</nachname>
+    <strasse>Hauptstr. 108</strasse>
+    <plz>65760</plz>
+    <ort>Eschborn</ort>
+    <geocode>
+      <address>Hauptstra&#223;e 108, 65760 Eschborn, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.5608200,50.1450100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ute</vorname>
+    <nachname>Frechenh&#228;user</nachname>
+    <strasse>Langfeldstr. 4a</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Langfeldstra&#223;e 4, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2840789,50.0813644,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Reinhard</vorname>
+    <nachname>Gnauck</nachname>
+    <strasse>An der Kirschhecke 4</strasse>
+    <plz>55127</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>An der Kirschhecke 4, 55127 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2280400,49.9585000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Barbara</vorname>
+    <nachname>G&#246;b</nachname>
+    <strasse>Herrnbaustr. 17</strasse>
+    <plz>65812</plz>
+    <ort>Bad</ort>
+    <geocode>
+      <address>Herrnbaustra&#223;e 17, 65812 Bad Soden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4899700,50.1539200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gottraud</vorname>
+    <nachname>Godmann</nachname>
+    <strasse>Zugspitzstr. 42</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Zugspitzstra&#223;e 42, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1975800,50.0842400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Herbert</vorname>
+    <nachname>Goslawski</nachname>
+    <strasse>Nachtigallenweg 12</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Nachtigallenweg 12, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3003900,50.1323500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Vitali</vorname>
+    <nachname>Graf</nachname>
+    <strasse>Am Hochfeld 38</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Am Hochfeld 38, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2929000,50.0619900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Else</vorname>
+    <nachname>Griesheimer</nachname>
+    <strasse>Am Wolfsfeld 46</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Am Wolfsfeld 46, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2887900,50.0874900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Helmut</vorname>
+    <nachname>Griesheimer</nachname>
+    <strasse>Rebenstr. 6</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden-Breckenheim</ort>
+    <geocode>
+      <address>Rebenstra&#223;e 6, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3647000,50.0835000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Anneliese</vorname>
+    <nachname>Gro&#223;</nachname>
+    <strasse>Hirtenstr. 53</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hirtenstra&#223;e 53, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2612300,50.1072500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Roland</vorname>
+    <nachname>Gro&#223;</nachname>
+    <strasse>Waldallee 57</strasse>
+    <plz>65817</plz>
+    <ort>Eppstein</ort>
+    <geocode>
+      <address>Waldallee 57, 65817 Eppstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3585600,50.1348600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Thekla</vorname>
+    <nachname>Gugenheimer</nachname>
+    <strasse>Schillerstr. 4</strasse>
+    <plz>56355</plz>
+    <ort>Nast&#228;tten</ort>
+    <geocode>
+      <address>Schillerstra&#223;e 4, 56355 Nast&#228;tten, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.8624400,50.1959800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Johanna</vorname>
+    <nachname>Haas</nachname>
+    <strasse>Friedenstr. 10</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Friedenstra&#223;e 10, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2646200,50.0667100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Matthias</vorname>
+    <nachname>Hallik</nachname>
+    <strasse>Kastanienweg 3/Erbsenacker</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Kastanienweg 3, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2973900,50.1256000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Albrecht</vorname>
+    <nachname>H&#228;nel</nachname>
+    <strasse>Steckelburgstr.  22</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Steckelburgstra&#223;e 22, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2131500,50.0609900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ernst</vorname>
+    <nachname>H&#228;nel</nachname>
+    <strasse>Steckelburgstr.  16</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Steckelburgstra&#223;e 16, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2128000,50.0606100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Maria</vorname>
+    <nachname>H&#228;nel</nachname>
+    <strasse>Steckelburgstr.  22</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Steckelburgstra&#223;e 22, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2131500,50.0609900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Matthias</vorname>
+    <nachname>H&#228;nel</nachname>
+    <strasse>Iltisweg 37</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Iltisweg 37, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2196500,50.0679000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Richard</vorname>
+    <nachname>H&#228;nel</nachname>
+    <strasse>Birkenstr. 55</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Birkenstra&#223;e 55, 65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2274500,50.0627200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Uta</vorname>
+    <nachname>H&#228;nel</nachname>
+    <strasse>Iltisweg 37</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Iltisweg 37, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2196500,50.0679000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Maria</vorname>
+    <nachname>Heberlein</nachname>
+    <strasse>Bismarckring 1</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bismarckring 1, 65183 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2302500,50.0785300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Erna</vorname>
+    <nachname>Heigel</nachname>
+    <strasse>Hasenspitz 2</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hasenspitz 2, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1891600,50.0815600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sabine</vorname>
+    <nachname>Heigel</nachname>
+    <strasse>Hasenspitz 2</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hasenspitz 2, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1891600,50.0815600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christian</vorname>
+    <nachname>Heinrich</nachname>
+    <strasse>Brandenburger Str. 8</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden-Nordenstadt</ort>
+    <geocode>
+      <address>Brandenburger Stra&#223;e 8, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3329900,50.0688100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Volker</vorname>
+    <nachname>Heinrich</nachname>
+    <strasse>Brandenburger Str. 8</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden-Nordenstadt</ort>
+    <geocode>
+      <address>Brandenburger Stra&#223;e 8, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3329900,50.0688100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wolfgang</vorname>
+    <nachname>Heinrich</nachname>
+    <strasse>Rembrandtstr. 17</strasse>
+    <plz>65232</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Rembrandtstra&#223;e 17, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1668600,50.1420300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Berta</vorname>
+    <nachname>Hellmuth</nachname>
+    <strasse>Brunhildenstr. 90</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Brunhildenstra&#223;e 90, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2599500,50.0640200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dieter</vorname>
+    <nachname>Hellmuth</nachname>
+    <strasse>Brunhildenstr. 90</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Brunhildenstra&#223;e 90, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2599500,50.0640200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>J&#252;rgen</vorname>
+    <nachname>Hellmuth</nachname>
+    <strasse>Brunhildenstr. 90</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Brunhildenstra&#223;e 90, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2599500,50.0640200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Rainer</vorname>
+    <nachname>Hellmuth</nachname>
+    <strasse>Brunhildenstr. 90</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Brunhildenstra&#223;e 90, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2599500,50.0640200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Thomas</vorname>
+    <nachname>Hellmuth</nachname>
+    <strasse>Brunhildenstr. 90</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Brunhildenstra&#223;e 90, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2599500,50.0640200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gabriele</vorname>
+    <nachname>Helm</nachname>
+    <strasse>Hermann-L&#246;ns-Str. 36</strasse>
+    <plz>65201</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hermann-L&#246;ns-Stra&#223;e 36, 65201 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1947700,50.0535700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Bernd</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Lindenstr. 28</strasse>
+    <plz>64347</plz>
+    <ort>Griesheim</ort>
+    <geocode>
+      <address>Lindenstra&#223;e 28, 64347 Griesheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.5689900,49.8594100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dieter</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Maienfeldstr. 23 b</strasse>
+    <plz>63303</plz>
+    <ort>Dreieich</ort>
+    <geocode>
+      <address>Maienfeldstra&#223;e 23, 63303 Dreieich, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.7116800,49.9975700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Eberhard</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Helmholtzstr. 49</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Helmholtzstra&#223;e 49, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1953583,50.0808910,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Friedhelm</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Bodelschwinghstr. 60</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bodelschwinghstra&#223;e 60, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2773700,50.0818500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gabriele</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Taunusstr. 7</strasse>
+    <plz>65527</plz>
+    <ort>Niedernhausen</ort>
+    <geocode>
+      <address>Taunusstra&#223;e 7, 65527 Niedernhausen, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3160300,50.1638400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerhard</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Freudenbergstr. 136</strasse>
+    <plz>65201</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Freudenbergstra&#223;e 136, 65201 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1907300,50.0585500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gudrun</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Andreas-Schl&#252;ter-Str. 8</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Andreas-Schl&#252;ter-Stra&#223;e 8, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2624800,50.0626500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Magdalena-Maria</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Pfitznerstr.15 Ludwig-Eibach-Hs.</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2392645,50.1127439,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Marc</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Gibber Str. 11</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Gibber Stra&#223;e 11, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2390800,50.0487000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Norbert</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Adolfs-Allee 15</strasse>
+    <plz>65185</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Adolfsallee 15, 65185 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2397000,50.0748000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Stefan</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Freudenbergstr. 136</strasse>
+    <plz>65201</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Freudenbergstra&#223;e 136, 65201 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1907300,50.0585500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Winfried</vorname>
+    <nachname>Henzel</nachname>
+    <strasse>Im Pfarracker  21</strasse>
+    <plz>65346</plz>
+    <ort>Eltville</ort>
+    <geocode>
+      <address>Im Pfarracker 21, 65346 Eltville, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0963300,50.0224300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hildegard</vorname>
+    <nachname>Herrmann</nachname>
+    <strasse>Hasengartenstr. 34a</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hasengartenstra&#223;e 34, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2586931,50.0610340,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Joachim</vorname>
+    <nachname>Hlubeck</nachname>
+    <strasse>Hackenbaum 24</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hackenbaum 24, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3043800,50.0971400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heidemarie</vorname>
+    <nachname>Hoenig</nachname>
+    <strasse>Klagenfurter Ring 1</strasse>
+    <plz>65187</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Klagenfurter Ring 1, 65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2278100,50.0543300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Harald</vorname>
+    <nachname>Hoffmann</nachname>
+    <strasse>Im Banngarten 4</strasse>
+    <plz>65510</plz>
+    <ort>H&#252;nstetten</ort>
+    <geocode>
+      <address>Im Banngarten 4, 65510 H&#252;nstetten, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1485300,50.2670200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Lars</vorname>
+    <nachname>Hoffmann</nachname>
+    <strasse>Regerstr. 4</strasse>
+    <plz>55127</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Regerstra&#223;e 4, 55127 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1991300,49.9599200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerd</vorname>
+    <nachname>Hofmann</nachname>
+    <strasse>Am Sandh&#246;bel 1</strasse>
+    <plz>55218</plz>
+    <ort>Ingelheim</ort>
+    <geocode>
+      <address>Am Sandh&#246;bel 1, 55218 Ingelheim am Rhein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0598600,49.9737500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ruth</vorname>
+    <nachname>Hofmann</nachname>
+    <strasse>Elsa-Brandstr&#246;m-Str. 32</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Elsa-Br&#228;ndstr&#246;m-Stra&#223;e 32, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2302000,50.0395000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Roland</vorname>
+    <nachname>Hoomann</nachname>
+    <strasse>Rembrandtr. 3</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Rembrandtstra&#223;e 3, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1672700,50.1439200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Johannes</vorname>
+    <nachname>Hund</nachname>
+    <strasse>Neckarstr. 2</strasse>
+    <plz>55118</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Neckarstra&#223;e 2, 55118 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2592100,50.0107400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Melanie</vorname>
+    <nachname>Jahn</nachname>
+    <strasse>Lambertusweg 2</strasse>
+    <plz>55599</plz>
+    <ort>Wonsheim</ort>
+    <geocode>
+      <address>Lambertusweg 2, 55599 Wonsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9676400,49.7825600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Herbert</vorname>
+    <nachname>Janik</nachname>
+    <strasse>Hirtenstr. 41</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Hirtenstra&#223;e 41, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2622600,50.1065100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Erhard</vorname>
+    <nachname>Janssen</nachname>
+    <strasse>Fliederweg 15</strasse>
+    <plz>55299</plz>
+    <ort>Nackenheim</ort>
+    <geocode>
+      <address>Fliederweg 15, 55299 Nackenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3418300,49.9207900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Martina</vorname>
+    <nachname>Kahle</nachname>
+    <strasse>Eschbornstr. 10</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Eschbornstra&#223;e 10, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2161500,50.0782400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Axel</vorname>
+    <nachname>Kasprowicz</nachname>
+    <strasse>Jh-Friedr-v-Pfeiffer-W 9</strasse>
+    <plz>55128</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Johann-Friedrich-von-Pfeiffer-Weg 9, 55128 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2379512,49.9937151,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerhard</vorname>
+    <nachname>Kersten</nachname>
+    <strasse>Schwalbacher Str. 77</strasse>
+    <plz>65343</plz>
+    <ort>Eltville</ort>
+    <geocode>
+      <address>Schwalbacher Stra&#223;e 77, 65343 Eltville, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1172900,50.0346500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Horst Helmut</vorname>
+    <nachname>Kessler</nachname>
+    <strasse>Colmarstr. 10</strasse>
+    <plz>55118</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Colmarstra&#223;e 10, 55118 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2545000,50.0077900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Prof. Dr. Werner</vorname>
+    <nachname>Kl&#228;n</nachname>
+    <strasse>Altk&#246;nigstr. 150</strasse>
+    <plz>61440</plz>
+    <ort>Oberursel</ort>
+    <geocode>
+      <address>Altk&#246;nigstra&#223;e 150, 61440 Oberursel (Taunus), Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.5556000,50.2104600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>G&#252;nter</vorname>
+    <nachname>Kl&#228;rner</nachname>
+    <strasse>Carl-von-Ossietzky-Str. 41</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Carl-von-Ossietzky-Stra&#223;e 41, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2022300,50.0841500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Marcus</vorname>
+    <nachname>Klebba</nachname>
+    <strasse>Am Br&#252;ckelchen 13</strasse>
+    <plz>64521</plz>
+    <ort>Gro&#223;-Gerau</ort>
+    <geocode>
+      <address>Am Br&#252;ckelchen 13, 64521 Gro&#223;-Gerau, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4984400,49.9319500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Norma-Dorothea</vorname>
+    <nachname>Klein</nachname>
+    <strasse>Daimlerstr. 2</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Daimlerstra&#223;e 2, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2091300,50.0767300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Silke</vorname>
+    <nachname>Kn&#246;pfel-Maennel</nachname>
+    <strasse>Breckenheimer Weg 21</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Breckenheimer Weg 21, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3487700,50.0661700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Helmut</vorname>
+    <nachname>K&#246;hler</nachname>
+    <strasse>Sch&#246;nbergstr. 92</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Sch&#246;nbergstra&#223;e 92, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1957000,50.0825000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Kristina</vorname>
+    <nachname>K&#246;hler</nachname>
+    <strasse>Sch&#246;nbergstr. 92</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Sch&#246;nbergstra&#223;e 92, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1957000,50.0825000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christian</vorname>
+    <nachname>K&#246;lbel</nachname>
+    <strasse>Ludwig-Gerhardt-Str. 8</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Ludwig-Gerhardt-Stra&#223;e 8, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1428300,50.1370700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Helmut</vorname>
+    <nachname>K&#246;lbel</nachname>
+    <strasse>Danziger Allee 78</strasse>
+    <plz>65239</plz>
+    <ort>Hochhheim</ort>
+    <geocode>
+      <address>Danziger Allee 78, 65239 Hochheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3408700,50.0184300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Katharina</vorname>
+    <nachname>K&#246;lbel</nachname>
+    <strasse>Im Schwurm 63</strasse>
+    <plz>74523</plz>
+    <ort>Schw&#228;bisch-Hall</ort>
+    <geocode>
+      <address>Im Schwurm 63, 74523 Schw&#228;bisch Hall, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>9.7127200,49.1169800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Arno</vorname>
+    <nachname>Kopp</nachname>
+    <strasse>Rolf Balsam Str. 13</strasse>
+    <plz>55127</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Rolf-Balsam-Stra&#223;e 13, 55127 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2314800,49.9615600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Elena</vorname>
+    <nachname>Kopp</nachname>
+    <strasse>Marienthaler Str. 6</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Marienthaler Stra&#223;e 6, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2184400,50.0763900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Erich</vorname>
+    <nachname>Kopp</nachname>
+    <strasse>Am alten Weg 18</strasse>
+    <plz>55127</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Am Alten Weg 18, 55127 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2318600,49.9612800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Helga</vorname>
+    <nachname>Kopp</nachname>
+    <strasse>Am alten Weg 16</strasse>
+    <plz>55127</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Am Alten Weg 16, 55127 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2318200,49.9612300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Irina</vorname>
+    <nachname>Kopp</nachname>
+    <strasse>Im Sampel 116</strasse>
+    <plz>55246</plz>
+    <ort>Mainz-Kostheim</ort>
+    <geocode>
+      <address>Im Sampel 116, 55246 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3007700,50.0147200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Rubin</vorname>
+    <nachname>Kopp</nachname>
+    <strasse>Theodor-Haubach-Str. 4</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Theodor-Haubach-Stra&#223;e 4, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2053000,50.0851700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Jens-Michael</vorname>
+    <nachname>Krause</nachname>
+    <strasse>Brandenburger Weg 21</strasse>
+    <plz>65719</plz>
+    <ort>Hofheim/Ts.</ort>
+    <geocode>
+      <address>Brandenburger Weg 21, 65719 Hofheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4413700,50.0747900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Ursula</vorname>
+    <nachname>Kreutzer-Schmitt</nachname>
+    <strasse>Hardtstr. 83</strasse>
+    <plz>65307</plz>
+    <ort>Bad</ort>
+    <geocode>
+      <address>Hardtstra&#223;e 83, 65307 Bad Schwalbach, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0630200,50.1438400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Annette</vorname>
+    <nachname>Kubis</nachname>
+    <strasse>Carl-von-Ossietzky-Str. 26</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Carl-von-Ossietzky-Stra&#223;e 26, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2007600,50.0834600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christoph</vorname>
+    <nachname>Kubis</nachname>
+    <strasse>Carl-von-Ossietzky-Str. 26</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Carl-von-Ossietzky-Stra&#223;e 26, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2007600,50.0834600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Thomas</vorname>
+    <nachname>Kubis</nachname>
+    <strasse>Kathrainerstr. 22</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Kathrainerstra&#223;e 22, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1809900,50.1501400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sebastian</vorname>
+    <nachname>K&#252;hl</nachname>
+    <strasse>Zimmermannstr. 4</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Zimmermannstra&#223;e 4, 65185 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2312500,50.0788700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Lydia</vorname>
+    <nachname>Kunze</nachname>
+    <strasse>Am Berggarten 14</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Am Berggarten 14, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3391900,50.1088700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Richard</vorname>
+    <nachname>Kunze</nachname>
+    <strasse>Am Berggarten 14</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Am Berggarten 14, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3391900,50.1088700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ursula</vorname>
+    <nachname>Kunze</nachname>
+    <strasse>Rambacher Str. 3</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Rambacher Stra&#223;e 3, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2655000,50.1041700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Irene</vorname>
+    <nachname>Kurtz</nachname>
+    <strasse>Pfitznerstr.15 Ludwig-Eibach-Hs.</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2392645,50.1127439,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Karin</vorname>
+    <nachname>Kurtz</nachname>
+    <strasse>Pfitznerstr.15 Ludwig-Eibach-Hs.</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2392645,50.1127439,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gertrud</vorname>
+    <nachname>Lampert</nachname>
+    <strasse>Riederbergstr. 13</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Riederbergstra&#223;e 13, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2289000,50.0855100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Claudia</vorname>
+    <nachname>Laux</nachname>
+    <strasse>Drudenstr. 10</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Drudenstra&#223;e 10, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2274300,50.0843500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Lieselotte</vorname>
+    <nachname>Laux</nachname>
+    <strasse>Bl&#252;cherstr. 9</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bl&#252;cherstra&#223;e 9, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2281100,50.0805900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wolf-R&#252;diger</vorname>
+    <nachname>Lenz</nachname>
+    <strasse>Am Burggraben 7</strasse>
+    <plz>64521</plz>
+    <ort>Gro&#223;-Gerau</ort>
+    <geocode>
+      <address>Am Burggraben 7, 64521 Gro&#223;-Gerau, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4793500,49.9208100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Erhard</vorname>
+    <nachname>Lindemann</nachname>
+    <strasse>Moselstr. 34</strasse>
+    <plz>55262</plz>
+    <ort>Heidesheim</ort>
+    <geocode>
+      <address>Moselstra&#223;e 34, 55262 Heidesheim am Rhein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1138700,49.9985400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gertrud</vorname>
+    <nachname>Lombacher</nachname>
+    <strasse>Am Erkelsborn 8</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Am Erkelsborn 8, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2643000,50.0763700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Andreas</vorname>
+    <nachname>Ludwig</nachname>
+    <strasse>Am alten Sportplatz 41</strasse>
+    <plz>55127</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Am Alten Sportplatz 41, 55127 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1928700,49.9783200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hildegard</vorname>
+    <nachname>Ludwig</nachname>
+    <strasse>Trommlerweg 29</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Trommlerweg 29, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2127800,50.0917000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christoph</vorname>
+    <nachname>Lutzmann</nachname>
+    <strasse>R&#246;derbergweg 30</strasse>
+    <plz>60314</plz>
+    <ort>Frankfurt/M.</ort>
+    <geocode>
+      <address>R&#246;derbergweg 30, 60314 Frankfurt, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.7041500,50.1139900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Johannes</vorname>
+    <nachname>Lutzmann</nachname>
+    <strasse>Saarstr. 43</strasse>
+    <plz>65201</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Saarstra&#223;e 43, 65201 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2097000,50.0558400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Astrid</vorname>
+    <nachname>Manns</nachname>
+    <strasse>Tempelhofer Str. 41</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Tempelhofer Stra&#223;e 41, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2962700,50.0593100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Sascha</vorname>
+    <nachname>Marquardt</nachname>
+    <strasse>Quellenweg 1</strasse>
+    <plz>65719</plz>
+    <ort>Hofheim</ort>
+    <geocode>
+      <address>Quellenweg 1, 65719 Hofheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4060600,50.0998700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Andreas</vorname>
+    <nachname>Martin</nachname>
+    <strasse>Adolf-Todt-Str. 30</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Adolf-Todt-Stra&#223;e 30, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2423200,50.0362500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heinz</vorname>
+    <nachname>Martin</nachname>
+    <strasse>Loreleiring 24</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Loreleiring 24, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2231100,50.0755700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Katharina</vorname>
+    <nachname>Martin</nachname>
+    <strasse>Adolf-Todt-Str. 30</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Adolf-Todt-Stra&#223;e 30, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2423200,50.0362500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Kurt</vorname>
+    <nachname>Martin</nachname>
+    <strasse>Adolf-Todt-Str. 30</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Adolf-Todt-Stra&#223;e 30, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2423200,50.0362500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Manfred</vorname>
+    <nachname>Martin</nachname>
+    <strasse>Jahnstr. 11</strasse>
+    <plz>65558</plz>
+    <ort>Kaltenholzhausen</ort>
+    <geocode>
+      <address>Jahnstra&#223;e 11, 65558 Kaltenholzhausen, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1105300,50.2981200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Matthias</vorname>
+    <nachname>Martin</nachname>
+    <strasse>Adolf-Todt-Str. 30</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Adolf-Todt-Stra&#223;e 30, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2423200,50.0362500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ulrich</vorname>
+    <nachname>Martin</nachname>
+    <strasse>Adolf-Todt-Str. 30</strasse>
+    <plz>65203</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Adolf-Todt-Stra&#223;e 30, 65203 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2423200,50.0362500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Jasmin</vorname>
+    <nachname>Mehrhof</nachname>
+    <strasse>Frankenstr. 27</strasse>
+    <plz>55597</plz>
+    <ort>W&#246;llstein</ort>
+    <geocode>
+      <address>Frankenstra&#223;e 27, 55597 W&#246;llstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9706000,49.8132900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Elisabeth</vorname>
+    <nachname>Metz</nachname>
+    <strasse>An deen Lehmgruben 2</strasse>
+    <plz>55126</plz>
+    <ort>Mainz-Finthen</ort>
+    <geocode>
+      <address>An den Lehmgruben 2, 55126 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1837900,49.9886400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Cordula</vorname>
+    <nachname>M'haimdat</nachname>
+    <strasse>Henkell-Str. 17</strasse>
+    <plz>65187</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Henkellstra&#223;e 17, 65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2401000,50.0528000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Jutta</vorname>
+    <nachname>Michalak</nachname>
+    <strasse>Riederbergstr. 13</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Riederbergstra&#223;e 13, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2289000,50.0855100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Eduard</vorname>
+    <nachname>Miller</nachname>
+    <strasse>Kranzplatz 5/6</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Kranzplatz 5, 65183 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2419000,50.0857900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Meta</vorname>
+    <nachname>Mocka</nachname>
+    <strasse>Manteuffelstr. 7</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Manteuffelstra&#223;e 7, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2220600,50.0781900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Katharina</vorname>
+    <nachname>Mohs</nachname>
+    <strasse>Herlesweiden 11</strasse>
+    <plz>55543</plz>
+    <ort>Bad</ort>
+    <geocode>
+      <address>Herlesweiden 11, 55543 Bad Kreuznach, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.8764100,49.8347100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Alexander</vorname>
+    <nachname>M&#252;ller </nachname>
+    <strasse>Geschwister-Scholl-Str.20</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Geschwister-Scholl-Stra&#223;e 20, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2002280,50.0897858,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Reinhard</vorname>
+    <nachname>M&#252;ller</nachname>
+    <strasse>Mainzer Str. 16</strasse>
+    <plz>55232</plz>
+    <ort>Enssheim</ort>
+    <geocode>
+      <address>Mainzer Stra&#223;e 16, 55232 Ensheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1154400,49.8070800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Elisabeth</vorname>
+    <nachname>M&#252;ller </nachname>
+    <strasse>Lauterenstr. 6</strasse>
+    <plz>55116</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Lauterenstra&#223;e 6, 55116 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2800800,49.9970300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>J&#252;rgen</vorname>
+    <nachname>M&#252;ller </nachname>
+    <strasse>Mudersh&#228;user Str. 3</strasse>
+    <plz>65623</plz>
+    <ort>Mudershausen</ort>
+    <geocode>
+      <address>Mudersh&#228;user Stra&#223;e 3, 65623 Mudershausen, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0603900,50.2866900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christian</vorname>
+    <nachname>Mummert</nachname>
+    <strasse>Danziger Str. 2</strasse>
+    <plz>65366</plz>
+    <ort>Geisenheim</ort>
+    <geocode>
+      <address>Danziger Stra&#223;e 2, 65366 Geisenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9531400,50.0070700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Andreas</vorname>
+    <nachname>Neddens</nachname>
+    <strasse>Backhausgasse 6</strasse>
+    <plz>55546</plz>
+    <ort>Biebelsheim</ort>
+    <geocode>
+      <address>Backhausgasse 6, 55546 Biebelsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9392800,49.8725700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Martin</vorname>
+    <nachname>Neddens</nachname>
+    <strasse>Backhausgasse 6</strasse>
+    <plz>55546</plz>
+    <ort>Biebelsheim</ort>
+    <geocode>
+      <address>Backhausgasse 6, 55546 Biebelsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9392800,49.8725700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Maria</vorname>
+    <nachname>Neddens</nachname>
+    <strasse>Backhausgasse 6</strasse>
+    <plz>55546</plz>
+    <ort>Biebelsheim</ort>
+    <geocode>
+      <address>Backhausgasse 6, 55546 Biebelsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9392800,49.8725700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ingrid</vorname>
+    <nachname>Oesch</nachname>
+    <strasse>Schillerring 5</strasse>
+    <plz>65795</plz>
+    <ort>Hattersheim</ort>
+    <geocode>
+      <address>Schillerring 5, 65795 Hattersheim am Main, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4792200,50.0703200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Erika</vorname>
+    <nachname>Opl</nachname>
+    <strasse>Steinwiesenweg 1</strasse>
+    <plz>65817</plz>
+    <ort>Eppstein</ort>
+    <geocode>
+      <address>Steinwiesenweg 1, 65817 Eppstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3856700,50.1443500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Jens</vorname>
+    <nachname>Otten</nachname>
+    <strasse>Am Kupferber 31</strasse>
+    <plz>65187</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2332638,50.0588518,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>J&#246;rn</vorname>
+    <nachname>Otten</nachname>
+    <strasse>Heinrich-Delp-Str. 184</strasse>
+    <plz>64297</plz>
+    <ort>Darmstadt</ort>
+    <geocode>
+      <address>Heinrich-Delp-Stra&#223;e 184, 64297 Darmstadt, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.6484800,49.8315400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Jutta</vorname>
+    <nachname>Otten</nachname>
+    <strasse>Am Kupferber 31</strasse>
+    <plz>65187</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2332638,50.0588518,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Karin</vorname>
+    <nachname>Pagel</nachname>
+    <strasse>Sonnenlandstr. 2</strasse>
+    <plz>65399</plz>
+    <ort>Kiedrich</ort>
+    <geocode>
+      <address>Sonnenlandstra&#223;e 2, 65399 Kiedrich, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0876000,50.0395300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hannelore</vorname>
+    <nachname>Preu&#223;</nachname>
+    <strasse>Bl&#252;cherstr. 7</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bl&#252;cherstra&#223;e 7, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2283200,50.0806000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sonja</vorname>
+    <nachname>Puck</nachname>
+    <strasse>Weher K&#246;ppel 35</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Weher K&#246;ppel 35, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1886985,50.0890701,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Johannes</vorname>
+    <nachname>Radloff</nachname>
+    <strasse>Am Pionier&#252;bungsplatz 16</strasse>
+    <plz>55252</plz>
+    <ort>Mainz-Kastel</ort>
+    <geocode>
+      <address>Am Pionier&#252;bungsplatz 16, 55252 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2702500,50.0203500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Astrid</vorname>
+    <nachname>R&#228;msch</nachname>
+    <strasse>Pfl&#228;nzerweg 15</strasse>
+    <plz>65396</plz>
+    <ort>Walluf</ort>
+    <geocode>
+      <address>Pfl&#228;nzerweg 15, 65396 Walluf, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1565600,50.0385200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Markus</vorname>
+    <nachname>Rambach</nachname>
+    <strasse>Bodelschwinghstr. 44</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bodelschwinghstra&#223;e 44, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2773200,50.0821300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christian</vorname>
+    <nachname>Rattke</nachname>
+    <strasse>Mozartstr. 22</strasse>
+    <plz>65462</plz>
+    <ort>Gustavsburg</ort>
+    <geocode>
+      <address>Mozartstra&#223;e 22, 65462 Ginsheim-Gustavsburg, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3213300,49.9985200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>J&#252;rgen</vorname>
+    <nachname>Rauscher</nachname>
+    <strasse>Mainstr. 21a</strasse>
+    <plz>65388</plz>
+    <ort>Schlangenbad</ort>
+    <geocode>
+      <address>Mainstra&#223;e 21, 65388 Schlangenbad, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1199484,50.0886496,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hans</vorname>
+    <nachname>Reithmann</nachname>
+    <strasse>Eberleinstr. 18</strasse>
+    <plz>65195</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Eberleinstra&#223;e 18, 65195 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2272000,50.0901900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heidrun</vorname>
+    <nachname>Riedel (vorm. Rattke)</nachname>
+    <strasse>Mozartstr. 22</strasse>
+    <plz>65462</plz>
+    <ort>Gustavsburg</ort>
+    <geocode>
+      <address>Mozartstra&#223;e 22, 65462 Ginsheim-Gustavsburg, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3213300,49.9985200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Klemens</vorname>
+    <nachname>Roggenbuck</nachname>
+    <strasse>Bodelschwinghstr. 59</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bodelschwinghstra&#223;e 59, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2764600,50.0819600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Ulrich</vorname>
+    <nachname>Rohrbach</nachname>
+    <strasse>Am Langenberg 16</strasse>
+    <plz>55218</plz>
+    <ort>Ingelheim</ort>
+    <geocode>
+      <address>Am Langenberg 16, 55218 Ingelheim am Rhein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0692100,49.9846400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Lothar</vorname>
+    <nachname>Ro&#223;deutscher</nachname>
+    <strasse>Kapellenstr. 15 b</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Kapellenstra&#223;e 15, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2416300,50.0890200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Verina</vorname>
+    <nachname>Ro&#223;deutscher</nachname>
+    <strasse>Kapellenstr. 15 b</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Kapellenstra&#223;e 15, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2416300,50.0890200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Inge</vorname>
+    <nachname>Rudolph</nachname>
+    <strasse>W&#246;llsteiner Str. 3</strasse>
+    <plz>55597</plz>
+    <ort>Gumbsheim</ort>
+    <geocode>
+      <address>W&#246;llsteiner Stra&#223;e 3, 55597 Gumbsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9861800,49.8123900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Doris</vorname>
+    <nachname>Ruschmann</nachname>
+    <strasse>Bahnhofstr. 19</strasse>
+    <plz>65396</plz>
+    <ort>Walluf</ort>
+    <geocode>
+      <address>Bahnhofstra&#223;e 19, 65396 Walluf, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1610400,50.0378100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Doris</vorname>
+    <nachname>Sablowski</nachname>
+    <strasse>Breckenheimer Weg 15</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Breckenheimer Weg 15, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3485300,50.0657900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Petra</vorname>
+    <nachname>Sablowski</nachname>
+    <strasse>Breckenheimer Weg 15</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Breckenheimer Weg 15, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3485300,50.0657900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Thomas</vorname>
+    <nachname>Sablowski</nachname>
+    <strasse>Breckenheimer Weg 15</strasse>
+    <plz>65205</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Breckenheimer Weg 15, 65205 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3485300,50.0657900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Eberhard</vorname>
+    <nachname>Salzmann</nachname>
+    <strasse>Grafenh&#228;user Str. 27</strasse>
+    <plz>64293</plz>
+    <ort>Darmstadt</ort>
+    <geocode>
+      <address>Gr&#228;fenh&#228;user Stra&#223;e 27, 64293 Darmstadt, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.6381000,49.8839000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerda</vorname>
+    <nachname>Scheibner</nachname>
+    <strasse>Getrud-B&#228;umer-Str. 31</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2570237,50.0726721,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Raimund</vorname>
+    <nachname>Scheu</nachname>
+    <strasse>Auf der Leimenkaut 15</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Auf der Leimenkaut 15, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1465300,50.1681900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Martina</vorname>
+    <nachname>Scheuer</nachname>
+    <strasse>Im Reil 2a</strasse>
+    <plz>55262</plz>
+    <ort>Heidenfahrt</ort>
+    <geocode>
+      <address>Im Reil 2, 55262 Heidesheim am Rhein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0963821,50.0079749,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Marcus</vorname>
+    <nachname>Schillhahn</nachname>
+    <strasse>Ingelheimer Str. 10</strasse>
+    <plz>55271</plz>
+    <ort>Stadecken-Elsheim</ort>
+    <geocode>
+      <address>Ingelheimer Stra&#223;e 10, 55271 Stadecken-Elsheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1229900,49.9166400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Armin</vorname>
+    <nachname>Schlender</nachname>
+    <strasse>W&#246;rthstr. 6</strasse>
+    <plz>65185</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>W&#246;rthstra&#223;e 6, 65185 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2328300,50.0779100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christian Jonas</vorname>
+    <nachname>Schlender</nachname>
+    <strasse>Lorcher Str. 5</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Lorcher Stra&#223;e 5, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2188300,50.0748800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerhard</vorname>
+    <nachname>Schlender</nachname>
+    <strasse>Lippestr. 2</strasse>
+    <plz>65201</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Lippestra&#223;e 2, 65201 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1919300,50.0454600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Robert</vorname>
+    <nachname>Schlender</nachname>
+    <strasse>Lorcher Str. 5</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Lorcher Stra&#223;e 5, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2188300,50.0748800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ursula</vorname>
+    <nachname>Schlender</nachname>
+    <strasse>Marcobrunner Str. 15</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Marcobrunnerstra&#223;e 15, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2254200,50.0765400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Uwe</vorname>
+    <nachname>Schlender </nachname>
+    <strasse>Schillerstr. 65</strasse>
+    <plz>63329</plz>
+    <ort>Egelsbach</ort>
+    <geocode>
+      <address>Schillerstra&#223;e 65, 63329 Egelsbach, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.6545400,49.9657300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Margarete</vorname>
+    <nachname>Schlie</nachname>
+    <strasse>Am sonnigen Hang 21</strasse>
+    <plz>55127</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Am Sonnigen Hang 21, 55127 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2354900,49.9631900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wolfgang</vorname>
+    <nachname>Schmidt</nachname>
+    <strasse>Ellenbogengasse 10</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Ellenbogengasse 10, 65183 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2404800,50.0814500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hans</vorname>
+    <nachname>Schmitt</nachname>
+    <strasse>Hardtstr. 83</strasse>
+    <plz>65307</plz>
+    <ort>Bad</ort>
+    <geocode>
+      <address>Hardtstra&#223;e 83, 65307 Bad Schwalbach, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0630200,50.1438400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Renate</vorname>
+    <nachname>Sch&#246;nsiegel</nachname>
+    <strasse>Ellenbogengasse 10</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Ellenbogengasse 10, 65183 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2404800,50.0814500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ursula</vorname>
+    <nachname>Schradi</nachname>
+    <strasse>Kiedricher Str. 8</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Kiedricher Stra&#223;e 8, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2243500,50.0770900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Birgitt</vorname>
+    <nachname>Schuld</nachname>
+    <strasse>Rathausstr. 1a</strasse>
+    <plz>65366</plz>
+    <ort>Geisenheim</ort>
+    <geocode>
+      <address>Rathausstra&#223;e 1, 65366 Geisenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9479931,50.0355147,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Brigitte</vorname>
+    <nachname>Schuler</nachname>
+    <strasse>Lisztstr. 8</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Lisztstra&#223;e 8, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2466100,50.0883400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Aribert</vorname>
+    <nachname>Schulz-Corte</nachname>
+    <strasse>Im Geb&#252;ck 5</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden-Aurigen</ort>
+    <geocode>
+      <address>Im Geb&#252;ck 5, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3304000,50.1201700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Justus-Wilhelm</vorname>
+    <nachname>Schulze</nachname>
+    <strasse>Gleiwitzer Str. 3</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Gleiwitzer Stra&#223;e 3, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2871900,50.0889000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ren&#233;</vorname>
+    <nachname>Schulze</nachname>
+    <strasse>Gleiwitzer Str. 3</strasse>
+    <plz>65191</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Gleiwitzer Stra&#223;e 3, 65191 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2871900,50.0889000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dieter</vorname>
+    <nachname>Schunke</nachname>
+    <strasse>Rosenweg 62</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Rosenweg 62, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2035700,50.1678300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ingrid</vorname>
+    <nachname>Schunke</nachname>
+    <strasse>Rosenweg 62</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Rosenweg 62, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2035700,50.1678300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Reiner</vorname>
+    <nachname>Schwarz</nachname>
+    <strasse>Am Heideborn 25</strasse>
+    <plz>65527</plz>
+    <ort>Niedernhausen</ort>
+    <geocode>
+      <address>Am Heideborn 25, 65527 Niedernhausen, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2829800,50.1769800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gisela</vorname>
+    <nachname>Seifarth</nachname>
+    <strasse>Langgasse 24</strasse>
+    <plz>65326</plz>
+    <ort>Aarbergen</ort>
+    <geocode>
+      <address>Langgasse 24, 65326 Aarbergen, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1026500,50.2476400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gerda</vorname>
+    <nachname>Seifert</nachname>
+    <strasse>Bl&#252;tenstr. 12</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bl&#252;tenstra&#223;e 12, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2755100,50.1206900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Michael</vorname>
+    <nachname>Semerenko</nachname>
+    <strasse>August-Bebel-Str. 64</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>August-Bebel-Stra&#223;e 64, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1844800,50.0728000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Klaus-Henning</vorname>
+    <nachname>Seyboth</nachname>
+    <strasse>Hebelstr. 6.1</strasse>
+    <plz>65817</plz>
+    <ort>Eppstein-Bremthal</ort>
+    <geocode>
+      <address>Hebelstra&#223;e 6, 65817 Eppstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3523300,50.1401600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Martin</vorname>
+    <nachname>Seyboth</nachname>
+    <strasse>Frankenstr. 20</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Frankenstra&#223;e 20, 65183 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2306400,50.0811000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Mirjam</vorname>
+    <nachname>Seyboth</nachname>
+    <strasse>Hebelstr. 6.1</strasse>
+    <plz>65817</plz>
+    <ort>Eppstein-Bremthal</ort>
+    <geocode>
+      <address>Hebelstra&#223;e 6, 65817 Eppstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3523300,50.1401600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Daniela</vorname>
+    <nachname>Smouse</nachname>
+    <strasse>Neugasse 7</strasse>
+    <plz>35510</plz>
+    <ort>Butzbach</ort>
+    <geocode>
+      <address>Neugasse 7, 35510 Butzbach, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.6829000,50.4135100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sandra</vorname>
+    <nachname>Smouse</nachname>
+    <strasse>Dotzheimer Str. 127</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Dotzheimer Stra&#223;e 127, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2155900,50.0771000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sigrid</vorname>
+    <nachname>Smouse-Wohlmuth</nachname>
+    <strasse>Dr.-de-Millas-Str.38</strasse>
+    <plz>55278</plz>
+    <ort>Undenheim</ort>
+    <geocode>
+      <address>Dr.-de-Millas-stra&#223;e 38, 55278 Undenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2251400,49.8364800,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Elke</vorname>
+    <nachname>Splittgerber</nachname>
+    <strasse>Rilkeweg 5</strasse>
+    <plz>65343</plz>
+    <ort>Eltville</ort>
+    <geocode>
+      <address>Rilkeweg 5, 65343 Eltville, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1229300,50.0338100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Irene</vorname>
+    <nachname>Sprengel</nachname>
+    <strasse>Weidenbornstr. 5b</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Weidenbornstra&#223;e 5, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2555087,50.0625566,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Pfarrer Rudolf</vorname>
+    <nachname>Spring</nachname>
+    <strasse>Schulgraben 1</strasse>
+    <plz>65366</plz>
+    <ort>Geisenheim-Stephan</ort>
+    <geocode>
+      <address>Schulgraben 1, 65366 Geisenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9507400,50.0347900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ingrid</vorname>
+    <nachname>Stecher</nachname>
+    <strasse>An der Krimm 13</strasse>
+    <plz>55124</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>An der Krimm 13, 55124 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2117000,50.0082900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heike   **)</vorname>
+    <nachname>Stengel-Rutkowski</nachname>
+    <strasse>Auf den Erlen 81</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Auf den Erlen 81, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3304900,50.1181200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Esther</vorname>
+    <nachname>St&#246;ck</nachname>
+    <strasse>Rathausstr. 1a</strasse>
+    <plz>65366</plz>
+    <ort>Geisenheim</ort>
+    <geocode>
+      <address>Rathausstra&#223;e 1, 65366 Geisenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9479931,50.0355147,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wilfried</vorname>
+    <nachname>St&#246;ck</nachname>
+    <strasse>Kiedricher Str. 8</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Kiedricher Stra&#223;e 8, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2243500,50.0770900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gottfried</vorname>
+    <nachname>Stolper</nachname>
+    <strasse>Bienenbergweg 5</strasse>
+    <plz>65375</plz>
+    <ort>Oestrich-Winkel</ort>
+    <geocode>
+      <address>Bienenbergweg 5, 65375 Oestrich-Winkel, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.0111800,50.0037000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Martin</vorname>
+    <nachname>Stolper</nachname>
+    <strasse>Wilhelm-Klunk-Weg 6</strasse>
+    <plz>65366</plz>
+    <ort>Geisenheim</ort>
+    <geocode>
+      <address>Wilhelm-Klunk-Weg 6, 65366 Geisenheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.9457375,50.0059739,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Tino</vorname>
+    <nachname>Stolper</nachname>
+    <strasse>Wallstr. 28</strasse>
+    <plz>55268</plz>
+    <ort>Nieder-Olm</ort>
+    <geocode>
+      <address>Wallstra&#223;e 28, 55268 Nieder-Olm, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2054700,49.9084600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heike</vorname>
+    <nachname>Stonner</nachname>
+    <strasse>Daimlerstr. 53</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Daimlerstra&#223;e 53, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2084900,50.0809400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Laura</vorname>
+    <nachname>Strelitz</nachname>
+    <strasse>August-Ruf-Str. 18</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>August-Ruf-Stra&#223;e 18, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3278800,50.1223100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Lydia</vorname>
+    <nachname>Strelitz</nachname>
+    <strasse>August-Ruf-Str. 18</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>August-Ruf-Stra&#223;e 18, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.3278800,50.1223100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Janine</vorname>
+    <nachname>Teubner</nachname>
+    <strasse>Platter Str. 73</strasse>
+    <plz>65193</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Platter Stra&#223;e 73, 65193 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2219000,50.0957200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heinz</vorname>
+    <nachname>Th&#252;rmer</nachname>
+    <strasse>Stiftstr. 14</strasse>
+    <plz>65232</plz>
+    <ort>Taunusstein</ort>
+    <geocode>
+      <address>Stiftstra&#223;e 14, 65232 Taunusstein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1384700,50.1382600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Christa</vorname>
+    <nachname>Thutewohl</nachname>
+    <strasse>Hackeng&#228;&#223;chen 2</strasse>
+    <plz>93047</plz>
+    <ort>Regensburg</ort>
+    <geocode>
+      <address>Hackeng&#228;&#223;chen 2, 93047 Ratisbon, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>12.0999500,49.0205000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Renate</vorname>
+    <nachname>Thutewohl</nachname>
+    <strasse>Oestricher Str. 15</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Oestricher Stra&#223;e 15, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2220700,50.0755200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Angela</vorname>
+    <nachname>Timm</nachname>
+    <strasse>Moselstr. 24</strasse>
+    <plz>55262</plz>
+    <ort>Heidesheim</ort>
+    <geocode>
+      <address>Moselstra&#223;e 24, 55262 Heidesheim am Rhein, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1123700,49.9981500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Gerold</vorname>
+    <nachname>Trausch</nachname>
+    <strasse>Hasengasse 38</strasse>
+    <plz>65719</plz>
+    <ort>Hofheim/Ts.</ort>
+    <geocode>
+      <address>Hasengasse 38, 65719 Hofheim, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.4262500,50.0633400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Marc Holger</vorname>
+    <nachname>Trausch</nachname>
+    <strasse>Maa&#223;enstr. 12</strasse>
+    <plz>10777</plz>
+    <ort>Berlin</ort>
+    <geocode>
+      <address>Maa&#223;enstra&#223;e 12, 10777 Berlin, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>13.3539100,52.4975400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Dr. Ulrich</vorname>
+    <nachname>Trebus</nachname>
+    <strasse>Aschenbr&#246;delweg 13</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Aschenbr&#246;delweg 13, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1839400,50.0687000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ernst</vorname>
+    <nachname>Trebus</nachname>
+    <strasse>Aschenbr&#246;delweg 13</strasse>
+    <plz>65199</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Aschenbr&#246;delweg 13, 65199 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.1839400,50.0687000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gertrud</vorname>
+    <nachname>Wagner</nachname>
+    <strasse>Klagenfurter Ring 58</strasse>
+    <plz>65187</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Klagenfurter Ring 58, 65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2202500,50.0542200,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Lutz</vorname>
+    <nachname>Wasik</nachname>
+    <strasse>Elsa-Brandstr&#246;m-Str. 55</strasse>
+    <plz>55124</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>Elsa-Br&#228;ndstr&#246;m-Stra&#223;e 55, 55124 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2101000,50.0092300,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Ulrich</vorname>
+    <nachname>Weber</nachname>
+    <strasse>Bierstadter Str. 33</strasse>
+    <plz>65189</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Bierstadter Stra&#223;e 33, 65189 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2561800,50.0820900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Katharina</vorname>
+    <nachname>Wengel</nachname>
+    <strasse>Blumenthalstr. 10</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Blumenthalstra&#223;e 10, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2223400,50.0784000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Annette</vorname>
+    <nachname>Willwohl-Ne&#223;ler</nachname>
+    <strasse>An der Reithalle 54</strasse>
+    <plz>55124</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>An der Alten Reithalle 54, 55124 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2124100,50.0059500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Gudrun</vorname>
+    <nachname>Winkler</nachname>
+    <strasse>Goerdelerstr. 15</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Goerdelerstra&#223;e 15, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2060900,50.0853900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Hans-Joachim</vorname>
+    <nachname>Winkler</nachname>
+    <strasse>Goerdelerstr. 15</strasse>
+    <plz>65197</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Goerdelerstra&#223;e 15, 65197 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2060900,50.0853900,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Erich</vorname>
+    <nachname>Wintermeyer</nachname>
+    <strasse>Am Sportplatz 10</strasse>
+    <plz>65207</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Am Sportplatz 10, 65207 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2676900,50.1171700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Sandra</vorname>
+    <nachname>Wirbelauer</nachname>
+    <strasse>Goldsteinstr. 91</strasse>
+    <plz>60528</plz>
+    <ort>Frankfurt</ort>
+    <geocode>
+      <address>Goldsteinstra&#223;e 91, 60528 Frankfurt, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.6392800,50.0848400,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Maria</vorname>
+    <nachname>W&#252;hrer</nachname>
+    <strasse>Ellenbogengasse 10</strasse>
+    <plz>65183</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Ellenbogengasse 10, 65183 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2404800,50.0814500,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wolfgang</vorname>
+    <nachname>Wurzer</nachname>
+    <strasse>Erich-Ollenhauer-Str.  50b</strasse>
+    <plz>65187</plz>
+    <ort>Wiesbaden</ort>
+    <geocode>
+      <address>Erich-Ollenhauer-Stra&#223;e 50, 65187 Wiesbaden, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2201800,50.0594600,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Heinz</vorname>
+    <nachname>Zickler</nachname>
+    <strasse>Am Wiesengrund 22</strasse>
+    <plz>65510</plz>
+    <ort>H&#252;nstetten</ort>
+    <geocode>
+      <address>Am Wiesengrund 22, 65510 H&#252;nstetten, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2062300,50.2192700,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Wolfgang</vorname>
+    <nachname>Ziervogel</nachname>
+    <strasse>F&#228;rberweg 63 b</strasse>
+    <plz>55128</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>F&#228;rberweg 63, 55128 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2416700,49.9701100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Irene</vorname>
+    <nachname>Ziervogel </nachname>
+    <strasse>F&#228;rberweg 63 b</strasse>
+    <plz>55128</plz>
+    <ort>Mainz</ort>
+    <geocode>
+      <address>F&#228;rberweg 63, 55128 Mayence, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>8.2416700,49.9701100,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+  <mensch>
+    <vorname>Margarete</vorname>
+    <nachname>Zimmermann </nachname>
+    <strasse>Goerdelerstr. 11</strasse>
+    <plz></plz>
+    <ort></ort>
+    <geocode>
+      <address>Goerdelerstra&#223;e 11, 42651 Solingen, Germany</address>
+      <id>p1</id>
+      <Point>
+        <coordinates>7.0860500,51.1700000,0</coordinates>
+      </Point>
+    </geocode>
+  </mensch>
+</person>
