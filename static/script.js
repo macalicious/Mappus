@@ -867,21 +867,20 @@ var $mapper = (function(){
             
             var gesamt = result.value;
             var adressen_anz = 0;
-            var freunde_mit_adresse = (function(freunde){
-                var mit_adresse = [];
-                for(var nr in freunde){
-                  var freund = freunde[nr];
-                  if(freund.current_location || freund.hometown_location){
-                    mit_adresse.push(freund);
-                    if(freund.current_location && freund.hometown_location){
-                      adressen_anz = adressen_anz +2;
-                    }else{
-                      adressen_anz++;
-                    };
-                  };
+            var freunde_mit_adresse = [];
+                
+            for(var key in gesamt){
+              var freund = freunde[key];
+              if(freund.current_location || freund.hometown_location){
+                freunde_mit_adresse.push(freund);
+                if(freund.current_location && freund.hometown_location){
+                  adressen_anz = adressen_anz +2;
+                }else{
+                  adressen_anz++;
                 };
-                return mit_adresse;
-              })(gesamt);
+              };
+            };
+          
             
             var geladen = $j('<p></p>');
             geladen.append($j('<b>'+gesamt.length+'</b> Freunde &nbsp; '));
