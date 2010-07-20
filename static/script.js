@@ -946,7 +946,7 @@ var $mapper = (function(){
       
     };
     
-    this.modal = function(new_modal_fn){
+    var modal = function(new_modal_fn){
       var box = $j("<div></div>");
       
       box.append($j("<h3>Facebook</h3><hr />"));
@@ -969,7 +969,7 @@ var $mapper = (function(){
     return {
       initialize: initialize,
       render: show_menschen,
-      modal: this.modal
+      modal: modal
     };
   })());
  
