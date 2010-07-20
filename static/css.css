@@ -160,6 +160,8 @@ var {display:none;}
 #modal footer hr {margin-bottom:5px; margin-top:1.45em;}
 #modal .button {cursor:pointer;}
 #modal img.loading {position:relative;top:3px;}
+#modal form span.input {background:#FFF8E7; padding:1px;}
+
 
 #fancybox-outer {
     border: 5px solid #fff !important;
@@ -167,6 +169,7 @@ var {display:none;}
 	-moz-border-radius:10px;
 	border-radius:10px;
 }
+
 
 h1 {margin:10px 0 10px 0; font-size:1.8em;}
 
