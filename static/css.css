@@ -159,6 +159,7 @@ var {display:none;}
 #modal footer {text-align:right;}
 #modal footer hr {margin-bottom:5px; margin-top:1.45em;}
 #modal .button {cursor:pointer;}
+#modal img.loading {position:relative;top:3px;}
 
 #fancybox-outer {
     border: 5px solid #fff !important;
