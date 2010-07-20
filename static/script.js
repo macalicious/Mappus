@@ -851,7 +851,8 @@ var $mapper = (function(){
   
     function login(content){
       
-      var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
+      var loading = $j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>').css("text-align", "center");
+      content.replaceWith(loading); 
       parent.log.trace("loading_el: ", loading);
       FB.login(cb, { perms: 'friends_hometown,friends_location' });
       function cb(response){
