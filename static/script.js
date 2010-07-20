@@ -196,7 +196,7 @@ function Chain(functions){
 
 */
 
-function Log(){
+function LLog(){
    var level_name = {
      0: "trace",
      1: "debug",
@@ -684,7 +684,7 @@ var $mapper = (function(){
   };
   
   
-  this.log = new Log();
+  this.log = new LLog();
   
   
  
