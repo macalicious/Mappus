@@ -739,6 +739,7 @@ var $mapper = (function(){
     function settings_ui(){
       parent.log.info("facebook plugin: settings_ui");
       var box = $j('<div><div>');
+      /*
       var t = $j('<fieldset id="settings_ui_plugin_facebook"></fieldset>').appendTo(box);
       $j('<legend>Facebook</legend>').appendTo(t);
       $j('<section>Verbinde dich mit deinem Facebook-Konto und importiere die Daten.</section>').appendTo(t);
@@ -757,6 +758,7 @@ var $mapper = (function(){
       window.t = current_user;
       
       FB.XFBML.parse(box[0]);
+      */
       return box;
     };
     
@@ -850,7 +852,7 @@ var $mapper = (function(){
     function login(content){
       
       var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
-      
+      raprent.log.trace("loading_el: ", loading);
       FB.login(cb, { perms: 'friends_hometown,friends_location' });
       function cb(response){
         parent.log.trace('FB.login callback', response);
