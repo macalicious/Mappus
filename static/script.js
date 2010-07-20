@@ -476,9 +476,9 @@ var $mapper = (function(){
         FB.login(function(response) {
             console.log('FB.login callback', response);
             if (response.session) {
-              console.log('User is logged in');
+              alert('User is logged in');
             } else {
-              console.log('User is logged out');
+              alert('User is logged out');
             }
           }, { perms: 'friends_hometown,friends_location' });
         
