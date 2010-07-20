@@ -895,7 +895,7 @@ var $mapper = (function(){
             
             loading.replaceWith(content);
             
-            var weiter = content.next().append($j(' <a href="javascript:;" class="large">Tu es!</a>'));
+            var weiter = content.next().append($j(' <a href="javascript:;" class="big">Tu es!</a>'));
           });
       
         } else {

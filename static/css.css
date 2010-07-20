@@ -161,7 +161,8 @@ var {display:none;}
 #modal .button {cursor:pointer;}
 #modal img.loading {position:relative;top:3px;}
 #modal form span.input {background:#FFF8E7; padding:1px;}
-#modal footer a {margin-left:4px;} 
+#modal footer a {margin-left:4px;}
+#modal footer a.big {font-size:1.5em;} 
 
 #fancybox-outer {
     border: 5px solid #fff !important;
