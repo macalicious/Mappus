@@ -939,7 +939,7 @@ var $mapper = (function(){
                 //loading.replaceWith($j('<span>geladen<span/>'));
           */
         } else {
-          parent.log.info('Facebook: User isn't' logged in');
+          parent.log.info('Facebook: User isn\'t logged in');
         };
       };
       
