@@ -160,7 +160,11 @@ var {display:none;}
 #modal footer hr {margin-bottom:5px; margin-top:1.45em;}
 #modal .button {cursor:pointer;}
 #modal img.loading {position:relative;top:3px;}
-#modal #form {background:#FFFFF0;}
+#modal #form {
+    -webkit-box-shadow:inset 0 1px 1px #888; 
+    -moz-box-shadow:inset 0 1px 1px #888; 
+    box-shadow:inset 0 1px 1px #888; 
+}
 #modal footer a {margin-left:4px;}
 #modal footer a.big {font-size:1.5em;} 
 
