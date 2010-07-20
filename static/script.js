@@ -468,32 +468,10 @@ var $mapper = (function(){
         $this.log.trace($this.plugins.get("gemeinde").render());
       };
       
-      var box = $j("<div></div>");
-      box.append($j("<h3>Facebook</h3><hr />"));
-      content = $j('<p></p>').appendTo(box);
-      $j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').appendTo(content).click(function(){
-        
-        FB.login(function(response) {
-            console.log('FB.login callback', response);
-            if (response.session) {
-              
-              var loading = content.replaceWith($j('<span>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/>'));
-              alert('User is logged in');
-              var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-                  query.wait(function(result){ 
-                    alert("Querry fertig"); });
-                    //loading.replaceWith($j('<span>geladen<span/>'));
-            } else {
-              alert('User is logged out');
-            }
-          }, { perms: 'friends_hometown,friends_location' });
-        
+      $mapper.plugins.get("facebook").modal(function(){
+        return new Modal(box, true);
       });
-      var footer = $j("<footer><hr/></footer>").appendTo(box);
-      var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
       
-      modal = new Modal(box, true);
-      abbruch.click(modal.close);
     },
     map_ready: function(){
       $mapper.tempmapfn();
@@ -944,9 +922,53 @@ var $mapper = (function(){
       parent.render_cluster(markers);
     };
     
+    function login(content){
+      
+      FB.login(cb, { perms: 'friends_hometown,friends_location' });
+      function cb(response){
+        parent.log.trace('FB.login callback', response);
+        if (response.session) {
+          parent.log.info('Facebook: User is logged in');
+          
+          var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
+          
+          /*
+          var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+              query.wait(function(result){ 
+                alert("Querry fertig"); });
+                //loading.replaceWith($j('<span>geladen<span/>'));
+          */
+        } else {
+          parent.log.info('Facebook: User isn't' logged in');
+        };
+      };
+      
+    };
+    
+    this.modal = function(new_modal_fn){
+      var box = $j("<div></div>");
+      
+      box.append($j("<h3>Facebook</h3><hr />"));
+      var content = $j('<section></section>').appendTo(box);
+      $j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').appendTo(content).click(function(){login(content);});
+      
+      var footer = $j("<footer><hr/></footer>").appendTo(box);
+      var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
+
+
+      
+      var modal = new_modal_fn(box);
+      abbruch.click(modal.close);
+    };
+    
+    
+
+    
+    
     return {
       initialize: initialize,
-      render: show_menschen
+      render: show_menschen,
+      modal: this.modal
     };
   })());
  
