@@ -468,6 +468,7 @@ var $mapper = (function(){
         $this.log.trace($this.plugins.get("gemeinde").render());
       };
       
+      $this.log.trace("pl fb: ", $mapper.plugins.get("facebook"));
       $mapper.plugins.get("facebook").modal(function(){
         return new Modal(box, true);
       });
