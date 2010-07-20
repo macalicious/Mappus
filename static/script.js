@@ -469,7 +469,7 @@ var $mapper = (function(){
       };
       
       $this.log.trace("pl fb: ", $mapper.plugins.get("facebook"));
-      $mapper.plugins.get("facebook").modal(function(){
+      $mapper.plugins.get("facebook").modal(function(box){
         return new Modal(box, true);
       });
       
