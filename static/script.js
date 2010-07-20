@@ -888,8 +888,8 @@ var $mapper = (function(){
             geladen.append($j('<span><b>'+adressen_anz+'</b> Adressen gesamt &nbsp; </span>'));
             
             var form = $j('<form></form>').html(
-              '<input type="checkbox" name="home" checked> <lable for="home">Heimatort</lable>'
-              + '<input type="checkbox" name="current" checked> <lable for="current">Aktueller Wohnort</lable>'
+              '<input type="checkbox" id="home" checked> <lable for="home">Heimatort</lable>'
+              + '<input type="checkbox" id="current" checked> <lable for="current">Aktueller Wohnort</lable>'
               + 'auf der Karte anzeigen.'
             ).appendTo(content);
             
