@@ -902,7 +902,8 @@ var $mapper = (function(){
                 if(item.value=="home"){home=true;};
                 if(item.value=="current"){current=true;};
               });
-              parent.log.trace("checked", home?1:2, current?2:3);
+              window.zzz = form;
+              parent.log.trace("checked", home?1:2, current?3:4);
             });
           });
       
