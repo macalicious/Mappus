@@ -772,6 +772,54 @@ var $mapper = (function(){
       
       
       
+      
+      
+      
+      function login(content){
+
+        FB.login(cb, { perms: 'friends_hometown,friends_location' });
+        function cb(response){
+          parent.log.trace('FB.login callback', response);
+          if (response.session) {
+            parent.log.info('Facebook: User is logged in');
+
+            var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
+
+            /*
+            var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+                query.wait(function(result){ 
+                  alert("Querry fertig"); });
+                  //loading.replaceWith($j('<span>geladen<span/>'));
+            */
+          } else {
+            parent.log.info('Facebook: User isn\'t logged in');
+          };
+        };
+
+      };
+
+      this.modal = function(new_modal_fn){
+        var box = $j("<div></div>");
+
+        box.append($j("<h3>Facebook</h3><hr />"));
+        var content = $j('<section></section>').appendTo(box);
+        $j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').appendTo(content).click(function(){login(content);});
+
+        var footer = $j("<footer><hr/></footer>").appendTo(box);
+        var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
+
+
+
+        var modal = new_modal_fn(box);
+        abbruch.click(modal.close);
+      };
+      
+      
+      
+      
+      
+      
+      
       query(function(friends){
         
         var orte = [];
@@ -849,7 +897,8 @@ var $mapper = (function(){
     
     return {
       initialize: initialize,
-      settings_ui: settings_ui
+      settings_ui: settings_ui,
+      modal: this.modal
     };
   })());
   
@@ -923,53 +972,11 @@ var $mapper = (function(){
       parent.render_cluster(markers);
     };
     
-    function login(content){
-      
-      FB.login(cb, { perms: 'friends_hometown,friends_location' });
-      function cb(response){
-        parent.log.trace('FB.login callback', response);
-        if (response.session) {
-          parent.log.info('Facebook: User is logged in');
-          
-          var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
-          
-          /*
-          var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-              query.wait(function(result){ 
-                alert("Querry fertig"); });
-                //loading.replaceWith($j('<span>geladen<span/>'));
-          */
-        } else {
-          parent.log.info('Facebook: User isn\'t logged in');
-        };
-      };
-      
-    };
-    
-    var modal = function(new_modal_fn){
-      var box = $j("<div></div>");
-      
-      box.append($j("<h3>Facebook</h3><hr />"));
-      var content = $j('<section></section>').appendTo(box);
-      $j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').appendTo(content).click(function(){login(content);});
-      
-      var footer = $j("<footer><hr/></footer>").appendTo(box);
-      var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
-
-
-      
-      var modal = new_modal_fn(box);
-      abbruch.click(modal.close);
-    };
-    
-    
-
     
     
     return {
       initialize: initialize,
-      render: show_menschen,
-      modal: modal
+      render: show_menschen
     };
   })());
  
