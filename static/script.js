@@ -888,14 +888,22 @@ var $mapper = (function(){
             geladen.append($j('<span><b>'+adressen_anz+'</b> Adressen gesamt &nbsp; </span>'));
             
             var form = $j('<fieldset class="large" id="form"></fieldset>').html(
-              '<span class="input"><input type="checkbox" id="home" checked /> <label for="home">Heimatort</label></span>'
-              + ' <span class="input"><input type="checkbox" id="current" checked /> <label for="current">Aktueller Wohnort</label></span>'
+              '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
+              + ' <span class="input"><input type="checkbox" id="current" checked value="current" /> <label for="current">Aktueller Wohnort</label></span>'
               + '<br/>der Freunde auf der Karte anzeigen.'
             ).appendTo(content);
             
             loading.replaceWith(content);
             
-            var weiter = content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>'));
+            var weiter = content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(function(){
+              var home = false,
+               current = false;
+              form.find(":checked").each(function(item){
+                if(item.value=="home"){home=true;};
+                if(item.value=="current"){current=true;};
+                parent.log.trace("checked", home, current);
+              });
+            });
           });
       
         } else {
