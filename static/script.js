@@ -476,8 +476,9 @@ var $mapper = (function(){
         FB.login(function(response) {
             console.log('FB.login callback', response);
             if (response.session) {
-              alert('User is logged in');
+              
               var loading = $j('<span>Facebook ---Informationen---> Aplikation<span/>').appendTo(content);
+              alert('User is logged in');
               var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
                   query.wait(function(result){ 
                     alert("Querry fertig"); });
