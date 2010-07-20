@@ -898,12 +898,12 @@ var $mapper = (function(){
             var weiter = content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(function(){
               var home = false,
                current = false;
-              form.find(":checked").each(function(item){
+              form.find(":checked").each(function(key, item){
                 if(item.value=="home"){home=true;};
                 if(item.value=="current"){current=true;};
               });
-              window.zzz = form;
-              parent.log.trace("checked", home?1:2, current?3:4);
+              parent.log.trace("home", home?"true":"false");
+              parent.log.trace("current", current?"true":"false");
             });
           });
       
