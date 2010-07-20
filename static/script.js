@@ -848,21 +848,21 @@ var $mapper = (function(){
     
   
     function login(content){
-
+      
+      var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
+      
       FB.login(cb, { perms: 'friends_hometown,friends_location' });
       function cb(response){
         parent.log.trace('FB.login callback', response);
         if (response.session) {
           parent.log.info('Facebook: User is logged in');
 
-          var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
-
-          /*
           var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-              query.wait(function(result){ 
-                alert("Querry fertig"); });
-                //loading.replaceWith($j('<span>geladen<span/>'));
-          */
+          query.wait(function(result){ 
+            parent.log.trace("Facebook Query: ", query);
+            loading.replaceWith($j('<span>geladen<span/>'));
+          });
+      
         } else {
           parent.log.info('Facebook: User isn\'t logged in');
         };

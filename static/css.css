@@ -157,7 +157,7 @@ var {display:none;}
 }
 #modal h3 { margin: 6px 0 14px 0;}
 #modal footer {text-align:right;}
-#modal footer hr {margin-bottom:5px;}
+#modal footer hr {margin-bottom:5px; margin-top:1.45em;}
 #modal .button {cursor:pointer;}
 
 #fancybox-outer {
