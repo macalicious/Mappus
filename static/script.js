@@ -872,7 +872,7 @@ var $mapper = (function(){
               var freund = result[key];
               if(freund.current_location || freund.hometown_location){
                 freunde_mit_adresse.push(freund);
-                if(freund.current_location && freund.hometown_location){
+                if(freund.current_location && freund.hometown_location && freund.current_location != freund.hometown_location){
                   adressen_anz = adressen_anz +2;
                 }else{
                   adressen_anz++;
