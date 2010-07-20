@@ -887,13 +887,15 @@ var $mapper = (function(){
             geladen.append($j('<span><b>'+freunde_mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
             geladen.append($j('<span><b>'+adressen_anz+'</b> Adressen gesamt &nbsp; </span>'));
             
-            var form = $j('<form></form>').html(
+            var form = $j('<form class="large"></form>').html(
               '<span class="input"><input type="checkbox" id="home" checked /> <label for="home">Heimatort</label></span>'
               + ' <span class="input"><input type="checkbox" id="current" checked /> <label for="current">Aktueller Wohnort</label></span>'
-              + ' auf der Karte anzeigen.'
+              + ' der Freunde auf der Karte anzeigen.'
             ).appendTo(content);
             
             loading.replaceWith(content);
+            
+            var weiter = content.next().append($j(' <a href="javascript:;">weiter</a>'));
           });
       
         } else {
