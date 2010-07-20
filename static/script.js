@@ -863,7 +863,7 @@ var $mapper = (function(){
 
           var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
           query.wait(function(result){ 
-            parent.log.trace("Facebook Query: ", result);
+            parent.log.trace("Facebook Query: ", {result:result});
             
             var adressen_anz = 0;
             var freunde_mit_adresse = [];
@@ -882,9 +882,9 @@ var $mapper = (function(){
           
             
             var geladen = $j('<p></p>');
-            geladen.append($j('<b>'+result.length+'</b> Freunde &nbsp; '));
-            geladen.append($j('<b>'+freunde_mit_adresse.length+'</b> Freunde mit Adresse &nbsp; '));
-            geladen.append($j('<b>'+adressen_anz+'</b> Adressen gesamt &nbsp; '));
+            geladen.append($j('<span><b>'+result.length+'</b> Freunde &nbsp; </span>'));
+            geladen.append($j('<span><b>'+freunde_mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
+            geladen.append($j('<span><b>'+adressen_anz+'</b> Adressen gesamt &nbsp; </span>'));
             
             loading.replaceWith(geladen);
           });
