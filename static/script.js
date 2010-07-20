@@ -880,13 +880,20 @@ var $mapper = (function(){
               };
             };
           
+            var content = $j('<section></section>');
             
-            var geladen = $j('<p></p>');
+            var geladen = $j('<p></p>').appendTo(content);
             geladen.append($j('<span><b>'+result.length+'</b> Freunde &nbsp; </span>'));
             geladen.append($j('<span><b>'+freunde_mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
             geladen.append($j('<span><b>'+adressen_anz+'</b> Adressen gesamt &nbsp; </span>'));
             
-            loading.replaceWith(geladen);
+            var form = $j('<form></form>').html(
+              '<input type="checkbox" name="home" checked> <lable for="home">Heimatort</lable>'
+              + '<input type="checkbox" name="current" checked> <lable for="current">Aktueller Wohnort</lable>'
+              + 'auf der Karte anzeigen'
+            );
+            
+            loading.replaceWith(content);
           });
       
         } else {
