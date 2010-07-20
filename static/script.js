@@ -852,7 +852,7 @@ var $mapper = (function(){
     function login(content){
       
       var loading = content.replaceWith($j('<div>Connecting Facebook</span><img src="loadinfo.net.gif" alt="loading"/></div>')).css("text-align", "center");
-      raprent.log.trace("loading_el: ", loading);
+      parent.log.trace("loading_el: ", loading);
       FB.login(cb, { perms: 'friends_hometown,friends_location' });
       function cb(response){
         parent.log.trace('FB.login callback', response);
