@@ -474,11 +474,11 @@ var $mapper = (function(){
       $j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').appendTo(content).click(function(){
         
         FB.login(function(response) {
-            Log.info('FB.login callback', response);
+            console.log('FB.login callback', response);
             if (response.session) {
-              Log.info('User is logged in');
+              console.log('User is logged in');
             } else {
-              Log.info('User is logged out');
+              console.log('User is logged out');
             }
           }, { perms: 'friends_hometown,friends_location' });
         
