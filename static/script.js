@@ -864,6 +864,7 @@ var $mapper = (function(){
           var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
           query.wait(function(result){ 
             parent.log.trace("Facebook Query: ", query);
+            parent.log.trace("Facebook Query: ", result);
             
             var gesamt = result.value;
             var adressen_anz = 0;
