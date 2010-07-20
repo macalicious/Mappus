@@ -160,7 +160,7 @@ var {display:none;}
 #modal footer hr {margin-bottom:5px; margin-top:1.45em;}
 #modal .button {cursor:pointer;}
 #modal img.loading {position:relative;top:3px;}
-#modal form span.input {background:#FFF8E7; padding:1px;}
+#modal #form {background:#FFFFF0;}
 #modal footer a {margin-left:4px;}
 #modal footer a.big {font-size:1.5em;} 
 
