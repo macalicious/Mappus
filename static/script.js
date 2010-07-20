@@ -696,7 +696,7 @@ var $mapper = (function(){
       load_dependencies(function(){  
         parent.log.info("facebook plugin: dependencies loaded");
         
-        
+        /*
         var set_current_user = function(response){
           if (response.session){ current_user = true; } else { current_user = false; };
           $mapper.ui.add_plugin_section( settings_ui() );
@@ -709,6 +709,7 @@ var $mapper = (function(){
         //parent.ui.dialog(parent.ui.toolbar.add_item("Facebook Settings", "fb_settings"),function(){
         //  return settings_ui();
         //});
+        */
         fn();
       });
     };
