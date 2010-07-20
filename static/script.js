@@ -901,8 +901,8 @@ var $mapper = (function(){
               form.find(":checked").each(function(item){
                 if(item.value=="home"){home=true;};
                 if(item.value=="current"){current=true;};
-                parent.log.trace("checked", home, current);
               });
+              parent.log.trace("checked", home, current);
             });
           });
       
