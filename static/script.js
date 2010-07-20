@@ -887,7 +887,7 @@ var $mapper = (function(){
             geladen.append($j('<span><b>'+freunde_mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
             geladen.append($j('<span><b>'+adressen_anz+'</b> Adressen gesamt &nbsp; </span>'));
             
-            var form = $j('<fieldset class="large" id="form" class="box"></fieldset>').html(
+            var form = $j('<fieldset class="large" id="form"></fieldset>').html(
               '<span class="input"><input type="checkbox" id="home" checked /> <label for="home">Heimatort</label></span>'
               + ' <span class="input"><input type="checkbox" id="current" checked /> <label for="current">Aktueller Wohnort</label></span>'
               + '<br/>der Freunde auf der Karte anzeigen.'
@@ -895,7 +895,7 @@ var $mapper = (function(){
             
             loading.replaceWith(content);
             
-            var weiter = content.next().append($j(' <a href="javascript:;" class="big">Tu es!</a>'));
+            var weiter = content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>'));
           });
       
         } else {
