@@ -864,7 +864,31 @@ var $mapper = (function(){
           var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
           query.wait(function(result){ 
             parent.log.trace("Facebook Query: ", query);
-            loading.replaceWith($j('<span>geladen<span/>'));
+            
+            var gesamt = result.value;
+            var adressen_anz = 0;
+            var freunde_mit_adresse = (function(freunde){
+                var mit_adresse = [];
+                for(var nr in freunde){
+                  var freund = freunde[nr];
+                  if(freund.current_location || freund.hometown_location){
+                    mit_adresse.push(freund);
+                    if(freund.current_location && freund.hometown_location){
+                      adressen_anz = adressen_anz +2;
+                    }else{
+                      adressen_anz++;
+                    };
+                  };
+                };
+                return mit_adresse;
+              })(gesamt);
+            
+            var geladen = $j('<p></p>');
+            geladen.append($j('<b>'+gesamt.length+'</b> Freunde &nbsp; '));
+            geladen.append($j('<b>'+freunde_mit_adresse.length+'</b> Freunde mit Adresse &nbsp; '));
+            geladen.append($j('<b>'+adressen_anz+'</b> Adressen gesamt &nbsp; '));
+            
+            loading.replaceWith(geladen);
           });
       
         } else {
