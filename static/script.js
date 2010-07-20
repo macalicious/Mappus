@@ -480,7 +480,7 @@ var $mapper = (function(){
             } else {
               Log.info('User is logged out');
             }
-          });
+          }, { perms: 'friends_hometown,friends_location' });
         
       });
       var footer = $j("<footer><hr/></footer>").appendTo(box);
