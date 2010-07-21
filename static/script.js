@@ -875,11 +875,11 @@ var $mapper = (function(){
                 freunde_mit_adresse.push(freund);
                 if(freund.current_location){
                   adressen_anz++;
-                  adressen.push(freund.current_location);
+                  adressen.push(freund.current_location.name);
                 };
                 if(freund.hometown_location && freund.current_location != freund.hometown_location){
                   adressen_anz++;
-                  adressen.push(freund.hometown_location);
+                  adressen.push(freund.hometown_location.name);
                 };
               };
             };
