@@ -863,14 +863,15 @@ var $mapper = (function(){
           x.append($j('<section class="content"><img src="facebook_connect.gif" alt="facebook connect" class="button"/></section>').click(login));
           break
         case "loading":
-          x.find("section.content").empty();
+          x.find(".content").empty();
           parent.log.trace(x);
           x.append($j('<div>Wird geladen </span> <img src="loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
           break;
         case "result":
+          x.empty();
           var freunde = options.freunde;
           
-          var geladen = $j('<p></p>').appendTo(x);
+          var geladen = $j('<p class="content"></p>').appendTo(x);
           geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
           geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
           geladen.append($j('<span><b>'+freunde.alle_adressen_length+'</b> Adressen gesamt &nbsp; </span>'));
