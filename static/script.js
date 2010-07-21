@@ -951,10 +951,12 @@ var $mapper = (function(){
                 for(var key in freunde_mit_adresse){
                   var freund = freunde_mit_adresse[key];
                   if(freund.current_location){
-                    addd(freunde, freund.current_location);
+                    freund.current_location.point = positionen[freund.current_location.geoid];
+                    addd(freund, freund.current_location);
                   };
                   if(freund.hometown_location && freund.current_location != freund.hometown_location){
-                    addd(freunde, freund.hometown_location);
+                    freund.hometown_location.point = positionen[freund.hometown_location.geoid];
+                    addd(freund, freund.hometown_location);
                   };
                 
                 };
