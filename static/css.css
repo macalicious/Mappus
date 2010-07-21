@@ -84,7 +84,27 @@ button.add {
    
 }
 button.add:active {background-color:#EEE;} 
-#searchbar {background:#CFCFCF; padding:0 3px; margin-top:30px; line-height:12px; font-size:16px;}
+#searchbar {/*background:#CFCFCF;*/ padding:0 3px; margin-top:30px; line-height:12px; font-size:16px; background: 
+    
+    -webkit-gradient(
+         linear,
+         left bottom,
+         left top,
+         color-stop(0, #d3d3d3),
+         color-stop(1, #eee)
+       );
+    border-top:1px solid white;
+    outline:1px solid #aaa;
+    outline-left:0px;
+    /*-webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0.20, rgba(180,180,180, 1)),
+          color-stop(0.80, rgba(207,207,207, 1)),
+          color-stop(1, rgba(220,220,220,1))
+        );*/
+}
 #aside .content {
     overflow-y: scroll;
 /*    -webkit-box-flex: 1;
@@ -120,8 +140,8 @@ var {display:none;}
     -moz-border-radius:10px;
     border-radius:10px;
     -webkit-box-shadow: 0px 5px 30px #888; padding: 30px;
-    -moz-box-shadow: 0px 5px 30px #888; padding: 30px;
-    box-shadow: 0px 5px 30px #888; padding: 30px;
+    -moz-box-shadow: 0px 5px 30px #888; 
+    box-shadow: 0px 5px 30px #888; 
     text-align: center;
     background-image: url('http://www.bing.com/fd/hpk2/BluestripeSnappers_DE-DE3161759250.jpg');background-position:100% 30%;
 }
@@ -152,7 +172,7 @@ var {display:none;}
     width:350px;
     padding:10px 10px 5px 10px;
     position: absolute;
-    top: 40%; left:50%;
+    top: 45%; left:50%;
     
 }
 #modal h3 { margin: 6px 0 14px 0;}
@@ -170,6 +190,45 @@ var {display:none;}
 #modal footer a {margin-left:7px;}
 #modal footer a.big {font-size:1.5em;} 
 
+#modal nav {
+    position:absolute;
+    top:-24px;
+}
+#modal nav a {
+    padding:3px 6px 1px 6px;
+    display:inline-block;
+    background: #F2F3F4;
+    border: 1px solid #fff;
+    position:relative;
+    color: #999;
+    text-decoration:none;
+    -webkit-border-radius: 5px;
+    -webkit-border-bottom-left-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+   
+    -webkit-box-shadow:inset 0 -1px 1px rgba(0,0,0,0.05);
+    
+    z-index:45;
+ }
+
+#modal nav a.active {
+    border-bottom-color:#F2F3F4;
+    background: #F2F3F4;
+    color:#000;
+    -webkit-box-shadow:none;
+    z-index:50;
+    }
+#modal nav a:hover {
+  color:#888;
+  border-color:#cfcfcf;
+  border-bottom-color:white;
+}
+#modal nav a.active:hover {
+  border-bottom-color:#F2F3F4;
+  background: #F2F3F4;
+  color:#000;
+}   
+  
 #fancybox-outer {
     border: 5px solid #fff !important;
 	-webkit-border-radius:10px;

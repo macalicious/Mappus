@@ -855,12 +855,16 @@ var $mapper = (function(){
     var modal;
     
     function ui(name, options){
-      var x = modal_content.empty();
+      var x = modal_content;
       switch(name){
-        case "start":
-          x.append($j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').click(login));
+        case "facebook":
+          x.empty();
+          x.append($j("<h3>Facebook</h3><hr />"));
+          x.append($j('<section class="content"><img src="facebook_connect.gif" alt="facebook connect" class="button"/></section>').click(login));
           break
         case "loading":
+          x.find("section.content").empty();
+          parent.log.trace(x);
           x.append($j('<div>Wird geladen </span> <img src="loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
           break;
         case "result":
@@ -879,6 +883,14 @@ var $mapper = (function(){
           
           var weiter = x.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(options.click_anzeigen);
           break;
+        case "allgemein":
+          x.empty();
+          $j('<h3>Hallo</h3><hr/>').appendTo(x);
+          break;
+        case "gemeinde":
+          x.empty();
+          $j('<h3>Gemeinde</h3><hr/>').appendTo(x);
+          break;
       };
       return x;
     }
@@ -895,7 +907,7 @@ var $mapper = (function(){
           fb_querry(fb_query_cb);
         } else {
           parent.log.info('Facebook: User isn\'t logged in');
-          ui("start");
+          ui("facebook");
         };
       };
         
@@ -1009,11 +1021,31 @@ var $mapper = (function(){
     
     this.modal = function(new_modal_fn){
       var box = $j("<div></div>");
-
-      box.append($j("<h3>Facebook</h3><hr />"));
+      var nav = $j("<nav></nav>").appendTo(box);
+      
+      function modal_change(nr){
+        box.find("nav a").removeClass("active");
+        box.find("nav a").eq(nr).addClass("active");
+        switch(nr){
+          case 0:
+            ui("allgemein");
+            break;
+          case 1:
+            ui("facebook");
+            break;
+          case 2:
+            ui("gemeinde");
+            break;
+        };
+      };
+      //.toggleClass()
+      nav.append($j('<a href="javascript:;">Allgemein</a>').click(function(){modal_change(0)}));
+      nav.append($j('<a href="javascript:;" class="active">Facebook</a>').click(function(){modal_change(1)}));
+      nav.append($j('<a href="javascript:;">Gemeinde</a>').click(function(){modal_change(2)}));
+      
       var content = $j('<section></section>').appendTo(box);
       modal_content = content;
-      ui("start");
+      ui("facebook");
       
       var footer = $j("<footer><hr/></footer>").appendTo(box);
       var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
