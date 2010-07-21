@@ -865,6 +865,7 @@ var $mapper = (function(){
           break;
         case "result":
           var freunde = options.freunde;
+          
           var geladen = $j('<p></p>').appendTo(x);
           geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
           geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
@@ -925,7 +926,8 @@ var $mapper = (function(){
           };
           return {
             mit_adresse: freunde_mit_adresse,
-            alle_adressen: id_counter,
+            alle_adressen: adressen,
+            alle_adressen.length: adressen.length,
             alle: result
           };
         })(result);
