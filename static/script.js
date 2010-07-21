@@ -851,12 +851,40 @@ var $mapper = (function(){
           query.wait(function(result){ fn(result); });
     };
     
+    var modal_content;
+    var modal;
     
+    function ui(name, options){
+      var x = modal_content.empty();
+      switch(){
+        case "start":
+          x.append($j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').click(login));
+          break
+        case "loading":
+          x.append($j('<div>Wird geladen </span> <img src="loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
+          break;
+        case "result":
+          var freunde = options.freunde;
+          var geladen = $j('<p></p>').appendTo(x);
+          geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
+          geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
+          geladen.append($j('<span><b>'+freunde.alle_adressen.length+'</b> Adressen gesamt &nbsp; </span>'));
+          
+          var form = $j('<fieldset class="large" id="form"></fieldset>').html(
+            '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
+            + ' <span class="input"><input type="checkbox" id="current" checked value="current" /> <label for="current">Aktueller Wohnort</label></span>'
+            + '<br/>der Freunde auf der Karte anzeigen.'
+          ).appendTo(x);
+          
+          var weiter = x.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(options.click_anzeigen);
+          break;
+      };
+      return x;
+    }
   
-    function login(content){
+    function login(){
       
-      var loading = $j('<div>Wird geladen </span> <img src="loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center");
-      content.replaceWith(loading); 
+      
       parent.log.trace("loading_el: ", loading);
       FB.login(cb, { perms: 'friends_hometown,friends_location' });
       function cb(response){
@@ -864,9 +892,14 @@ var $mapper = (function(){
         if (response.session) {
           parent.log.info('Facebook: User is logged in');
 
-          var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-          query.wait(function(result){ 
-            parent.log.trace("Facebook Query: ", {result:result});
+         fb_querry(cb);
+         function cb(result){
+           parent.log.trace("Facebook Query: ", {result:result});
+           
+         };
+         
+         (function(result){ 
+            
             
             var freunde = (function(result){
               var id_counter = 0;
@@ -899,75 +932,23 @@ var $mapper = (function(){
               };
             })(result);
 
-          
-            var content = $j('<section></section>');
+            var modal = ui("result", {freunde:freunde, click_anzeigen: anzeigen});
             
-            var geladen = $j('<p></p>').appendTo(content);
-            geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
-            geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
-            geladen.append($j('<span><b>'+freunde.alle_adressen.length+'</b> Adressen gesamt &nbsp; </span>'));
-            
-            var form = $j('<fieldset class="large" id="form"></fieldset>').html(
-              '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
-              + ' <span class="input"><input type="checkbox" id="current" checked value="current" /> <label for="current">Aktueller Wohnort</label></span>'
-              + '<br/>der Freunde auf der Karte anzeigen.'
-            ).appendTo(content);
-            
-            loading.replaceWith(content);
-            
-            var weiter = content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(function(){
-              var home = false,
-               current = false;
-              form.find(":checked").each(function(key, item){
+            function anzeigen(){
+              
+              // which locations should be shown?
+              var home = false, current = false;
+              modal.find(":checked").each(function(key, item){
                 if(item.value=="home"){home=true;};
                 if(item.value=="current"){current=true;};
               });
+              
               parent.log.trace("adressen: ", freunde.alle_adressen);
               
-              parent.geocode(freunde.alle_adressen, function(positionen){
-                parent.log.trace("geocode result: ", positionen );
-                
-                
-                var markers = [];
-                function addd(freund, loc){
-                  var html = $j("<address></address>");
-                  html.append('<span>'+freund.name+'</span>').append("<br />");
-                  html.append('<span>'+loc.city+", "+loc.state+", "+loc.country+'</span>').append("<br />");
-
-                  var obj = {
-                    title: freund.name,
-                    point: loc.point,
-                    html: html[0]
-                  };
-
-                  var dataobj = parent.record.add(obj);
-
-                  var marker = new parent.Marker({point:obj.point, title:obj.title});
-                  parent.record.set(dataobj.id, "marker", marker);
-                  markers.push(marker);
-
-                  var infowindow = new parent.set_infowindow(dataobj);
-                  parent.record.set(dataobj.id, "infowindow", infowindow);
-                  
-                };
-                
-                
-                for(var key in freunde.mit_adresse){
-                  var freund = freunde.mit_adresse[key];
-                  if(freund.current_location){
-                    freund.current_location.point = positionen[freund.current_location.geoid];
-                    addd(freund, freund.current_location);
-                  };
-                  if(freund.hometown_location && freund.current_location != freund.hometown_location){
-                    freund.hometown_location.point = positionen[freund.hometown_location.geoid];
-                    addd(freund, freund.hometown_location);
-                  };
-                
-                };
-                parent.render_cluster(markers);
-              });
-              
-            });
+              ui("loading");
+              parent.geocode(freunde.alle_adressen, fb_geocode);
+            };
+            
           });
       
         } else {
@@ -976,20 +957,67 @@ var $mapper = (function(){
       };
 
     };
+    function fb_querry(cb){
+      var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+      query.wait(cb);
+    };
+    
+    function fb_geocode(positionen){
+      parent.log.trace("geocode result: ", positionen );
+      
+      var markers = [];
+      function add_marker(freund, loc){
+        var html = $j("<address></address>");
+        html.append('<span>'+freund.name+'</span>').append("<br />");
+        html.append('<span>'+loc.city+", "+loc.state+", "+loc.country+'</span>').append("<br />");
 
+        var obj = {
+          title: freund.name,
+          point: loc.point,
+          html: html[0]
+        };
+
+        var dataobj = parent.record.add(obj);
+
+        var marker = new parent.Marker({point:obj.point, title:obj.title});
+        parent.record.set(dataobj.id, "marker", marker);
+        markers.push(marker);
+
+        var infowindow = new parent.set_infowindow(dataobj);
+        parent.record.set(dataobj.id, "infowindow", infowindow);
+        
+      };
+      
+      
+      for(var key in freunde.mit_adresse){
+        var freund = freunde.mit_adresse[key];
+        if(freund.current_location){
+          freund.current_location.point = positionen[freund.current_location.geoid];
+          add_marker(freund, freund.current_location);
+        };
+        if(freund.hometown_location && freund.current_location != freund.hometown_location){
+          freund.hometown_location.point = positionen[freund.hometown_location.geoid];
+          add_marker(freund, freund.hometown_location);
+        };
+      
+      };
+      modal.close();
+      parent.render_cluster(markers);
+      
+    };
+    
     this.modal = function(new_modal_fn){
       var box = $j("<div></div>");
 
       box.append($j("<h3>Facebook</h3><hr />"));
       var content = $j('<section></section>').appendTo(box);
-      $j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').appendTo(content).click(function(){login(content);});
-
+      modal_content = content;
+      ui("start");
+      
       var footer = $j("<footer><hr/></footer>").appendTo(box);
       var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
-
-
-
-      var modal = new_modal_fn(box);
+      
+      modal = new_modal_fn(box);
       abbruch.click(modal.close);
     };
 
