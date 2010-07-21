@@ -953,7 +953,7 @@ var $mapper = (function(){
         parent.log.trace("adressen: ", freunde.alle_adressen);
       
         ui("loading");
-        parent.geocode(freunde.alle_adressen, function(pos){fb_geocode(pos, freunde);});
+        parent.geocode(freunde.alle_adressen, function(pos){fb_geocode(pos, freunde, home, current);});
       };
       
     };
@@ -963,7 +963,7 @@ var $mapper = (function(){
       query.wait(cb);
     };
     
-    function fb_geocode(positionen, freunde){
+    function fb_geocode(positionen, freunde, home, current){
       parent.log.trace("geocode result: ", positionen );
       
       var markers = [];
@@ -992,11 +992,11 @@ var $mapper = (function(){
       
       for(var key in freunde.mit_adresse){
         var freund = freunde.mit_adresse[key];
-        if(freund.current_location){
+        if(current && freund.current_location){
           freund.current_location.point = positionen[freund.current_location.geoid];
           add_marker(freund, freund.current_location);
         };
-        if(freund.hometown_location && freund.current_location != freund.hometown_location){
+        if(home && freund.hometown_location && freund.current_location != freund.hometown_location){
           freund.hometown_location.point = positionen[freund.hometown_location.geoid];
           add_marker(freund, freund.hometown_location);
         };
