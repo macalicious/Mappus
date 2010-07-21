@@ -879,7 +879,7 @@ var $mapper = (function(){
                 };
                 if(freund.hometown_location && freund.current_location != freund.hometown_location){
                   adressen_anz++;
-                  adressen.push(freund.freund.hometown_location);
+                  adressen.push(freund.hometown_location);
                 };
               };
             };
@@ -910,7 +910,7 @@ var $mapper = (function(){
               parent.log.trace("current", current?"true":"false");
               
               parent.geocode(adressen, function(positionen){
-                parent.log.trace("geocode result: ", positionen);
+                parent.log.trace("geocode result: ", positionen );
               });
               
               for(var key in result){
