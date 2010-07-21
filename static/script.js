@@ -493,6 +493,7 @@ var $mapper = (function(){
       });
       string = string.replace(/,\s+/ ,"+");
       string = string.replace(/&/ ,",");
+      $this.log.trace("string: ",string);
       $j.ajax({
         url: "geocode",
         dataType: "json",
