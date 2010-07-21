@@ -57,12 +57,14 @@ input.search {
     -moz-border-radius: 4px;
     border-radius: 4px;
     width:250px;
+    /*border:1px solid transparent !important;*/
+    border:1px solid #999;
 }
 /*input.search:focus {background-position: 100% -3px;}*/
 input.search, button.add {
     background-color:white;
     padding: 4px;
-    border:1px solid transparent !important;
+    
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -74,17 +76,42 @@ button.add {
     cursor:pointer;
     position:relative;
     font-weight:900;
-    color: #ACACAC;
-    
-    background-image: url("plus Kopie.png");
-    background-position: 7px 7px;
-    background-repeat: no-repeat;
-    width: 25px;
-    top:0px;
-   
+    color: #a3a3a3;
+    padding:0;
+    /*background-image: url("plus Kopie.png");
+        background-position: 7px 7px;
+        background-repeat: no-repeat;*/
+       
+    border:1px solid #999;
+    width: 24px;
+    height: 24px;
+    top:2px;
+    font-size:15px;
+    text-align:center;
+    text-shadow: 1px 1px 0px #fff;
 }
+
+button.add .inner {
+    
+    background:-webkit-gradient(
+             linear,
+             left bottom,
+             left top,
+             color-stop(0, #eee),
+             color-stop(1, #fff)
+           );
+    border:1px solid white;  
+    position:relative;
+    height:100%;
+    width: 20px;
+    height:20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
 button.add:active {background-color:#EEE;} 
-#searchbar {/*background:#CFCFCF;*/ padding:0 3px; margin-top:30px; line-height:12px; font-size:16px; background: 
+#searchbar {/*background:#CFCFCF;*/ padding:0 3px; margin-top:0px; line-height:12px; font-size:16px; background: 
     
     -webkit-gradient(
          linear,
@@ -95,7 +122,7 @@ button.add:active {background-color:#EEE;}
        );
     border-top:1px solid white;
     outline:1px solid #aaa;
-    outline-left:0px;
+    margin-bottom:1px;
     /*-webkit-gradient(
           linear,
           left bottom,
@@ -172,7 +199,7 @@ var {display:none;}
     width:350px;
     padding:10px 10px 5px 10px;
     position: absolute;
-    top: 45%; left:50%;
+    top: 40%; left:50%;
     
 }
 #modal h3 { margin: 6px 0 14px 0;}
@@ -197,7 +224,7 @@ var {display:none;}
 #modal nav a {
     padding:3px 6px 1px 6px;
     display:inline-block;
-    background: #F2F3F4;
+    background: #F0F0F0;
     border: 1px solid #fff;
     position:relative;
     color: #999;

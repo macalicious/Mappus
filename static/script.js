@@ -263,7 +263,7 @@ var $mapper = (function(){
           r += '<div id="map_canvas"></div>';
           r += '<aside id="aside">';
             r += '<div id="searchbar">';
-              r += '<button class="add"></button>';
+              r += '<button class="add"><div class="inner">+</div></button>';
               r += '<input type="text" class="search" />';
             r += '</div>';
             r += '<div class="content"><ul id="datenliste"></ul></div>';
