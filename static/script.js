@@ -488,10 +488,11 @@ var $mapper = (function(){
     function geocode_serverside(array, fn){
       var string = "";
       each(array, function(item){ 
-        if(string!=""){string+=",";};
+        if(string!=""){string+="&";};
         string+=item;
       });
-      
+      string = string.replace(/,\s+/ ,"+");
+      string = string.replace(/&/ ,",");
       $j.ajax({
         url: "geocode",
         dataType: "json",
