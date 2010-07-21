@@ -491,7 +491,7 @@ var $mapper = (function(){
         if(string!=""){string+="&";};
         string+=item;
       });
-      string = string.replace(/\s*,\s*/g ,"+");
+      string = string.replace(/\s*,*\s*/g ,"+");
       string = string.replace(/&/g ,",");
       $this.log.trace("string: ",string);
       $j.ajax({
