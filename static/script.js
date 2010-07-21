@@ -880,14 +880,14 @@ var $mapper = (function(){
                   parent.log.trace("freund: ",adressen_anz+": ", freund.current_location);
                   var f = freund.current_location;
                  
-                  adressen[adressen_anz] =  f.city+", "+f.state+", "f.country;
+                  adressen[adressen_anz] =  f.city+", "+f.state+", "+f.country;
                   freund.current_location.geoid = adressen_anz;
                   adressen_anz++;
                 };
                 if(freund.hometown_location && freund.current_location != freund.hometown_location){
                   parent.log.trace("freund: ",adressen_anz+": ", freund.hometown_location);
                   var f = freund.hometown_location;
-                  adressen[adressen_anz] = f.city+", "+f.state+", "f.country;
+                  adressen[adressen_anz] = f.city+", "+f.state+", "+f.country;
                   freund.hometown_location.geoid = adressen_anz;
                   adressen_anz++;
                 };
