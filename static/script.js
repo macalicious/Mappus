@@ -868,40 +868,44 @@ var $mapper = (function(){
           query.wait(function(result){ 
             parent.log.trace("Facebook Query: ", {result:result});
             
-            var adressen_anz = 0;
-            var freunde_mit_adresse = [];
-            var adressen = {};    
-            
-            for(var key in result){
-              var freund = result[key];
-              if(freund.current_location || freund.hometown_location){
-                
-                if(freund.current_location){
-                  parent.log.trace("freund: ",adressen_anz+": ", freund.current_location);
-                  var f = freund.current_location;
-                 
-                  adressen[adressen_anz] =  f.city+", "+f.state+", "+f.country;
-                  freund.current_location.geoid = adressen_anz;
-                  adressen_anz++;
+            var freunde = (function(result){
+              var id_counter = 0;
+              var freunde_mit_adresse = [];
+              var adressen = {};     
+              for(var key in result){
+                var freund = result[key];
+                if(freund.current_location || freund.hometown_location){
+
+                  if(freund.current_location){
+                    var f = freund.current_location;
+                    adressen[id_counter] =  f.city+", "+f.state+", "+f.country;
+                    freund.current_location.geoid = id_counter;
+                    id_counter++;
+                  };
+                  if(freund.hometown_location && freund.current_location != freund.hometown_location){
+                    var f = freund.hometown_location;
+                    adressen[id_counter] = f.city+", "+f.state+", "+f.country;
+                    freund.hometown_location.geoid = id_counter;
+                    id_counter++;
+                  };
+
+                  freunde_mit_adresse.push(freund);
                 };
-                if(freund.hometown_location && freund.current_location != freund.hometown_location){
-                  parent.log.trace("freund: ",adressen_anz+": ", freund.hometown_location);
-                  var f = freund.hometown_location;
-                  adressen[adressen_anz] = f.city+", "+f.state+", "+f.country;
-                  freund.hometown_location.geoid = adressen_anz;
-                  adressen_anz++;
-                };
-                
-                freunde_mit_adresse.push(freund);
               };
-            };
+              return {
+                mit_adresse: freunde_mit_adresse,
+                alle_adressen: adressen,
+                alle: result
+              };
+            })(result);
+
           
             var content = $j('<section></section>');
             
             var geladen = $j('<p></p>').appendTo(content);
-            geladen.append($j('<span><b>'+result.length+'</b> Freunde &nbsp; </span>'));
-            geladen.append($j('<span><b>'+freunde_mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
-            geladen.append($j('<span><b>'+adressen_anz+'</b> Adressen gesamt &nbsp; </span>'));
+            geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
+            geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
+            geladen.append($j('<span><b>'+freunde.alle_adressen.length+'</b> Adressen gesamt &nbsp; </span>'));
             
             var form = $j('<fieldset class="large" id="form"></fieldset>').html(
               '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
@@ -918,9 +922,9 @@ var $mapper = (function(){
                 if(item.value=="home"){home=true;};
                 if(item.value=="current"){current=true;};
               });
-              parent.log.trace("adressen: ", adressen);
+              parent.log.trace("adressen: ", freunde.alle_adressen);
               
-              parent.geocode(adressen, function(positionen){
+              parent.geocode(freunde.alle_adressen, function(positionen){
                 parent.log.trace("geocode result: ", positionen );
                 
                 
@@ -948,8 +952,8 @@ var $mapper = (function(){
                 };
                 
                 
-                for(var key in freunde_mit_adresse){
-                  var freund = freunde_mit_adresse[key];
+                for(var key in freunde.mit_adresse){
+                  var freund = freunde.mit_adresse[key];
                   if(freund.current_location){
                     freund.current_location.point = positionen[freund.current_location.geoid];
                     addd(freund, freund.current_location);
