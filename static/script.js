@@ -949,7 +949,7 @@ var $mapper = (function(){
         parent.log.trace("adressen: ", freunde.alle_adressen);
       
         ui("loading");
-        parent.geocode(freunde.alle_adressen, fb_geocode);
+        parent.geocode(freunde.alle_adressen, function(pos){fb_geocode(pos, freunde);});
       };
       
     };
@@ -959,7 +959,7 @@ var $mapper = (function(){
       query.wait(cb);
     };
     
-    function fb_geocode(positionen){
+    function fb_geocode(positionen, freunde){
       parent.log.trace("geocode result: ", positionen );
       
       var markers = [];
