@@ -856,7 +856,7 @@ var $mapper = (function(){
     
     function ui(name, options){
       var x = modal_content.empty();
-      switch(){
+      switch(name){
         case "start":
           x.append($j('<img src="facebook_connect.gif" alt="facebook connect" class="button"/>').click(login));
           break
@@ -884,79 +884,77 @@ var $mapper = (function(){
   
     function login(){
       
-      
       parent.log.trace("loading_el: ", loading);
-      FB.login(cb, { perms: 'friends_hometown,friends_location' });
-      function cb(response){
+      FB.login(fb_login_cb, { perms: 'friends_hometown,friends_location' });
+      
+      function fb_login_cb(response){
         parent.log.trace('FB.login callback', response);
         if (response.session) {
           parent.log.info('Facebook: User is logged in');
-
-         fb_querry(cb);
-         function cb(result){
-           parent.log.trace("Facebook Query: ", {result:result});
-           
-         };
-         
-         (function(result){ 
-            
-            
-            var freunde = (function(result){
-              var id_counter = 0;
-              var freunde_mit_adresse = [];
-              var adressen = {};     
-              for(var key in result){
-                var freund = result[key];
-                if(freund.current_location || freund.hometown_location){
-
-                  if(freund.current_location){
-                    var f = freund.current_location;
-                    adressen[id_counter] =  f.city+", "+f.state+", "+f.country;
-                    freund.current_location.geoid = id_counter;
-                    id_counter++;
-                  };
-                  if(freund.hometown_location && freund.current_location != freund.hometown_location){
-                    var f = freund.hometown_location;
-                    adressen[id_counter] = f.city+", "+f.state+", "+f.country;
-                    freund.hometown_location.geoid = id_counter;
-                    id_counter++;
-                  };
-
-                  freunde_mit_adresse.push(freund);
-                };
-              };
-              return {
-                mit_adresse: freunde_mit_adresse,
-                alle_adressen: adressen,
-                alle: result
-              };
-            })(result);
-
-            var modal = ui("result", {freunde:freunde, click_anzeigen: anzeigen});
-            
-            function anzeigen(){
-              
-              // which locations should be shown?
-              var home = false, current = false;
-              modal.find(":checked").each(function(key, item){
-                if(item.value=="home"){home=true;};
-                if(item.value=="current"){current=true;};
-              });
-              
-              parent.log.trace("adressen: ", freunde.alle_adressen);
-              
-              ui("loading");
-              parent.geocode(freunde.alle_adressen, fb_geocode);
-            };
-            
-          });
-      
+          fb_querry(fb_query_cb);
         } else {
           parent.log.info('Facebook: User isn\'t logged in');
         };
       };
+        
+      function fb_query_cb(result){
+        parent.log.trace("Facebook Query: ", {result:result});
+      
+        var freunde = (function(result){
+          var id_counter = 0;
+          var freunde_mit_adresse = [];
+          var adressen = {};     
+          for(var key in result){
+            var freund = result[key];
+            if(freund.current_location || freund.hometown_location){
 
+              if(freund.current_location){
+                var f = freund.current_location;
+                adressen[id_counter] =  f.city+", "+f.state+", "+f.country;
+                freund.current_location.geoid = id_counter;
+                id_counter++;
+              };
+              if(freund.hometown_location && freund.current_location != freund.hometown_location){
+                var f = freund.hometown_location;
+                adressen[id_counter] = f.city+", "+f.state+", "+f.country;
+                freund.hometown_location.geoid = id_counter;
+                id_counter++;
+              };
+
+              freunde_mit_adresse.push(freund);
+            };
+          };
+          return {
+            mit_adresse: freunde_mit_adresse,
+            alle_adressen: adressen,
+            alle: result
+          };
+        })(result);
+
+        ui("result", {
+          freunde:freunde, 
+          click_anzeigen: function(){ anzeigen(freunde); }
+        );
+
+      };
+    
+      function anzeigen(freunde){
+      
+        // which locations should be shown?
+        var home = false, current = false;
+        modal_content.find(":checked").each(function(key, item){
+          if(item.value=="home"){home=true;};
+          if(item.value=="current"){current=true;};
+        });
+      
+        parent.log.trace("adressen: ", freunde.alle_adressen);
+      
+        ui("loading");
+        parent.geocode(freunde.alle_adressen, fb_geocode);
+      };
+      
     };
+    
     function fb_querry(cb){
       var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
       query.wait(cb);
