@@ -33,7 +33,8 @@ class MyApp < Sinatra::Base
     result = {}
 
     params[:jupitermap].split(",").each do |item|
-      result[URI.escape(item).to_s] = Google.geocode(item) unless result.has_key?(item) 
+      id, adresse = item.split("=");
+      result[id.to_s] = Google.geocode(adresse) unless result.has_key?(adresse) 
     end
     
     return result.to_json; 
