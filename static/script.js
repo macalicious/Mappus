@@ -885,6 +885,7 @@ var $mapper = (function(){
   
     function login(){
       
+      ui("loading");
       FB.login(fb_login_cb, { perms: 'friends_hometown,friends_location' });
       
       function fb_login_cb(response){
@@ -894,6 +895,7 @@ var $mapper = (function(){
           fb_querry(fb_query_cb);
         } else {
           parent.log.info('Facebook: User isn\'t logged in');
+          ui("start");
         };
       };
         
