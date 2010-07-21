@@ -869,7 +869,7 @@ var $mapper = (function(){
           var geladen = $j('<p></p>').appendTo(x);
           geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
           geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
-          geladen.append($j('<span><b>'+freunde.alle_adressen.length+'</b> Adressen gesamt &nbsp; </span>'));
+          geladen.append($j('<span><b>'+freunde.alle_adressen_length+'</b> Adressen gesamt &nbsp; </span>'));
           
           var form = $j('<fieldset class="large" id="form"></fieldset>').html(
             '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
@@ -927,7 +927,7 @@ var $mapper = (function(){
           return {
             mit_adresse: freunde_mit_adresse,
             alle_adressen: adressen,
-            alle_adressen.length: id_counter,
+            alle_adressen_length: id_counter,
             alle: result
           };
         })(result);
