@@ -867,15 +867,19 @@ var $mapper = (function(){
             
             var adressen_anz = 0;
             var freunde_mit_adresse = [];
-                
+            var adressen = [];    
+            
             for(var key in result){
               var freund = result[key];
               if(freund.current_location || freund.hometown_location){
                 freunde_mit_adresse.push(freund);
-                if(freund.current_location && freund.hometown_location && freund.current_location != freund.hometown_location){
-                  adressen_anz = adressen_anz +2;
-                }else{
+                if(freund.current_location){
                   adressen_anz++;
+                  adressen.push(freund.current_location);
+                };
+                if(freund.hometown_location && freund.current_location != freund.hometown_location){
+                  adressen_anz++;
+                  adressen.push(freund.freund.hometown_location);
                 };
               };
             };
@@ -904,6 +908,14 @@ var $mapper = (function(){
               });
               parent.log.trace("home", home?"true":"false");
               parent.log.trace("current", current?"true":"false");
+              
+              parent.geocode(adressen, function(positionen){
+                parent.log.trace("geocode result: ", positionen);
+              });
+              
+              for(var key in result){
+                
+              };
             });
           });
       
