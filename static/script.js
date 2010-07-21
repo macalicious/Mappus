@@ -878,7 +878,7 @@ var $mapper = (function(){
                 
                 if(freund.current_location){
                   parent.log.trace("freund: ",adressen_anz+": ", freund.current_location);
-                  var f = freund.current_location
+                  var f = freund.current_location;
                  
                   adressen[adressen_anz] =  f.city+", "+f.state+", "f.country;
                   freund.current_location.geoid = adressen_anz;
