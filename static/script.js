@@ -927,7 +927,7 @@ var $mapper = (function(){
           return {
             mit_adresse: freunde_mit_adresse,
             alle_adressen: adressen,
-            alle_adressen.length: adressen.length,
+            alle_adressen.length: id_counter,
             alle: result
           };
         })(result);
