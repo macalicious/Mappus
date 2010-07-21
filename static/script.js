@@ -934,7 +934,7 @@ var $mapper = (function(){
         ui("result", {
           freunde:freunde, 
           click_anzeigen: function(){ anzeigen(freunde); }
-        );
+        });
 
       };
     
