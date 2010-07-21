@@ -487,10 +487,11 @@ var $mapper = (function(){
     
     function geocode_serverside(array, fn){
       var string = "";
-      each(array, function(item){ 
-        if(string!=""){string+="&";};
-        string+=item;
-      });
+      for(var key in array){
+         if(string!=""){string+="&";};
+         string+= key + "=" + array[key];
+      };
+     
       string = string.replace(/\s*[,]*\s+/g ,"+");
       string = string.replace(/&/g ,",");
       $this.log.trace("string: ",string);
@@ -869,20 +870,24 @@ var $mapper = (function(){
             
             var adressen_anz = 0;
             var freunde_mit_adresse = [];
-            var adressen = [];    
+            var adressen = {};    
             
             for(var key in result){
               var freund = result[key];
               if(freund.current_location || freund.hometown_location){
-                freunde_mit_adresse.push(freund);
+                
                 if(freund.current_location){
+                  adressen[adressen_anz] = freund.current_location.name;
+                  freund.current_location.geoid = adressen_anz;
                   adressen_anz++;
-                  adressen.push(freund.current_location.name);
                 };
                 if(freund.hometown_location && freund.current_location != freund.hometown_location){
+                  adressen[adressen_anz] = freund.hometown_location.name;
+                  freund.hometown_location.geoid = adressen_anz;
                   adressen_anz++;
-                  adressen.push(freund.hometown_location.name);
+                  
                 };
+                freunde_mit_adresse.push(freund);
               };
             };
           
