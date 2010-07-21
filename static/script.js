@@ -882,7 +882,7 @@ var $mapper = (function(){
                   freund.current_location.geoid = adressen_anz;
                   adressen_anz++;
                 };
-                if(var fh = freund.hometown_location && freund.current_location != freund.hometown_location){
+                if(freund.hometown_location && freund.current_location != freund.hometown_location){
                   parent.log.trace("freund: ",adressen_anz+": ", freund.hometown_location);
                   adressen[adressen_anz] = freund.hometown_location.name;
                   freund.hometown_location.geoid = adressen_anz;
