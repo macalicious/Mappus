@@ -870,7 +870,7 @@ var $mapper = (function(){
         case "result":
           x.empty();
           var freunde = options.freunde;
-          
+          x.append($j("<h3>Facebook</h3><hr />"));
           var geladen = $j('<p class="content"></p>').appendTo(x);
           geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
           geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
