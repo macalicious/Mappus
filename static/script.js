@@ -906,8 +906,7 @@ var $mapper = (function(){
                 if(item.value=="home"){home=true;};
                 if(item.value=="current"){current=true;};
               });
-              parent.log.trace("home", home?"true":"false");
-              parent.log.trace("current", current?"true":"false");
+              parent.log.trace("adressen: ", adressen);
               
               parent.geocode(adressen, function(positionen){
                 parent.log.trace("geocode result: ", positionen );
