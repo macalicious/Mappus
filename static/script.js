@@ -884,7 +884,6 @@ var $mapper = (function(){
   
     function login(){
       
-      parent.log.trace("loading_el: ", loading);
       FB.login(fb_login_cb, { perms: 'friends_hometown,friends_location' });
       
       function fb_login_cb(response){
