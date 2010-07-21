@@ -922,11 +922,45 @@ var $mapper = (function(){
               
               parent.geocode(adressen, function(positionen){
                 parent.log.trace("geocode result: ", positionen );
+                
+                
+                var markers = [];
+                function addd(freund, loc){
+                  var html = $j("<address></address>");
+                  html.append('<span>'+freund.name+'</span>').append("<br />");
+                  html.append('<span>'+loc.city+", "+loc.state+", "+loc.country+'</span>').append("<br />");
+
+                  var obj = {
+                    title: freund.name,
+                    point: loc.point,
+                    html: html[0]
+                  };
+
+                  var dataobj = parent.record.add(obj);
+
+                  var marker = new parent.Marker({point:obj.point, title:obj.title});
+                  parent.record.set(dataobj.id, "marker", marker);
+                  markers.push(marker);
+
+                  var infowindow = new parent.set_infowindow(dataobj);
+                  parent.record.set(dataobj.id, "infowindow", infowindow);
+                  
+                };
+                
+                
+                for(var key in freunde_mit_adresse){
+                  var freund = freunde_mit_adresse[key];
+                  if(freund.current_location){
+                    addd(freunde, freund.current_location);
+                  };
+                  if(freund.hometown_location && freund.current_location != freund.hometown_location){
+                    addd(freunde, freund.hometown_location);
+                  };
+                
+                };
+                parent.render_cluster(markers);
               });
               
-              for(var key in result){
-                
-              };
             });
           });
       
