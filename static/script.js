@@ -884,7 +884,7 @@ var $mapper = (function(){
             + '<br/>der Freunde auf der Karte anzeigen.'
           ).appendTo(x);
           
-          var weiter = x.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(options.click_anzeigen);
+          var weiter = modal_content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(options.click_anzeigen);
           break;
         case "allgemein":
           x.empty();
