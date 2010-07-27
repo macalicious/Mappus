@@ -138,7 +138,7 @@ button.add:active {background-color:#EEE;}
     -moz-box-flex: 1;
     box-flex: 1;*/
     height:100%;
-    padding-top:10px !important;
+    padding-top:0px !important;
     
     width: 300px;
     margin:0; padding:0px;
@@ -147,9 +147,23 @@ button.add:active {background-color:#EEE;}
     position:relative;
     user-select: none;
 }
-#datenliste li {cursor:pointer;}
+
+
+#datenliste {list-style:none;padding:0;margin:0;}
+#datenliste li {
+    cursor:pointer;
+    padding:5px 15px;
+    border-top:1px solid white;
+    border-bottom:1px solid #E2E2E2;
+}
+#datenliste br {display:none;}
+/*
+#datenliste li:nth-child(odd){background:transparent;}
+#datenliste li:nth-child(even){background:#dcebf4;}
+
+*/
 #datenliste li:hover {background:#FFF8E7;}
-var {display:none;}
+
 
 
 /* ============== */
@@ -199,7 +213,7 @@ var {display:none;}
     width:350px;
     padding:10px 10px 5px 10px;
     position: absolute;
-    top: 40%; left:50%;
+    top: 45%; left:50%;
     
 }
 #modal h3 { margin: 6px 0 14px 0;}
