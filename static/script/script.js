@@ -227,6 +227,58 @@ function LLog(){
 };
 
 
+/*  
+ *  Mapperobject
+ *  {
+ *    titel: String
+ *    items: Array of MarkerObjects
+ *    
+ *  }
+ *
+ *  MarkerObject 
+ *  {
+ *    search_string: String
+ *    point: GMap_Point
+ *    marker: GMap_Marker
+ *    infowindow: GMap_Infowindow
+ *    info_html: "string"
+ *    visible: Boolean 
+ *  }
+ */ 
+
+
+function DevTool(){
+  var toolbar = $j('<div id="devtool"></div>').appendTo($j("body")); 
+  toolbar.css({
+    'display': 'none',
+    'position': 'absolute',
+    'top': 0,
+    'left': 0,
+    'z-index': 999,
+    'background': '#ffffff'
+  });
+  $j('<a href="javascript:;">relode CSS</a>').click(relodeCSS).appendTo(toolbar);
+  
+  function open(){
+    toolbar.fadeIn('fast');
+  };
+  function close(){
+    toolbar.fadeOut('fast');
+  };
+  
+  function relodeCSS(){
+    void(function(){var i,a,s;a=document.getElementsByTagName('link');for(i=0;i<a.length;i++){s=a[i];if(s.rel.toLowerCase().indexOf('stylesheet')>=0&&s.href) {var h=s.href.replace(/(&|%5C?)forceReload=\d+/,'');s.href=h+(h.indexOf('?')>=0?'&':'?')+'forceReload='+(new Date().valueOf())}}})();
+  };
+  
+  $j(document).bind('mousemove',function(e){ 
+      if(e.pageY < 20){
+        open();
+      } else if(e.pageY > 30){
+        close();
+      };
+  });
+};
+
 
 
 
@@ -255,6 +307,8 @@ var $mapper = (function(){
     
   };
   
+  
+  
   this.ui = {
     body: function(){
       var r  = '<div id="view2">';
@@ -278,7 +332,7 @@ var $mapper = (function(){
           ui.sidebar.show(result);
         }
       });
-      $j("#aside").click(function(){
+      $j("#searchbar").click(function(){
         void(function(){var i,a,s;a=document.getElementsByTagName('link');for(i=0;i<a.length;i++){s=a[i];if(s.rel.toLowerCase().indexOf('stylesheet')>=0&&s.href) {var h=s.href.replace(/(&|%5C?)forceReload=\d+/,'');s.href=h+(h.indexOf('?')>=0?'&':'?')+'forceReload='+(new Date().valueOf())}}})();
       });
       function set_height(){
@@ -488,20 +542,20 @@ var $mapper = (function(){
   this.geocode = function(query, gfn){
     
     function geocode_serverside(array, fn){
-      var string = "";
+      var strings = {};
       for(var key in array){
-         if(string!=""){string+="&";};
-         string+= key + "=" + array[key];
+         strings[key] = array[key];
       };
      
-      string = string.replace(/\s*[,]*\s+/g ,"+");
-      string = string.replace(/&/g ,",");
-      $this.log.trace("string: ",string);
+      //string = string.replace(/\s*[,]*\s+/g ,"+");
+      //string = string.replace(/&/g ,",");
+      $this.log.trace("strings: ",strings);
       $j.ajax({
         url: "geocode",
         dataType: "json",
-        data: ({jupitermap : string}),
+        data: ({jupitermap : strings}),
         success: function(result){
+          console.log("fertig", result);
           var points = {};
           each(result, function(index, string){
             var a = string.split(",");
@@ -627,9 +681,16 @@ var $mapper = (function(){
   
   var sidebar = {
     add: function(obj){
-      var li = $j('<li></li>').appendTo($j('#datenliste'));
+      var li = $j('<li class="item"></li>').appendTo($j('#datenliste'));
       $j('<strong>'+obj.title+'</strong><br />').appendTo(li);
-      $j('<small>'+obj.adresse+'</small><br />').appendTo(li);
+      $j('<small> '+obj.ort+', '+obj.land+'</small><br />').appendTo(li);
+      $this.log.trace(obj);
+      var adressen = $j('<ul class="adressen slide"></ul>').appendTo(li).click(function(){return false;});
+      var fff = ["Nr 1", "Nr 2"];
+      
+      for(var key in fff){
+        adressen.append("<li>"+fff[key]+"</li>");
+      };
       
       $j(li).data("record_id", obj.id);
       
@@ -637,10 +698,43 @@ var $mapper = (function(){
       
       return li;
     },
-    click: function(){      
-      var id = $j(this).data("record_id");
+    click: function(){
+      var li = $j(this);
+      var slide = li.find('.slide');
+      var is_slide = slide.length != 0;
+      
+      
+      if(window.active_mensch){
+        window.active_mensch.removeClass("active");
+        
+        if(is_slide){
+          window.active_mensch.animate({"margin-bottom": 0},"fast");
+          window.active_mensch.find('.slide').slideUp("fast");
+        };
+        
+        if(window.active_mensch.html() == li.html()){
+          window.active_mensch = false; 
+          return;
+        };
+      };
+      
+      window.active_mensch = li.addClass("active");
+      
+      if(is_slide){
+        li.animate({
+          'margin-bottom': slide.height()+5
+          }, "fast");
+        slide.slideDown("fast");
+      };
+            
+      var id = li.data("record_id");
       var obj = record.all()[id];
       
+      if(!is_slider){
+        this.click_to_marker(obj);
+      }; 
+    },
+    click_to_marker: function(obj){
       if(window.openinfowindow){window.openinfowindow.close();};
       obj.infowindow.open(gmap,obj.marker);
       window.openinfowindow = obj.infowindow;
@@ -862,12 +956,12 @@ var $mapper = (function(){
         case "facebook":
           x.empty();
           x.append($j("<h3>Facebook</h3><hr />"));
-          x.append($j('<section class="content"><img src="facebook_connect.gif" alt="facebook connect" class="button"/></section>').click(login));
+          x.append($j('<section class="content"><img src="image/facebook_connect.gif" alt="facebook connect" class="button"/></section>').click(login));
           break
         case "loading":
           var x = x.find(".content").empty();
           parent.log.trace(x);
-          x.append($j('<div>Wird geladen </span> <img src="loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
+          x.append($j('<div>Wird geladen </span> <img src="image/loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
           break;
         case "result":
           var x = x.find(".content").empty();
@@ -1097,7 +1191,8 @@ var $mapper = (function(){
             strasse: item.find("strasse").text(),
             ort: item.find("ort").text(),
             plz: item.find("plz").text(),
-            point: new google.maps.LatLng(a[1],a[0], 0)
+            point: new google.maps.LatLng(a[1],a[0], 0),
+            land: item
           };
           if(!window.item){window.item = item};
           menschen.push(mensch);
@@ -1117,11 +1212,13 @@ var $mapper = (function(){
         html.append(item.vorname + " " + item.nachname).append("<br />");
         html.append(item.strasse).append("<br />");
         html.append(item.plz + " " + item.ort).append("<br />");
-        
+        parent.log.trace('# #', item);
         var obj = {
           title: item.vorname + " " + item.nachname,
           plz: item.plz,
           ort: item.ort,
+          strasse: item.strasse,
+          land: item.land,
           point: item.point,
           html: html[0]
         };
@@ -1150,4 +1247,5 @@ var $mapper = (function(){
  
 $j(document).ready(function($){
   $mapper.initialize();
+  new DevTool();
 });

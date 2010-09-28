@@ -31,12 +31,10 @@ class MyApp < Sinatra::Base
   
   get '/geocode' do
     result = {}
-
-    params[:jupitermap].split(",").each do |item|
-      id, adresse = item.split("=");
-      result[id.to_s] = Google.geocode(adresse) unless result.has_key?(adresse) 
+    puts params[:jupitermap].inspect
+    params[:jupitermap].each do |key, value|
+      result[key.to_s] = Google.geocode(value) #unless result.has_key?(adresse) 
     end
-    
     return result.to_json; 
   end
   

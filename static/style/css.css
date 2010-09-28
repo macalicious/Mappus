@@ -150,7 +150,7 @@ button.add:active {background-color:#EEE;}
 
 
 #datenliste {list-style:none;padding:0;margin:0;}
-#datenliste li {
+#datenliste li.item {
     cursor:pointer;
     padding:5px 15px;
     border-top:1px solid white;
@@ -162,9 +162,21 @@ button.add:active {background-color:#EEE;}
 #datenliste li:nth-child(even){background:#dcebf4;}
 
 */
-#datenliste li:hover {background:#FFF8E7;}
+#datenliste li.item:hover {background:#FFF8E7;}
 
+#datenliste li.active {
+    background: #FFF8E7;
+}
 
+#datenliste li ul.adressen {
+    padding:0; margin:10px 0 0 0;
+    list-style:none;
+    position:absolute;
+    display:none;
+}
+#datenliste li ul.adressen li {
+    
+}
 
 /* ============== */
 /* = Bootscreen = */
