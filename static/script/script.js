@@ -540,8 +540,9 @@ var $mapper = (function(){
   };
   
   this.geocode = function(query, gfn){
-    alert("jep");
+    
     function geocode_serverside(array, fn){
+      alert("jeppp");
       var strings = {};
       for(var key in array){
          strings[key] = array[key];
