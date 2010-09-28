@@ -542,7 +542,6 @@ var $mapper = (function(){
   this.geocode = function(query, gfn){
     
     function geocode_serverside(array, fn){
-      alert("jeppp");
       var strings = {};
       for(var key in array){
          strings[key] = array[key];
@@ -556,13 +555,14 @@ var $mapper = (function(){
         dataType: "json",
         data: ({jupitermap : strings}),
         success: function(result){
-          console.log("fertig", result);
+          console.log("geocode_serverside fertig", result);
           var points = {};
           each(result, function(index, string){
             var a = string.split(",");
             var point = new google.maps.LatLng(a[1],a[0], 0);
             points[index] = point;
           });
+          console.log(points);
           fn(points);
         },
         error: function(a, b, c){
