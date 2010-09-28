@@ -540,7 +540,7 @@ var $mapper = (function(){
   };
   
   this.geocode = function(query, gfn){
-    
+    alert("jep");
     function geocode_serverside(array, fn){
       var strings = {};
       for(var key in array){
