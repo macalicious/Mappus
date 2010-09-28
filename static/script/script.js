@@ -602,6 +602,7 @@ var $mapper = (function(){
     if(!opt){var opt = {};};
     
     function add_marker_to_map(opt){
+      console.log(opt);
       if(!opt.point){throw "$mapper.set_marker: point is not defined"};
       
       var marker_options = {position: opt.point};
