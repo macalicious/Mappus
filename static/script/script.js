@@ -1014,8 +1014,8 @@ var $mapper = (function(){
         
       function fb_query_cb(result){
         parent.log.trace("Facebook Query: ", {result:result});
-        parent.log.trace("Facebook Query in JSON: ", JSON.stringify(result));
-        alert(JSON.stringify(result));
+        //parent.log.trace("Facebook Query in JSON: ", JSON.stringify(result));
+        //alert(JSON.stringify(result));
         var freunde = (function(result){
           var id_counter = 0;
           var freunde_mit_adresse = [];
@@ -1052,7 +1052,7 @@ var $mapper = (function(){
           freunde:freunde, 
           click_anzeigen: function(){ anzeigen(freunde); }
         });
-
+        parent.log.trace("Facebook Query in JSON: ", JSON.stringify(freunde));
       };
     
       function anzeigen(freunde){
@@ -1252,3 +1252,5 @@ $j(document).ready(function($){
   $mapper.initialize();
   new DevTool();
 });
+
+var fb_freunde = [{"current_location":null,"hometown_location":null,"name":"Katrin Forytta","uid":"515419023"},{"current_location":null,"hometown_location":null,"name":"Matthias Heicke","uid":"549885395"},{"current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"name":"Meret Mueller","uid":"569011024"},{"current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"name":"Patrick Litsch","uid":"583577848"},{"current_location":null,"hometown_location":null,"name":"Miriam De","uid":"585127721"},{"current_location":{"city":"Utrecht","state":"Utrecht","country":"Netherlands","zip":"","id":"103157243058555","name":"Utrecht, Utrecht"},"hometown_location":{"city":"Utrecht","state":"Utrecht","country":"Netherlands","zip":"","id":"103157243058555","name":"Utrecht, Utrecht"},"name":"Eline Rentinck","uid":"595599117"},{"current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Ankara","state":"Ankara","country":"Turkey","zip":"","id":"106478736056198","name":"Ankara, Turkey"},"name":"Ebru Ceyhan","uid":"600042730"},{"current_location":null,"hometown_location":null,"name":"Rabs Fatz","...er-N\u00f6ll","uid":"100001023501105"},{"current_location":null,"hometown_location":null,"name":"Markus B\u00fccher","uid":"100001029047032"},{"current_location":null,"hometown_location":null,"name":"Mari Demant","uid":"100001047107829"},{"current_location":null,"hometown_location":null,"name":"Sabrina Reuter","uid":"100001139828833"},{"current_location":{"city":"Hartheim","state":"Baden-W\u00fcrttemberg","country":"Germany","zip":"","id":"104075542960971","name":"Hartheim"},"hometown_location":null,"name":"Natalie Salomon","uid":"100001195400538"},{"current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null,"name":"Kulturpalast Wiesbaden","uid":"100001232922608"},{"current_location":null,"hometown_location":null,"name":"Maxoman Soldberg","uid":"100001306672722"},{"current_location":null,"hometown_location":null,"name":"Ilona M\u00f6bus","uid":"100001348113620"},{"current_location":null,"hometown_location":null,"name":"Johanna Maria J\u00fcres","uid":"100001401288935"},{"current_location":null,"hometown_location":null,"name":"Anna-Magdalena Schorling","uid":"100001413930962"},{"current_location":null,"hometown_location":null,"name":"Jenny Schmid","uid":"100001512968286"},{"current_location":{"city":"Geisenheim","state":"Hessen","country":"Germany","zip":"","id":"109662679052177","name":"Geisenheim"},"hometown_location":null,"name":"Luna Hilkenbach","uid":"100001642845388"}];
