@@ -1052,7 +1052,7 @@ var $mapper = (function(){
           freunde:freunde, 
           click_anzeigen: function(){ anzeigen(freunde); }
         });
-        parent.log.trace("Facebook Query in JSON: ", JSON.stringify(freunde));
+        parent.log.trace("Facebook Query in JSON: ", JSON.stringify(freunde['mit_adresse']));
       };
     
       function anzeigen(freunde){
