@@ -33,6 +33,7 @@ class MyApp < Sinatra::Base
   
   get '/geocode' do
     result = {}
+    return result.to_json
     db = SQLite3::Database.new( "google_query_cach.db" )
     r1, r2 = 0, 0
     
