@@ -1015,7 +1015,7 @@ var $mapper = (function(){
       function fb_query_cb(result){
         parent.log.trace("Facebook Query: ", {result:result});
         parent.log.trace("Facebook Query in JSON: ", JSON.stringify(result));
-        
+        alert(JSON.stringify(result));
         var freunde = (function(result){
           var id_counter = 0;
           var freunde_mit_adresse = [];
