@@ -33,7 +33,7 @@ class MyApp < Sinatra::Base
   
   get '/geocode' do
     result = {}
-=begin    
+    
     db = SQLite3::Database.new( "google_query_cach.db" )
     r1, r2 = 0, 0
     
@@ -53,7 +53,7 @@ class MyApp < Sinatra::Base
     
     puts 'alle: ' << r1.inspect
     puts 'an google: ' << r2.inspect
-=end
+
     return result.to_json
   end
   
