@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'json'
 require 'httparty'
+require 'sqlite3'
 
 class Google
   include HTTParty
@@ -16,7 +17,8 @@ class Google
     if @cord
       @cord['Point']['coordinates']   
     else
-      geocode(ort)
+      puts @gResult
+      #geocode(ort)
     end
   end
 end
@@ -31,11 +33,27 @@ class MyApp < Sinatra::Base
   
   get '/geocode' do
     result = {}
+    db = SQLite3::Database.new( "google_query_cach.db" )
+    r1, r2 = 0, 0
+    
     puts params[:jupitermap].inspect
     params[:jupitermap].each do |key, value|
-      result[key.to_s] = Google.geocode(value) #unless result.has_key?(adresse) 
+      r1 += 1
+      rows = db.execute( "select result from cach where query='#{value}'" )
+      
+      if rows.empty?
+        r2 += 1
+        result[key.to_s] = Google.geocode(value)
+        db.execute( "insert into cach (query, result) values ('#{value}', '#{result[key.to_s]}')" )
+      else
+        result[key.to_s] = rows.first.first
+      end 
     end
-    return result.to_json; 
+    
+    puts 'alle: ' << r1.inspect
+    puts 'an google: ' << r2.inspect
+    
+    return result.to_json
   end
   
   get '/gemeinde.xml' do
