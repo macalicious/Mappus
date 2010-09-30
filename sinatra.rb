@@ -58,11 +58,11 @@ class MyApp < Sinatra::Base
         Cach.insert(:query => value, :result => result[key.to_s])
       else
         result[key.to_s] = row[:result]
-        if key == 3
-          puts "_____________"
-          puts row.inspect
-        end
       end 
+      if key == 3
+        puts "_____________"
+        puts row.inspect
+      end
     end
     
     puts 'alle: ' << r1.inspect
