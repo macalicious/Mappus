@@ -51,6 +51,11 @@ class MyApp < Sinatra::Base
     params[:jupitermap].each do |key, value|
       r1 += 1
       
+      if key == 3
+        puts "_____________"
+        puts row.inspect
+      end
+      
       row = Cach.where(:query=> value).first
       if row.nil?
         r2 += 1
@@ -59,10 +64,6 @@ class MyApp < Sinatra::Base
       else
         result[key.to_s] = row[:result]
       end 
-      if key == 3
-        puts "_____________"
-        puts row.inspect
-      end
     end
     
     puts 'alle: ' << r1.inspect
