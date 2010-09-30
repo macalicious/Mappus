@@ -19,7 +19,8 @@ class Google
       @cord['Point']['coordinates']   
     else
       puts @gResult
-      #geocode(ort)
+      ort = ort.split(", ").shift.join(', ')
+      geocode(ort) unless ort.empty?
     end
   end
 end
