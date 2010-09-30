@@ -63,7 +63,8 @@ class MyApp < Sinatra::Base
     
     puts 'alle: ' << r1.inspect
     puts 'an google: ' << r2.inspect
-
+    puts result.to_json
+    
     return result.to_json
   end
   
