@@ -52,7 +52,7 @@ class MyApp < Sinatra::Base
       r1 += 1
       
       puts key
-      if key == 3
+      if key == "3"
         puts "_____________"
         puts row.inspect
       end
