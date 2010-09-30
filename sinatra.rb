@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'json'
 require 'httparty'
+require "sequel"
 require 'sqlite3'
 
 class Google
@@ -28,26 +29,34 @@ class MyApp < Sinatra::Base
   set :public, File.dirname(__FILE__) + '/static'
   
   get '/' do
+    puts "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
+    puts ENV['HEROKU_TYPE'].inspect
     erb :index
   end
   
   get '/geocode' do
     result = {}
-    
-    db = SQLite3::Database.new( "google_query_cach.db" )
+     
+    DB = if ENV['HEROKU_TYPE']
+      
+        Sequel.connect("postgres://uyqetrlvbv:f5lxx1zz5pnorynqglhzmsp34@ec2-184-73-167-204.compute-1.amazonaws.com/uyqetrlvbv")
+      else
+        Sequel.sqlite( "google_query_cach.db" )
+    end
+    Cach = DB[:cach]
     r1, r2 = 0, 0
-    
+   
     puts params[:jupitermap].inspect
     params[:jupitermap].each do |key, value|
       r1 += 1
-      rows = db.execute( "select result from cach where query='#{value}'" )
       
-      if rows.empty?
+      row = Cach.where(:query=> value).first
+      if row.nil?
         r2 += 1
         result[key.to_s] = Google.geocode(value)
-        db.execute( "insert into cach (query, result) values ('#{value}', '#{result[key.to_s]}')" )
+        Cach.insert(:query => value, :result => result[key.to_s])
       else
-        result[key.to_s] = rows.first.first
+        result[key.to_s] = row[:result]
       end 
     end
     
