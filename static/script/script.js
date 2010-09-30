@@ -558,7 +558,7 @@ var $mapper = (function(){
           console.log("geocode_serverside fertig", result);
           var points = {};
           each(result, function(index, string){
-            var a = string.split(",");
+            var a = string==null ? [0,0] : string.split(",");
             var point = new google.maps.LatLng(a[1],a[0], 0);
             points[index] = point;
           });
