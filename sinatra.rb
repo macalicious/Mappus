@@ -51,6 +51,7 @@ class MyApp < Sinatra::Base
     params[:jupitermap].each do |key, value|
       r1 += 1
       
+      puts key
       if key == 3
         puts "_____________"
         puts row.inspect
