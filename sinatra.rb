@@ -19,7 +19,12 @@ class Google
       @cord['Point']['coordinates']   
     else
       puts @gResult
-      ort = ort.split(", ").shift.join(', ')
+      puts "########"
+      puts ort.inspect
+      ort = ort.split(", ")
+      ort.shift
+      puts ort.inspect
+      ort = ort.join(', ')
       geocode(ort) unless ort.empty?
     end
   end
@@ -54,7 +59,7 @@ class MyApp < Sinatra::Base
       puts key
       if key == "3"
         puts "_____________"
-        puts row.inspect
+        puts value.inspect
       end
       
       row = Cach.where(:query=> value).first

@@ -156,6 +156,7 @@ function t3(){
 };
 
 
+
 /*  Chain:
  
  *  var fn = function(){
@@ -538,58 +539,58 @@ var $mapper = (function(){
     $this.log.info(event);
     
   };
-  
-  this.geocode = function(query, gfn){
+ 
+ this.geocode = function(query, gfn){
+   
+   function geocode_serverside(array, fn){
+     var strings = {};
+     for(var key in array){
+        strings[key] = array[key];
+     };
     
-    function geocode_serverside(array, fn){
-      var strings = {};
-      for(var key in array){
-         strings[key] = array[key];
-      };
-     
-      //string = string.replace(/\s*[,]*\s+/g ,"+");
-      //string = string.replace(/&/g ,",");
-      $this.log.trace("strings: ",strings);
-      $j.ajax({
-        url: "geocode",
-        dataType: "json",
-        data: ({jupitermap : strings}),
-        success: function(result){
-          console.log("geocode_serverside fertig", result);
-          var points = {};
-          each(result, function(index, string){
-            var a = string==null ? [0,0] : string.split(",");
-            var point = new google.maps.LatLng(a[1],a[0], 0);
-            points[index] = point;
-          });
-          console.log(points);
-          fn(points);
-        },
-        error: function(a, b, c){
-          alert("Geocode was not successful for the following reason: " + b + "/n" + a);
-        }
-      });
-    };
-    function geocode_clintside(string, fn){
-      geocoder = geocoder || new google.maps.Geocoder();
-      geocoder.geocode( { 'address': string}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var point = results[0].geometry.location;
-          window.xx = results;
-          var res = {};
-          res[string] = point;
-          fn(res);
-        }else{
-          alert("Geocode was not successful for the following reason: " + status);
-        }
-      });
-    };
-    
-    if(typeof(query) == "string"){ geocode_clintside(query, gfn); };
-    if(typeof(query) == "object"){ geocode_serverside(query, gfn); };
-    
-  };
-  
+     //string = string.replace(/\s*[,]*\s+/g ,"+");
+     //string = string.replace(/&/g ,",");
+     $this.log.trace("strings: ",strings);
+     $j.ajax({
+       url: "geocode",
+       dataType: "json",
+       data: ({jupitermap : strings}),
+       success: function(result){
+         console.log("geocode_serverside fertig", result);
+         var points = {};
+         each(result, function(index, string){
+           var a = string==null ? [0,0] : string.split(",");
+           var point = new google.maps.LatLng(a[1],a[0], 0);
+           points[index] = point;
+         });
+         console.log(points);
+         fn(points);
+       },
+       error: function(a, b, c){
+         alert("Geocode was not successful for the following reason: " + b + "/n" + a);
+       }
+     });
+   };
+   function geocode_clintside(string, fn){
+     geocoder = geocoder || new google.maps.Geocoder();
+     geocoder.geocode( { 'address': string}, function(results, status) {
+       if (status == google.maps.GeocoderStatus.OK) {
+         var point = results[0].geometry.location;
+         window.xx = results;
+         var res = {};
+         res[string] = point;
+         fn(res);
+       }else{
+         alert("Geocode was not successful for the following reason: " + status);
+       }
+     });
+   };
+   
+   if(typeof(query) == "string"){ geocode_clintside(query, gfn); };
+   if(typeof(query) == "object"){ geocode_serverside(query, gfn); };
+   
+ };
+ 
 
   this.render_cluster = function(marker_array){
     if($this.options.cluster){
@@ -788,6 +789,73 @@ var $mapper = (function(){
   render_cluster: this.render_cluster
   };
 })();
+
+/* 
+var Geocoder = function(){
+  
+  var quee = [];
+  
+  this.geocode = function(query, gfn){
+    
+    
+ 
+    
+    if(typeof(query) == "string"){ geocode_clintside(query, gfn); };
+    if(typeof(query) == "object"){ geocode_serverside(query, gfn); };
+    
+  };
+ 
+  function code(){
+   
+  }
+ 
+  function geocode_serverside(array, fn){
+   var strings = {};
+   for(var key in array){
+      strings[key] = array[key];
+   };
+  
+   //string = string.replace(/\s*[,]*\s+/g ,"+");
+   //string = string.replace(/&/g ,",");
+   $this.log.trace("strings: ",strings);
+   $j.ajax({
+     url: "geocode",
+     dataType: "json",
+     data: ({jupitermap : strings}),
+     success: function(result){
+       console.log("geocode_serverside fertig", result);
+       var points = {};
+       each(result, function(index, string){
+         var a = string==null ? [0,0] : string.split(",");
+         var point = new google.maps.LatLng(a[1],a[0], 0);
+         points[index] = point;
+       });
+       console.log(points);
+       fn(points);
+     },
+     error: function(a, b, c){
+       alert("Geocode was not successful for the following reason: " + b + "/n" + a);
+     }
+   });
+ };
+ 
+  function geocode_clintside(string, fn){
+    geocoder = geocoder || new google.maps.Geocoder();
+    geocoder.geocode( { 'address': string}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var point = results[0].geometry.location;
+        window.xx = results;
+        var res = {};
+        res[string] = point;
+        fn(res);
+      }else{
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  };
+  
+}; 
+*/
  
   $mapper.plugins.add('facebook', (function(){
     var parent = $mapper;
