@@ -1,9 +1,9 @@
-require 'rubygems'
-require 'sinatra/base'
-require 'json'
-require 'httparty'
-require "sequel"
-require 'sqlite3'
+# require 'rubygems'
+# require 'sinatra/base'
+# require 'json'
+# require 'httparty'
+# require "sequel"
+# require 'sqlite3'
 
 class Google
   include HTTParty
