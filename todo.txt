@@ -1,0 +1,6 @@
+TODO Click in Listenlink soll Marker Zeigen
+TODO credits
+TODO uft-8 support?
+
+FIXME boot
+FIXME add-Button ???

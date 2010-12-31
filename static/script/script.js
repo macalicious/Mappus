@@ -142,11 +142,32 @@ DataRecord.prototype.find_by = function(key_string, value_string){
 DataRecord.prototype.all = function(){return this.data};
 DataRecord.prototype.set = function(id, key, val){this.data[id][key] = val;};
 DataRecord.prototype.remove = function(key){return delete this.data[key];};
-DataRecord.prototype.search = function(param){return this.find(param);};
+DataRecord.prototype.search = function(param){
+  param = this.raise('before_search', param);
+  obj = this.find(param);
+  obj = this.raise('after_search', obj);
+  return obj;
+};
+
+
 
 
 var $j = jQuery.noConflict();
 var gmap;
+
+function unproto(obj){
+  console.log("obj", obj, jQuery.type(obj));
+  if(jQuery.type(obj)=="object" || jQuery.type(obj)=="array"){
+    
+    if(obj.__proto__){
+      obj.__proto__ = null;
+    }
+    for(var i in obj){
+      obj[i] = unproto(obj[i]);
+    } 
+  }
+  return obj;
+}
 
 
 function t3(){
@@ -286,12 +307,15 @@ function DevTool(){
 var $mapper = (function(){
   
   var geocoder;
+  var cluster;
   var $this = this;
   
   this.options = {
     cluster: true,
     gridSize: 30,
-    maxZoom: 12
+    maxZoom: 12,
+    hide_marker_on_search: true,
+    instantSearch: true
   };
   
   
@@ -301,11 +325,20 @@ var $mapper = (function(){
     var chain = new Chain([
       ui.body,
       ui.map,
+      function(){
+        $this.sidebar = new Sidebar($j('#datenliste'));
+        this.is.done();
+      },
       plugins.initialize,
+      function(){
+        if(options.cluster){
+          var mcOptions = {gridSize: $this.options.gridSize, maxZoom: $this.options.maxZoom};
+          cluster = new MarkerClusterer(gmap, [], mcOptions);
+        }
+      },
       events.app_ready
     ]);
     chain.start();
-    
   };
   
   
@@ -326,16 +359,23 @@ var $mapper = (function(){
           r += '<div id="hidden" style="display:none;"></div>';
           r += '</div>';
       $j(r).appendTo('body').css({visibility:'hidden'});
+      
+      $this.lastSearch = "";
       $j("#searchbar input").keydown(function(e) {
-        if(e.keyCode == 13) {
-          var result = record.find(this.value);
-          
-          ui.sidebar.show(result);
-        }
+        var last = $this.lastSearch;
+        setTimeout(function(){
+          var value = $j("#searchbar input")[0].value;
+
+          if(options.instantSearch || e.keyCode == 13) {
+            if(last != value){
+              $this.lastSearch = value;
+              fn.search(value);
+            }
+          }
+        }, 100);
+        
       });
-      $j("#searchbar").click(function(){
-        void(function(){var i,a,s;a=document.getElementsByTagName('link');for(i=0;i<a.length;i++){s=a[i];if(s.rel.toLowerCase().indexOf('stylesheet')>=0&&s.href) {var h=s.href.replace(/(&|%5C?)forceReload=\d+/,'');s.href=h+(h.indexOf('?')>=0?'&':'?')+'forceReload='+(new Date().valueOf())}}})();
-      });
+
       function set_height(){
         var h = $j("#aside").height();
         $j('#aside').find('.content').css('height', h-38);
@@ -462,21 +502,6 @@ var $mapper = (function(){
       });
       return obj;
     },
-    sidebar: {
-      show: function(obj){
-        
-        var ids = [];
-        for(var item in obj){ids.push(obj[item].id);};
-        
-        var x = $j("#datenliste li").hide().filter(function(){
-          var id = $j(this).data("record_id");
-          var inarray = false;
-          for(var item in ids){if(id==ids[item]){inarray=true;};};
-        
-          return inarray
-        }).show();
-      }
-    },
     bootscreen: function(){
       
     }
@@ -537,10 +562,9 @@ var $mapper = (function(){
   };
   this.fireEvent = function(event){
     $this.log.info(event);
-    
   };
  
- this.geocode = function(query, gfn){
+  this.geocode = function(query, gfn){
    
    function geocode_serverside(array, fn){
      var strings = {};
@@ -589,22 +613,14 @@ var $mapper = (function(){
    if(typeof(query) == "string"){ geocode_clintside(query, gfn); };
    if(typeof(query) == "object"){ geocode_serverside(query, gfn); };
    
- };
- 
-
-  this.render_cluster = function(marker_array){
-    if($this.options.cluster){
-      var mcOptions = {gridSize: $this.options.gridSize, maxZoom: $this.options.maxZoom};
-      var markerCluster = new MarkerClusterer(gmap, marker_array, mcOptions);
-    };
   };
+
   
   this.Marker = function(parm){
 
     if(!opt){var opt = {};};
     
     function add_marker_to_map(opt){
-      console.log(opt);
       if(!opt.point){throw "$mapper.set_marker: point is not defined"};
       
       var marker_options = {position: opt.point};
@@ -619,38 +635,15 @@ var $mapper = (function(){
     if(typeof(parm) == "object"){ return add_marker_to_map(parm, opt); };
       
   };
+
   
-  var xxmarker = {
-    devaul_t: function(){
-      var image = new google.maps.MarkerImage('yellow_marker_sprite.png',
-          // This marker is 20 pixels wide by 32 pixels tall.
-          new google.maps.Size(20, 34),
-          // The origin for this image is 0,0.
-          new google.maps.Point(0,0),
-          // The anchor for this image is the base of the flagpole at 0,32.
-          new google.maps.Point(10, 34));
-        
-      var shadow = new google.maps.MarkerImage('yellow_marker_sprite.png',
-          // The shadow image is larger in the horizontal dimension
-          // while the position and offset are the same as for the main image.
-          new google.maps.Size(54, 34),
-          new google.maps.Point(29,0),
-          new google.maps.Point(29, 34));
-               
-      // Shapes define the clickable region of the icon.
-      // The type defines an HTML &lt;area&gt; element 'poly' which
-      // traces out a polygon as a series of X,Y points. The final
-      // coordinate closes the poly by connecting to the first
-      // coordinate.
-      var shape = {
-          coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-          type: 'poly'
-      };
-      
-      return {image: image, shadow:shadow, shape:shape};
-   
-    },
-    yellow: ""
+  this.fn = {
+    search: function(query){
+      var result = record.search(query);
+
+      $this.sidebar.search(result); 
+      if($this.options.hide_marker_on_search) render(result);
+    }
   }
   
   this.Infowindow = function(opt){
@@ -669,92 +662,159 @@ var $mapper = (function(){
 
   this.record = new DataRecord;
   this.record.before_add = function(obj){
+    /*
     var Straße = obj.strasse ? obj.strasse : " - ";
     var Ort = obj.plz && obj.ort ? obj.plz + " " + obj.ort : " - ";
     var Land = obj.land ? obj.land : " - ";
     var Adresse = Straße + ", " + Ort + ", " + Land;
     obj.adresse = Adresse;
-    
-    return obj;
+    */
   };
   this.record.after_add = function(obj){
-    sidebar.add(obj);
+    sidebar.add(obj); 
+    //obj.dom.data('record', obj);
   };
+  this.record.after_search = function(obj){
+    
+  }
+  
+  this.render = function(rec){
+    var data = rec || this.record.all();
+    cluster.clearMarkers();
+    
+    var markers = [];
+    var each_location = this.plugins.get("facebook").each_location;
+    for(var key in data){
+      each_location(data[key], function(loc){
+        markers.push(loc.marker);
+      });
+    }
+    cluster.addMarkers(markers);
+  }
   
   
-  var sidebar = {
+  var Sidebar = function(dom){
+    this.dom = dom;
+    this.opend = [];
+  };
+  Sidebar.prototype = {
     add: function(obj){
-      var li = $j('<li class="item"></li>').appendTo($j('#datenliste'));
-      $j('<strong>'+obj.title+'</strong><br />').appendTo(li);
-      $j('<small> '+obj.ort+', '+obj.land+'</small><br />').appendTo(li);
-      $this.log.trace(obj);
-      var adressen = $j('<ul class="adressen slide"></ul>').appendTo(li).click(function(){return false;});
-      var fff = ["Nr 1", "Nr 2"];
+      var li = $j('<li class="item"></li>'); 
+      var aside = $j('<aside></aside>');
+      var name = $j('<strong>'+obj.name+'</strong>');
+      var adressen = $j('<ul class="adressen slide"></ul>').click(function(){return false;});
       
-      for(var key in fff){
-        adressen.append("<li>"+fff[key]+"</li>");
-      };
+      if(obj.hometown_location){
+        var home = true;
+        var home_img = $j('<img alt="hometown" title="hometown" src="image/Home.png" />');
+        var home_li = $j('<li><a href="#"><img alt="hometown" title="hometown" src="image/Home.png" /> ' + obj.hometown_location.name + "</a></li>");
+      }
+      if(obj.current_location){
+        var current = true;
+        var current_img = $j('<img alt="current location" title="current location" src="image/Nod32.png" />')
+        var current_li = $j('<li><a href="#"><img alt="current location" title="current location" src="image/Nod32.png" /> ' + obj.current_location.name + "</a></li>");
+      }
       
-      $j(li).data("record_id", obj.id);
+      this.dom.append(li);
+        li.append(aside);
+          if (home) aside.append(home_img);
+          if (current) aside.append(current_img);
+        li.append(name);
+        li.append(adressen);
+          if (home) adressen.append(home_li);
+          if (current) adressen.append(current_li);
+         
       
-      li.click(this.click);
+      $sidebar = this;
+      obj.sidebar = {};
+      obj.sidebar.isOpen = false;
+      obj.sidebar.open = function(){
+        $sidebar.open(obj);
+      }
+      obj.sidebar.close = function(){
+        $sidebar.close(obj);
+      }
+      obj.sidebar.show = function(){
+        $sidebar.show(obj);
+      }
+      obj.sidebar.hide = function(){
+        $sidebar.hide(obj);
+      }
       
+      li.click(obj.sidebar.open);
+      
+      obj.sidebar.visible = true;
+      obj.sidebar.dom = li;
       return li;
     },
-    click: function(){
-      var li = $j(this);
-      var slide = li.find('.slide');
-      var is_slide = slide.length != 0;
+    open: function(obj){
+      if(obj.sidebar.isOpen) {
+        obj.sidebar.close();
+        return;
+      }
       
+      this.close_all();      
       
-      if(window.active_mensch){
-        window.active_mensch.removeClass("active");
-        
-        if(is_slide){
-          window.active_mensch.animate({"margin-bottom": 0},"fast");
-          window.active_mensch.find('.slide').slideUp("fast");
-        };
-        
-        if(window.active_mensch.html() == li.html()){
-          window.active_mensch = false; 
-          return;
-        };
-      };
-      
-      window.active_mensch = li.addClass("active");
-      
-      if(is_slide){
-        li.animate({
+      var slide = obj.sidebar.dom.find("ul");
+      obj.sidebar.dom.animate({
           'margin-bottom': slide.height()+5
           }, "fast");
-        slide.slideDown("fast");
-      };
-            
-      var id = li.data("record_id");
-      var obj = record.all()[id];
+      slide.slideDown("fast");
       
-      if(!is_slider){
-        this.click_to_marker(obj);
-      }; 
+      obj.sidebar.isOpen = true;
+      obj.sidebar.dom.addClass("active");
+      this.opend.push(obj);
     },
-    click_to_marker: function(obj){
-      if(window.openinfowindow){window.openinfowindow.close();};
-      obj.infowindow.open(gmap,obj.marker);
-      window.openinfowindow = obj.infowindow;
+    close_all: function(){
+      if (this.opend == []) {return;};
+      for(var key in this.opend){
+        this.opend[key].sidebar.close();
+      }
+    },
+    close: function(obj){
+      if(!obj.sidebar.isOpen) return;
+      var rkey = -1;
+      for(var key in this.opend){
+        if(this.opend[key] == obj) rkey = key;
+      }
+      this.opend.splice(rkey, 1);
+      
+      obj.sidebar.isOpen = false;
+      obj.sidebar.dom.animate({"margin-bottom": 0},"fast");
+      obj.sidebar.dom.find('.slide').slideUp("fast");
+      obj.sidebar.dom.removeClass("active");
+    },
+    search: function(obj_array){
+      var all = $this.record.all();
+      for(var key in all){
+        all[key].sidebar.hide();   
+      }
+      
+      for(var key in obj_array){
+        if(obj_array[key] == all[obj_array[key].id]) obj_array[key].sidebar.show();   
+      }
+    },
+    show: function(obj){
+      obj.sidebar.visible = true;
+      obj.sidebar.dom.show();
+    },
+    hide: function(obj){
+      obj.sidebar.visible = false;
+      obj.sidebar.dom.hide();
     }
   };
+  this.sidebar = null; // have to be init
+  
   
   function Modal(html, init_open){
     var el;
     this.close = function(){
       return el.hide();
     };
-    
     this.nevv = function(){
       el = $j('<div id="modal"></div>').append($j(html)).appendTo($j("body")).hide();
       if(init_open){this.open()};
     };
-    
     this.open = function(){
       var h = $j(el).outerHeight(),
           w = $j(el).outerWidth(),
@@ -766,7 +826,6 @@ var $mapper = (function(){
       $this.log.trace(w_sidebar);    
       return el.css(css).show();
     };
-    
     this.nevv();
   };
   
@@ -786,7 +845,7 @@ var $mapper = (function(){
           record: this.record,
          cluster: this.marker_cluster,
   set_infowindow: this.Infowindow,
-  render_cluster: this.render_cluster
+          render: this.render
   };
 })();
 
@@ -1024,9 +1083,16 @@ var Geocoder = function(){
       var x = modal_content;
       switch(name){
         case "facebook":
-          x.empty();
-          x.append($j("<h3>Facebook</h3><hr />"));
-          x.append($j('<section class="content"><img src="image/facebook_connect.gif" alt="facebook connect" class="button"/></section>').click(login));
+          /*
+              TODO remove fb_window_skip
+          */
+          if(fb_freunde){
+            login();
+          }else{
+            x.empty();
+            x.append($j("<h3>Facebook</h3><hr />"));
+            x.append($j('<section class="content"><img src="image/facebook_connect.gif" alt="facebook connect" class="button"/></section>').click(login));
+          }
           break
         case "loading":
           var x = x.find(".content").empty();
@@ -1034,23 +1100,30 @@ var Geocoder = function(){
           x.append($j('<div>Wird geladen </span> <img src="image/loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
           break;
         case "result":
-          var x = x.find(".content").empty();
-          var freunde = options.freunde;
-          //x.append($j("<h3>Facebook</h3><hr />"));
-          //x.append($j('<section class="content"><img src="facebook_connect.gif" alt="facebook connect" class="button"/></section>')
+          /*
+              TODO remove fb_result_skip
+          */
+          if(fb_freunde){
+            options.click_anzeigen();
+          }else{  
+            var x = x.find(".content").empty();
+            var freunde = options.freunde;
+            //x.append($j("<h3>Facebook</h3><hr />"));
+            //x.append($j('<section class="content"><img src="facebook_connect.gif" alt="facebook connect" class="button"/></section>')
           
-          var geladen = $j('<p></p>').appendTo(x);
-          geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
-          geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
-          geladen.append($j('<span><b>'+freunde.alle_adressen_length+'</b> Adressen gesamt &nbsp; </span>'));
+            var geladen = $j('<p></p>').appendTo(x);
+            geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
+            geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
+            geladen.append($j('<span><b>'+freunde.alle_adressen_length+'</b> Adressen gesamt &nbsp; </span>'));
           
-          var form = $j('<fieldset class="large" id="form"></fieldset>').html(
-            '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
-            + ' <span class="input"><input type="checkbox" id="current" checked value="current" /> <label for="current">Aktueller Wohnort</label></span>'
-            + '<br/>der Freunde auf der Karte anzeigen.'
-          ).appendTo(x);
+            var form = $j('<fieldset class="large" id="form"></fieldset>').html(
+              '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
+              + ' <span class="input"><input type="checkbox" id="current" checked value="current" /> <label for="current">Aktueller Wohnort</label></span>'
+              + '<br/>der Freunde auf der Karte anzeigen.'
+            ).appendTo(x);
           
-          var weiter = modal_content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(options.click_anzeigen);
+            var weiter = modal_content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(options.click_anzeigen);
+          }
           break;
         case "allgemein":
           x.empty();
@@ -1063,11 +1136,19 @@ var Geocoder = function(){
       };
       return x;
     }
-  
+    
+    
     function login(){
       
       ui("loading");
-      FB.login(fb_login_cb, { perms: 'friends_hometown,friends_location' });
+      /*
+        TODO remove login_skip
+      */
+      if(fb_freunde){
+        fb_login_cb({session: true});
+      }else{
+        FB.login(fb_login_cb, { perms: 'friends_hometown,friends_location' });
+      }
       
       function fb_login_cb(response){
         parent.log.trace('FB.login callback', response);
@@ -1116,6 +1197,7 @@ var Geocoder = function(){
           };
         })(result);
 
+        
         ui("result", {
           freunde:freunde, 
           click_anzeigen: function(){ anzeigen(freunde); }
@@ -1142,53 +1224,58 @@ var Geocoder = function(){
     };
     
     function fb_querry(cb){
-      var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
-      query.wait(cb);
+      //var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+      //query.wait(cb);
+      cb(fb_freunde.alle);
+      /*
+        FIXME remove facebook dummydaten
+      */
     };
     
-    function fb_geocode(positionen, freunde, home, current){
-      parent.log.trace("geocode result: ", positionen );
-      
-      var markers = [];
-      function add_marker(freund, loc){
-        var html = $j("<address></address>");
-        html.append('<span>'+freund.name+'</span>').append("<br />");
-        html.append('<span>'+loc.city+", "+loc.state+", "+loc.country+'</span>').append("<br />");
-
-        var obj = {
-          title: freund.name,
-          point: loc.point,
-          html: html[0]
-        };
-
-        var dataobj = parent.record.add(obj);
-
-        var marker = new parent.Marker({point:obj.point, title:obj.title});
-        parent.record.set(dataobj.id, "marker", marker);
-        markers.push(marker);
-
-        var infowindow = new parent.set_infowindow(dataobj);
-        parent.record.set(dataobj.id, "infowindow", infowindow);
-        
+    function each_location(freund, fn){
+      if(freund.current_location){
+        fn(freund.current_location);  
       };
+      if(freund.hometown_location && freund.current_location != freund.hometown_location){
+        fn(freund.hometown_location); 
+      };
+    }
+    
       
+      /*
+      var html = $j("<address></address>");
+      html.append('<span>'+freund.name+'</span>').append("<br />");
+      html.append('<span>'+loc.city+", "+loc.state+", "+loc.country+'</span>').append("<br />");
+
+      
+      var obj = {
+        title: freund.name,
+        point: loc.point,
+        html: html[0]
+      };
+      */
+      
+      //markers.push(marker);
+
+      //var infowindow = new parent.set_infowindow(dataobj);
+      //parent.record.set(dataobj.id, "infowindow", infowindow);
+    
+    function fb_geocode(positionen, freunde){
+      parent.log.trace("fb geocode result: ", positionen );
       
       for(var key in freunde.mit_adresse){
         var freund = freunde.mit_adresse[key];
-        if(current && freund.current_location){
-          freund.current_location.point = positionen[freund.current_location.geoid];
-          add_marker(freund, freund.current_location);
-        };
-        if(home && freund.hometown_location && freund.current_location != freund.hometown_location){
-          freund.hometown_location.point = positionen[freund.hometown_location.geoid];
-          add_marker(freund, freund.hometown_location);
-        };
-      
+        each_location(freund, function(loc){
+          loc.point = positionen[loc.geoid];
+          loc.marker = new parent.Marker({point:loc.point, title:freund.name});
+        });
+        parent.record.add(freund);
       };
       modal.close();
-      parent.render_cluster(markers);
-      
+      parent.render();
     };
+    
+
     
     this.modal = function(new_modal_fn){
       var box = $j("<div></div>");
@@ -1232,7 +1319,9 @@ var Geocoder = function(){
     return {
       initialize: initialize,
       settings_ui: settings_ui,
-      modal: this.modal
+      modal: this.modal,
+      each_location: each_location
+      //add_marker_for_friend: add_marker_for_friend
     };
   })());
   
@@ -1321,6 +1410,9 @@ $j(document).ready(function($){
   $mapper.initialize();
   new DevTool();
 });
+
+
+//var fb_freunde2 "[{"uid":"515419023","name":"Katrin Forytta","current_location":null,"hometown_location":null},{"uid":"549885395","name":"Matthias Heicke","current_location":null,"hometown_location":null},{"uid":"569011024","name":"Meret Mueller","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"583577848","name":"Patrick Litsch","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"585127721","name":"Miriam De","current_location":null,"hometown_location":null},{"uid":"595599117","name":"Eline Rentinck","current_location":{"city":"Utrecht","state":"Utrecht","country":"Netherlands","zip":"","id":"103157243058555","name":"Utrecht, Utrecht"},"hometown_location":{"city":"Utrecht","state":"Utrecht","country":"Netherlands","zip":"","id":"103157243058555","name":"Utrecht, Utrecht"}},{"uid":"606052083","name":"Rabs Fatz","current_location":null,"hometown_location":null},{"uid":"607767912","name":"Melanie Schoppet","current_location":null,"hometown_location":null},{"uid":"608581275","name":"Verena Flemming","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"632018419","name":"Sarah Weinerth","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"633541181","name":"Yvonne Laub","current_location":null,"hometown_location":{"city":"Lacey","state":"New Jersey","country":"United States","zip":""}},{"uid":"639785961","name":"Yvonne I. C. Söderlund","current_location":null,"hometown_location":null},{"uid":"642153901","name":"Stephan Klein Gómez","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Bogotá","state":"Cundinamarca","country":"Colombia","zip":"","id":"102194039822307","name":"Bogotá, Colombia"}},{"uid":"647366163","name":"Roosmarijn de Groot","current_location":{"city":"Utrecht","state":"Utrecht","country":"Netherlands","zip":"","id":"103157243058555","name":"Utrecht, Utrecht"},"hometown_location":{"city":"Houten","state":"Utrecht","country":"Netherlands","zip":"","id":"104082222960717","name":"Houten"}},{"uid":"654037896","name":"Tessa Violet","current_location":null,"hometown_location":null},{"uid":"664764594","name":"Lena Pfitzinger","current_location":{"city":"Berlin","state":"Schleswig-Holstein","country":"Germany","zip":"","id":"109486955737943","name":"Berlin"},"hometown_location":null},{"uid":"684613604","name":"Agnieszka Kowalski","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"690406622","name":"Judith Kunz","current_location":null,"hometown_location":null},{"uid":"706551505","name":"André Stolper","current_location":{"city":"Dreihausen","state":"Hessen","country":"Germany","zip":"","id":"108550362508262","name":"Dreihausen, Hessen, Germany"},"hometown_location":{"city":"Oestrich-Winkel","state":"Hessen","country":"Germany","zip":"","id":"112532682092674","name":"Oestrich-Winkel"}},{"uid":"723909599","name":"Anna FrOst","current_location":{"city":"Essen","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"108402229182110","name":"Essen, Nordrhein-Westfalen"},"hometown_location":{"city":"Bochum","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"106544749381682","name":"Bochum, Germany"}},{"uid":"724959971","name":"Anne Döring","current_location":null,"hometown_location":null},{"uid":"755893043","name":"Phillipp Henschke","current_location":null,"hometown_location":null},{"uid":"761850136","name":"Maren Christine Kimmerle","current_location":null,"hometown_location":null},{"uid":"782084640","name":"Lise Venet","current_location":null,"hometown_location":null},{"uid":"1001131463","name":"Clemens Go","current_location":null,"hometown_location":null},{"uid":"1002380869","name":"Lucia Händler","current_location":null,"hometown_location":null},{"uid":"1026033861","name":"Tilman Stief","current_location":null,"hometown_location":null},{"uid":"1039324314","name":"Anja Faust","current_location":null,"hometown_location":{"city":"Erbach","state":"Hessen","country":"Germany","zip":"","id":"108639415825703","name":"Erbach, Hessen, Germany"}},{"uid":"1077079794","name":"Tobias Sturm","current_location":null,"hometown_location":null},{"uid":"1079531545","name":"Dimitar 'Mitko' Gruev","current_location":null,"hometown_location":{"city":"Varna","state":"Varna","country":"Bulgaria","zip":"","id":"114974968516694","name":"Varna, Bulgaria"}},{"uid":"1118155519","name":"Lena Schilling","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1121825837","name":"Anna-Luisa Heinen","current_location":null,"hometown_location":null},{"uid":"1124704110","name":"Sarissa Labil","current_location":null,"hometown_location":null},{"uid":"1145694881","name":"Mike Luthardt","current_location":null,"hometown_location":null},{"uid":"1150745773","name":"Svenja Schütz","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1155277257","name":"Julia Heyer","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1159037092","name":"Esther Keidel","current_location":null,"hometown_location":null},{"uid":"1159430744","name":"Kyrill Ahlvers","current_location":{"city":"Jerusalem","state":"Yerushalayim","country":"Israel","zip":"","id":"106401656063896","name":"Jerusalem, Israel"},"hometown_location":null},{"uid":"1167428259","name":"Tobias Bauer","current_location":{"city":"Karlsruhe","state":"Baden-Württemberg","country":"Germany","zip":"","id":"106073139432990","name":"Karlsruhe, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1176843674","name":"Chantal Rheinheimer","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"1181993021","name":"Uwe Böhm","current_location":null,"hometown_location":null},{"uid":"1185716888","name":"Elisa Seip","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1193985452","name":"Christina Mey","current_location":null,"hometown_location":null},{"uid":"1198147613","name":"Annika Geiß","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1198327821","name":"Roland Ollenberger","current_location":null,"hometown_location":null},{"uid":"1201635326","name":"Sandra Hänsel","current_location":{"city":"Darmstadt","state":"Hessen","country":"Germany","zip":""},"hometown_location":null},{"uid":"1202085567","name":"Micha Brockmann","current_location":null,"hometown_location":{"city":"Darmstadt","state":"Hessen","country":"Germany","zip":""}},{"uid":"1215487867","name":"Sandra Orth","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1233270200","name":"Nora Henschke","current_location":{"city":"Erfurt","state":"Thüringen","country":"Germany","zip":"","id":"106039462768303","name":"Erfurt, Germany"},"hometown_location":null},{"uid":"1246563698","name":"Franzi Sophie R","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1246746409","name":"Corinna Eulberg","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1273070691","name":"Beate Maria Bracht","current_location":null,"hometown_location":null},{"uid":"1278395189","name":"Marc Reif","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1278740615","name":"Steffen Wilde","current_location":{"city":"Nidderau","state":"Hessen","country":"Germany","zip":"","id":"108068085882074","name":"Nidderau"},"hometown_location":{"city":"Frankfurt","state":"Hessen","country":"Germany","zip":"","id":"110221372332205","name":"Frankfurt, Germany"}},{"uid":"1279341526","name":"Jack Unseld","current_location":{"city":"Karlsruhe","state":"Baden-Württemberg","country":"Germany","zip":"","id":"106073139432990","name":"Karlsruhe, Germany"},"hometown_location":null},{"uid":"1282156431","name":"Lisa Jansen","current_location":null,"hometown_location":null},{"uid":"1295276970","name":"Eva Aardbei","current_location":null,"hometown_location":null},{"uid":"1300551973","name":"Brabra Lübbering","current_location":{"city":"Auckland","state":"Auckland","country":"New Zealand","zip":"","id":"101883149853721","name":"Auckland, New Zealand"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1315743040","name":"Luc Géraud","current_location":{"city":"Montgiscard","state":"Midi-Pyrenees","country":"France","zip":"","id":"109088189125777","name":"Montgiscard, Midi-Pyrenees, France"},"hometown_location":null},{"uid":"1342423654","name":"Julia Link","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1366306640","name":"Flo Reinecke","current_location":{"city":"Gießen","state":"Hessen","country":"Germany","zip":"","id":"110305888999535","name":"Gießen, Germany"},"hometown_location":null},{"uid":"1367469594","name":"Hartmut Constien","current_location":{"city":"Greifenstein","state":"Hessen","country":"Germany","zip":"","id":"107911935898693","name":"Greifenstein"},"hometown_location":{"city":"Bremen","state":"Bremen","country":"Germany","zip":"","id":"115221125158582","name":"Bremen, Germany"}},{"uid":"1374702916","name":"Sarah Sche","current_location":null,"hometown_location":{"city":"Schifferstadt","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"105517302816097","name":"Schifferstadt"}},{"uid":"1418110619","name":"Katharina von Haugwitz","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1424933495","name":"Viktoria Höges","current_location":null,"hometown_location":null},{"uid":"1427857241","name":"Enya Gauch","current_location":{"city":"Heidelberg","state":"Baden-Württemberg","country":"Germany","zip":"","id":"114466755232742","name":"Heidelberg, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1432591039","name":"Florian Schwarz","current_location":null,"hometown_location":{"city":"Breckenheim","state":"Hessen","country":"Germany","zip":"","id":"111815215511878","name":"Breckenheim"}},{"uid":"1438024794","name":"Sandra Helena Meyer","current_location":{"city":"Zunsweier","state":"Baden-Württemberg","country":"Germany","zip":"","id":"104908456211489","name":"Zunsweier, Baden-Wurttemberg, Germany"},"hometown_location":null},{"uid":"1442392420","name":"Alex Hinkelmann","current_location":{"city":"Mühlheim","state":"Hessen","country":"Germany","zip":"","id":"109411972417050","name":"Mühlheim, Hessen, Germany"},"hometown_location":{"city":"Bad Hersfeld","state":"Hessen","country":"Germany","zip":"","id":"114521575231531","name":"Bad Hersfeld, Germany"}},{"uid":"1449055675","name":"Juliane Henschke","current_location":null,"hometown_location":null},{"uid":"1455758927","name":"Lena Schultz","current_location":null,"hometown_location":null},{"uid":"1475807302","name":"Annika Vetter","current_location":null,"hometown_location":{"city":"Verden","state":"Niedersachsen","country":"Germany","zip":"","id":"112162582134780","name":"Verden, Germany"}},{"uid":"1479588492","name":"Jonathan Schmidt","current_location":null,"hometown_location":null},{"uid":"1481479079","name":"Svenja Vetter","current_location":null,"hometown_location":null},{"uid":"1498230208","name":"Madeleine Suchy","current_location":{"city":"Vienna","state":"Wien","country":"Austria","zip":"","id":"111165112241092","name":"Vienna, Austria"},"hometown_location":{"city":"Brandon","state":"South Dakota","country":"United States","zip":"","id":"106142586083813","name":"Brandon, South Dakota"}},{"uid":"1499499073","name":"Anissa Sander","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1504992906","name":"Adam Ogbai","current_location":null,"hometown_location":null},{"uid":"1508681974","name":"Anna Dittmer","current_location":{"city":"Bremen","state":"Bremen","country":"Germany","zip":"","id":"115221125158582","name":"Bremen, Germany"},"hometown_location":{"city":"Steeden","state":"Hessen","country":"Germany","zip":"","id":"115930221751606","name":"Steeden, Hessen, Germany"}},{"uid":"1510065437","name":"Svenja Lorenz","current_location":{"city":"Bonn","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"115162238495931","name":"Bonn, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1527611558","name":"Fabian Fink","current_location":null,"hometown_location":null},{"uid":"1529933056","name":"Lisa Unger","current_location":null,"hometown_location":null},{"uid":"1543193487","name":"Maria Rathjen","current_location":null,"hometown_location":{"city":"Hamburg","state":"Hamburg","country":"Germany","zip":"","id":"148966791815869","name":"Hamburg, Germany"}},{"uid":"1555506007","name":"Julia Zschätzsch","current_location":{"city":"Walluf","state":"Hessen","country":"Germany","zip":"","id":"116028331745026","name":"Walluf, Hessen, Germany"},"hometown_location":{"city":"Geisenheim","state":"Hessen","country":"Germany","zip":"","id":"109662679052177","name":"Geisenheim"}},{"uid":"1574853006","name":"Frederik Bissinger","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1581789376","name":"Ina Kaufmann","current_location":null,"hometown_location":{"city":"Stuttgart","state":"Baden-Württemberg","country":"Germany","zip":"","id":"112089218817486","name":"Stuttgart, Germany"}},{"uid":"1595663373","name":"Franziska Elisabeth Bracht","current_location":{"city":"Wuppertal","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"101882733186088","name":"Wuppertal, Germany"},"hometown_location":null},{"uid":"1605518272","name":"Sarah Böttger","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"1606015650","name":"Vanessa Kunath","current_location":{"city":"Steeden","state":"Hessen","country":"Germany","zip":"","id":"115930221751606","name":"Steeden, Hessen, Germany"},"hometown_location":null},{"uid":"1611933848","name":"Leonie Vogt","current_location":null,"hometown_location":null},{"uid":"1622525728","name":"Jana Tepper","current_location":null,"hometown_location":null},{"uid":"1627568965","name":"Julien Hadley Jack","current_location":null,"hometown_location":null},{"uid":"1642885205","name":"Constantin Eisinger","current_location":null,"hometown_location":null},{"uid":"1660447914","name":"Sim De","current_location":null,"hometown_location":null},{"uid":"1705256168","name":"Nicole Dörner","current_location":null,"hometown_location":null},{"uid":"1719537899","name":"Morten Nerlich","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1720159289","name":"Miriam König","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"1746503538","name":"Lars Thomsen","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"1780874872","name":"Charlotte Kossler","current_location":{"city":"Siegen","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"106364406066894","name":"Siegen, Germany"},"hometown_location":{"city":"Witten","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"111526388866101","name":"Witten, Germany"}},{"uid":"1798381011","name":"Alexander Kraft","current_location":{"city":"Kiel","state":"Schleswig-Holstein","country":"Germany","zip":"","id":"106247256080274","name":"Kiel, Germany"},"hometown_location":{"city":"Stadthagen","state":"Niedersachsen","country":"Germany","zip":"","id":"109948099035396","name":"Stadthagen, Germany"}},{"uid":"1802940384","name":"Pauline Keidel","current_location":null,"hometown_location":null},{"uid":"1810521248","name":"Sascha Seitz","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1817734300","name":"Florian Best","current_location":{"city":"Freiburg im Breisgau","state":"Baden-Württemberg","country":"Germany","zip":"","id":"107094909321044","name":"Freiburg Im Breisgau, Baden-Wurttemberg, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"1849914432","name":"Christina Heicke","current_location":null,"hometown_location":{"city":"Marburg an der Lahn","state":"Hessen","country":"Germany","zip":"","id":"106842329347504","name":"Marburg An Der Lahn, Hessen, Germany"}},{"uid":"100000033268300","name":"Tatjana Scholz","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"100000063447941","name":"Lythunder Deal","current_location":null,"hometown_location":null},{"uid":"100000064854433","name":"Johanna Florentyna B","current_location":null,"hometown_location":null},{"uid":"100000088719464","name":"Nadja Hämer","current_location":null,"hometown_location":null},{"uid":"100000097684101","name":"Lilly Lodato","current_location":null,"hometown_location":null},{"uid":"100000097783647","name":"Chau Nguyen","current_location":null,"hometown_location":{"city":"Darmstadt","state":"Hessen","country":"Germany","zip":""}},{"uid":"100000107655083","name":"Leonie At","current_location":null,"hometown_location":null},{"uid":"100000119780452","name":"Myriam Scheiner","current_location":null,"hometown_location":{"city":"Westerburg","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"105593319474851","name":"Westerburg"}},{"uid":"100000124106691","name":"Carolin Tumbrink","current_location":null,"hometown_location":null},{"uid":"100000131093127","name":"Koch Sebastian","current_location":null,"hometown_location":null},{"uid":"100000141339543","name":"Tobias Lotz","current_location":null,"hometown_location":null},{"uid":"100000157421742","name":"Christine Schmidt","current_location":null,"hometown_location":null},{"uid":"100000159364759","name":"Kevin Nicholas","current_location":null,"hometown_location":null},{"uid":"100000178047127","name":"Anna Hönig","current_location":{"city":"Johannesburg","state":"Gauteng","country":"South Africa","zip":"","id":"108151539218136","name":"Johannesburg, Gauteng"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"100000208775510","name":"Anna Maubach","current_location":null,"hometown_location":null},{"uid":"100000210055636","name":"Jenny Meisterling","current_location":null,"hometown_location":null},{"uid":"100000216422250","name":"Jessica Ort","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"100000226364932","name":"Simon Brückmann","current_location":{"city":"Hanover","state":"Niedersachsen","country":"Germany","zip":"","id":"110081962354501","name":"Hanover, Germany"},"hometown_location":null},{"uid":"100000287253817","name":"Ella Fink","current_location":{"city":"Saginaw","state":"Michigan","country":"United States","zip":"","id":"107838192572373","name":"Saginaw, Michigan"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"100000295096145","name":"Friederike Reinecke","current_location":null,"hometown_location":null},{"uid":"100000305349973","name":"Lara Go","current_location":null,"hometown_location":null},{"uid":"100000341866878","name":"Esther Figge","current_location":null,"hometown_location":null},{"uid":"100000349687578","name":"Silas Tpr","current_location":null,"hometown_location":null},{"uid":"100000362636034","name":"Tasja Werle","current_location":null,"hometown_location":null},{"uid":"100000372039500","name":"Sabrina Mia Muras","current_location":null,"hometown_location":null},{"uid":"100000383870848","name":"Vladi Kromm","current_location":null,"hometown_location":null},{"uid":"100000414723870","name":"Kathrin Berkel","current_location":null,"hometown_location":null},{"uid":"100000453098777","name":"Kirsten Vom Ende","current_location":null,"hometown_location":null},{"uid":"100000489487266","name":"Johanna Rohloff","current_location":null,"hometown_location":null},{"uid":"100000494499536","name":"Paul Hentschel","current_location":null,"hometown_location":null},{"uid":"100000507783426","name":"Lehmie Lehmann","current_location":{"city":"Karlsruhe","state":"Baden-Württemberg","country":"Germany","zip":"","id":"106073139432990","name":"Karlsruhe, Germany"},"hometown_location":null},{"uid":"100000550818701","name":"Cameron Pauly","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"100000551322111","name":"Marcel Finger","current_location":null,"hometown_location":{"city":"Münster","state":"Nordrhein-Westfalen","country":"Germany","zip":""}},{"uid":"100000561054657","name":"Alexandra Weinerth","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"100000588845358","name":"Luise Brunner","current_location":null,"hometown_location":null},{"uid":"100000598562040","name":"Lucie Enne","current_location":{"city":"Karlsruhe","state":"Baden-Württemberg","country":"Germany","zip":"","id":"106073139432990","name":"Karlsruhe, Germany"},"hometown_location":{"city":"Hockenheim","state":"Baden-Württemberg","country":"Germany","zip":"","id":"105639222802467","name":"Hockenheim"}},{"uid":"100000635197576","name":"Lars Racky","current_location":null,"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"100000646500730","name":"Lucia Lorenz","current_location":null,"hometown_location":null},{"uid":"100000659935032","name":"Nalena Lindhorst","current_location":null,"hometown_location":null},{"uid":"100000691284304","name":"Markus Kilian","current_location":{"city":"Frankfurt","state":"Hessen","country":"Germany","zip":"","id":"110221372332205","name":"Frankfurt, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"100000699525016","name":"Angelika Müller","current_location":null,"hometown_location":null},{"uid":"100000700997962","name":"Nathalie Kirchner","current_location":{"city":"Horrenberg","state":"Baden-Württemberg","country":"Germany","zip":"","id":"110371552315144","name":"Horrenberg, Baden-Wurttemberg, Germany"},"hometown_location":{"city":"Breckenheim","state":"Hessen","country":"Germany","zip":"","id":"111815215511878","name":"Breckenheim"}},{"uid":"100000708908136","name":"Seraina Fey","current_location":null,"hometown_location":null},{"uid":"100000717031784","name":"Anna Lisa","current_location":null,"hometown_location":null},{"uid":"100000718778008","name":"Jannis Kempe","current_location":{"city":"Berlin","state":"Berlin","country":"Germany","zip":""},"hometown_location":{"city":"Berlin","state":"Berlin","country":"Germany","zip":""}},{"uid":"100000724363219","name":"Simone Kneiffel","current_location":{"city":"Kaiserslautern","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"110347315653376","name":"Kaiserslautern, Germany"},"hometown_location":{"city":"Kaiserslautern","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"110347315653376","name":"Kaiserslautern, Germany"}},{"uid":"100000733826069","name":"Christina Brandt","current_location":null,"hometown_location":null},{"uid":"100000743373441","name":"Juliane Gugerel","current_location":{"city":"Russell","country":"New Zealand","zip":""},"hometown_location":{"city":"Kiedrich","state":"Hessen","country":"Germany","zip":""}},{"uid":"100000744640178","name":"Max Reitze","current_location":{"city":"Münster","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"112144845468135","name":"Münster"},"hometown_location":{"city":"Balhorn","state":"Hessen","country":"Germany","zip":"","id":"109410555757223","name":"Balhorn, Hessen, Germany"}},{"uid":"100000748441854","name":"Adrienne Weber","current_location":{"city":"Gießen","state":"Hessen","country":"Germany","zip":""},"hometown_location":null},{"uid":"100000756584018","name":"Georg Muck","current_location":{"city":"Hildesheim","state":"Niedersachsen","country":"Germany","zip":"","id":"115991441748506","name":"Hildesheim, Germany"},"hometown_location":{"city":"Hildesheim","state":"Niedersachsen","country":"Germany","zip":"","id":"115991441748506","name":"Hildesheim, Germany"}},{"uid":"100000793860575","name":"Sebbistian Schmid","current_location":{"city":"Oberursel","state":"Hessen","country":"Germany","zip":"","id":"107794739255070","name":"Oberursel"},"hometown_location":{"city":"Plochingen","state":"Baden-Württemberg","country":"Germany","zip":"","id":"112087492140850","name":"Plochingen"}},{"uid":"100000819013897","name":"Thomas Farmer","current_location":null,"hometown_location":null},{"uid":"100000869374259","name":"Matthias Heuß","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"100000901233443","name":"Maren Herrmann","current_location":null,"hometown_location":null},{"uid":"100000911713303","name":"Kevin Loff","current_location":{"city":"Medenbach","state":"Hessen","country":"Germany","zip":""},"hometown_location":null},{"uid":"100000940304491","name":"Felix Schultz","current_location":{"city":"Plochingen","state":"Baden-Württemberg","country":"Germany","zip":"","id":"112087492140850","name":"Plochingen"},"hometown_location":null},{"uid":"100000948273933","name":"Rebekka Fink","current_location":null,"hometown_location":null},{"uid":"100000988451869","name":"Nico Heymer","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null},{"uid":"100001023501105","name":"Lara Lauber-Nöll","current_location":null,"hometown_location":null},{"uid":"100001029047032","name":"Markus Bücher","current_location":null,"hometown_location":null},{"uid":"100001047107829","name":"Mari Demant","current_location":null,"hometown_location":null},{"uid":"100001132808358","name":"Florian Pieper","current_location":{"city":"Spaichingen","state":"Baden-Württemberg","country":"Germany","zip":"","id":"103096789730425","name":"Spaichingen"},"hometown_location":{"city":"Spaichingen","state":"Baden-Württemberg","country":"Germany","zip":"","id":"103096789730425","name":"Spaichingen"}},{"uid":"100001139828833","name":"Sabrina Reuter","current_location":null,"hometown_location":null},{"uid":"100001162743184","name":"Tobias Hey","current_location":null,"hometown_location":null},{"uid":"100001195400538","name":"Natalie Salomon","current_location":{"city":"Hartheim","state":"Baden-Württemberg","country":"Germany","zip":"","id":"104075542960971","name":"Hartheim"},"hometown_location":null},{"uid":"100001227041709","name":"Christian Verdion","current_location":{"city":"Karlsruhe","state":"Baden-Württemberg","country":"Germany","zip":"","id":"106073139432990","name":"Karlsruhe, Germany"},"hometown_location":null},{"uid":"100001247051900","name":"Alina Schneider","current_location":{"city":"Kaiserslautern","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"110347315653376","name":"Kaiserslautern, Germany"},"hometown_location":{"city":"Kaiserslautern","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"110347315653376","name":"Kaiserslautern, Germany"}},{"uid":"100001306672722","name":"Maxoman Soldberg","current_location":null,"hometown_location":null},{"uid":"100001348113620","name":"Ilona Möbus","current_location":null,"hometown_location":null},{"uid":"100001377694923","name":"Jean Le Clochard","current_location":{"city":"Berlin","state":"Berlin","country":"Germany","zip":"","id":"111175118906315","name":"Berlin, Germany"},"hometown_location":null},{"uid":"100001401288935","name":"Johanna Maria Jüres","current_location":null,"hometown_location":null},{"uid":"100001413930962","name":"Anna-Magdalena Schorling","current_location":null,"hometown_location":null},{"uid":"100001435235921","name":"Jami Schorling","current_location":null,"hometown_location":null},{"uid":"100001437038110","name":"Melanie Zuzej","current_location":null,"hometown_location":null},{"uid":"100001512968286","name":"Jenny Schmid","current_location":null,"hometown_location":null},{"uid":"100001545432108","name":"Sarah Neumann","current_location":{"city":"Wassenberg","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"112145418801111","name":"Wassenberg"},"hometown_location":{"city":"Mönchengladbach","state":"Nordrhein-Westfalen","country":"Germany","zip":"","id":"104067582964044","name":"Mönchengladbach"}},{"uid":"100001553920680","name":"Marius Lohn","current_location":{"city":"Walluf","state":"Hessen","country":"Germany","zip":"","id":"116028331745026","name":"Walluf, Hessen, Germany"},"hometown_location":null},{"uid":"100001563283469","name":"Tessa Schneider","current_location":{"city":"Kaiserslautern","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"110347315653376","name":"Kaiserslautern, Germany"},"hometown_location":{"city":"Kaiserlautern","state":"Rheinland-Pfalz","country":"Germany","zip":"","id":"109095329111898","name":"Kaiserlautern, Rheinland-Pfalz, Germany"}},{"uid":"100001565679677","name":"Stephan Engelmann","current_location":{"city":"Karlsruhe","state":"Baden-Württemberg","country":"Germany","zip":"","id":"106073139432990","name":"Karlsruhe, Germany"},"hometown_location":{"city":"Kleinkmehlen","state":"Brandenburg","country":"Germany","zip":"","id":"107388429296776","name":"Kleinkmehlen, Brandenburg, Germany"}},{"uid":"100001605336702","name":"Vitali Kaiser","current_location":{"city":"Karlsruhe","state":"Baden-Württemberg","country":"Germany","zip":"","id":"106073139432990","name":"Karlsruhe, Germany"},"hometown_location":{"city":"Pforzheim","state":"Baden-Württemberg","country":"Germany","zip":"","id":"103782216327335","name":"Pforzheim"}},{"uid":"100001642845388","name":"Luna Hilkenbach","current_location":{"city":"Geisenheim","state":"Hessen","country":"Germany","zip":"","id":"109662679052177","name":"Geisenheim"},"hometown_location":null},{"uid":"100001686167508","name":"Jessica Böhles","current_location":null,"hometown_location":null},{"uid":"100001764259505","name":"Jochen Stabenow","current_location":null,"hometown_location":null},{"uid":"100001782972791","name":"Christian Hänel","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"}},{"uid":"100001789455817","name":"Denise Niemietz","current_location":{"city":"Wiesbaden","state":"Hessen","country":"Germany","zip":"","id":"110497988970354","name":"Wiesbaden, Germany"},"hometown_location":null}]"
 
 var fb_freunde = {
     "mit_adresse": [{

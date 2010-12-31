@@ -156,6 +156,21 @@ button.add:active {background-color:#EEE;}
     border-top:1px solid white;
     border-bottom:1px solid #E2E2E2;
 }
+
+#datenliste .item aside {
+    float: right;
+    margin-right: -10px;
+}
+#datenliste .item img {
+    width: 20px; margin-bottom:-4px;
+    margin-left:-2px;
+    opacity: 0.25;
+}
+#datenliste li.item:hover img, #datenliste li.active img {
+    width: 20px; margin-bottom:-4px;
+    margin-left:-2px;
+    opacity: 0.8;
+}
 #datenliste br {display:none;}
 /*
 #datenliste li:nth-child(odd){background:transparent;}
@@ -299,3 +314,13 @@ h1 {margin:10px 0 10px 0; font-size:1.8em;}
 
 #dialog1 fieldset section { }
 #settings_ui_plugin_facebook fieldset.last {margin-right: 0px;}
+
+
+.tipsy { padding: 5px; font-size: 10px; opacity: 0.8; filter: alpha(opacity=80); background-repeat: no-repeat;  background-image: url(../image/tipsy.gif); }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { -moz-border-radius:3px; -webkit-border-radius:3px; }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }
+
