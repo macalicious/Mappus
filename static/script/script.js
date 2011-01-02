@@ -1250,7 +1250,9 @@ $mapper.plugins.add('facebook', (function(){
       ui("facebook");
       
       var footer = $j("<footer><hr/></footer>").appendTo(box);
+      $j('<small>v b1.0</small>').appendTo(footer);
       var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
+      
       
       modal = new_modal_fn(box);
       abbruch.click(modal.close);
