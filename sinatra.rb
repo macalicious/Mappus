@@ -1,9 +1,3 @@
-# require 'rubygems'
-# require 'sinatra/base'
-# require 'json'
-# require 'httparty'
-# require "sequel"
-# require 'sqlite3'
 
 class Google
   include HTTParty
@@ -34,9 +28,32 @@ class MyApp < Sinatra::Base
   set :static, true
   set :public, File.dirname(__FILE__) + '/static'
   
+  helpers do
+
+    def protected!
+      unless authorized?
+        response['WWW-Authenticate'] = %(Basic realm="Mappus - private Beta")
+        throw(:halt, [401, "Not authorized\n"])
+      end
+    end
+    
+    def fit(a, b) 
+      b.each do |ba|
+        return true if a == ba
+      end
+      false  
+    end
+    
+    def authorized?
+      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? && @auth.basic? && @auth.credentials && fit(@auth.credentials, [['admin', 'admin'], ['a', 'a']])
+    end
+
+  end
+  
+  
   get '/' do
-    puts "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
-    puts ENV['HEROKU_TYPE'].inspect
+    protected!
     erb :index
   end
   
@@ -85,19 +102,4 @@ class MyApp < Sinatra::Base
   
 end
 
-
-
-
-# $j.ajax({
-#       url: "test/",
-#       data: ({jupitermap : ["Wiesbaden","Hamburg","München"]}),
-#       success: function(msg){
-#          alert(msg);
-#       },
-#       error: function(a,b,c){
-#         alert(a);
-#         alert(b);
-#         alert(c);
-#       }
-#    }
-# )
+#<script type="text/javascript" src="script/facebook_dummydata.js"> </script> 
