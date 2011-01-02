@@ -881,7 +881,9 @@ $mapper.plugins.add('facebook', (function(){
       parent.log.info("facebook plugin: load_dependencies");
       window.fbAsyncInit = function() {
         parent.log(2, "facebook plugin: dependencies loaded 2");
-        FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
+        
+        FB.init({appId: '189881351027756', status: true, cookie: true,xfbml: true});
+        //FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
         fn();
       };
         
