@@ -1,3 +1,10 @@
+var ENV = {
+  isProduction: function(){
+    return false;
+  },
+  version: "b1.1"
+}
+
 if(!console){var console = {};console.log = function(){};};
 function cl(a,b){console.log(b,a);}
 
@@ -736,6 +743,14 @@ var $mapper = (function(){
     hide: function(obj){
       obj.sidebar.visible = false;
       obj.sidebar.dom.hide();
+    },
+    slideOut: function(){
+      $j("#aside").animate({
+          right: "0px"
+        }, 200);
+      $j("#map_canvas").animate({
+            marginRight: "300px"
+        }, 200);  
     }
   };
   this.sidebar = null; // have to be init
@@ -755,8 +770,8 @@ var $mapper = (function(){
           w = $j(el).outerWidth(),
           w_sidebar = $j('#aside').outerWidth(),
           css = {
-            'margin-left': -(w/2)-(w_sidebar/2),
-            'margin-top': -(h/2)
+            'margin-left': -(w/2), //-(w_sidebar/2),
+            'margin-top': -(h/2+50)
           };
       $this.log.trace(w_sidebar);    
       return el.css(css).show();
@@ -780,7 +795,8 @@ var $mapper = (function(){
           record: this.record,
          cluster: this.marker_cluster,
   set_infowindow: this.Infowindow,
-          render: this.render
+          render: this.render,
+         sidebar: function(){return $this.sidebar}
   };
 })();
 
@@ -882,8 +898,13 @@ $mapper.plugins.add('facebook', (function(){
       window.fbAsyncInit = function() {
         parent.log(2, "facebook plugin: dependencies loaded 2");
         
-        FB.init({appId: '189881351027756', status: true, cookie: true,xfbml: true});
-        //FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
+        if (ENV.isProduction()){
+          //mappus
+          FB.init({appId: '189881351027756', status: true, cookie: true,xfbml: true});
+        }else{
+          //jupiter-map
+          FB.init({appId: '116990711651134', status: true, cookie: true,xfbml: true});
+        }
         fn();
       };
         
@@ -1028,22 +1049,26 @@ $mapper.plugins.add('facebook', (function(){
           }else{
             x.empty();
             x.append($j('<h3>Mappus mit Facebook</h3><hr />'));
-            x.append($j('<div style="text-align:center; margin-bottom:20px;">' 
+            var d = $j('<div class="content"></div>').appendTo(x);
+            d.append($j('<div style="text-align:center; margin-bottom:20px;">' 
               + '<img alt="" src="image/intro.png" style="width:300px;"/>'
               + '<br />'
               + '</div>'));
-            x.append($j('<hr />'
+            d.append($j('<hr />'
               + '<p>Verbinde deinen Facebook-Account mit Mappus und sehe wo deine Freunde wohnen.'
               + '<br /><br />'
               + '<img src="image/facebook_connect.gif" alt="facebook connect" class="button"/>'
               + '<br /><small id="nodatasaved">Es werden weder von dir noch von deinen Freunden Daten gespeichert.</small>'
               + '</p>').click(login));
+            
           }
           break
         case "loading":
-          var x = x.find(".content").empty();
-          parent.log.trace(x);
-          x.append($j('<div>Wird geladen </span> <img src="image/loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
+          
+          var z = x.find(".content").empty();
+          console.log(z);
+          parent.log.trace("loading", z);
+          z.append($j('<div>Wird geladen </span> <img src="image/loadinfo.net.gif" alt="loading" class="loading"/></div>').css("text-align", "center"));
           break;
         case "result":
           /*
@@ -1052,12 +1077,12 @@ $mapper.plugins.add('facebook', (function(){
           if(typeof(fb_freunde)!="undefined"){
             options.click_anzeigen();
           }else{  
-            var x = x.find(".content").empty();
+            var z = x.find(".content").empty();
             var freunde = options.freunde;
             //x.append($j("<h3>Facebook</h3><hr />"));
             //x.append($j('<section class="content"><img src="facebook_connect.gif" alt="facebook connect" class="button"/></section>')
           
-            var geladen = $j('<p></p>').appendTo(x);
+            var geladen = $j('<p></p>').appendTo(z);
             geladen.append($j('<span><b>'+freunde.alle.length+'</b> Freunde &nbsp; </span>'));
             geladen.append($j('<span><b>'+freunde.mit_adresse.length+'</b> Freunde mit Adresse &nbsp; </span>'));
             geladen.append($j('<span><b>'+freunde.alle_adressen_length+'</b> Adressen gesamt &nbsp; </span>'));
@@ -1066,14 +1091,15 @@ $mapper.plugins.add('facebook', (function(){
               '<span class="input"><input type="checkbox" id="home" checked value="home" /> <label for="home">Heimatort</label></span>'
               + ' <span class="input"><input type="checkbox" id="current" checked value="current" /> <label for="current">Aktueller Wohnort</label></span>'
               + '<br/>der Freunde auf der Karte anzeigen.'
-            ).appendTo(x);
+            ).appendTo(z);
           
             var weiter = modal_content.next().append($j(' <a href="javascript:;" class="big">Anzeigen</a>')).click(options.click_anzeigen);
           }
           break;
         case "allgemein":
           x.empty();
-          $j('<h3>Hallo</h3><hr/>').appendTo(x);
+          $j('<h3>...</h3><hr/>').appendTo(x);
+          $j('<p>...</p>').appendTo(x);
           break;
         case "gemeinde":
           x.empty();
@@ -1161,7 +1187,7 @@ $mapper.plugins.add('facebook', (function(){
         });
       
         parent.log.trace("adressen: ", freunde.alle_adressen);
-        window.fb_freundee = freunde;
+        
         ui("loading");
         parent.geocode(freunde.alle_adressen, function(pos){fb_geocode(pos, freunde, home, current);});
         parent.log.trace("adressen JSon: ", freunde.alle_adressen);
@@ -1218,6 +1244,7 @@ $mapper.plugins.add('facebook', (function(){
         parent.record.add(freund);
       };
       modal.close();
+      parent.sidebar().slideOut();
       parent.render();
     };
     
@@ -1252,7 +1279,7 @@ $mapper.plugins.add('facebook', (function(){
       ui("facebook");
       
       var footer = $j("<footer><hr/></footer>").appendTo(box);
-      $j('<small>v b1.0</small>').appendTo(footer);
+      $j('<small>v ' + ENV.version + '</small>').appendTo(footer);
       var abbruch = $j('<a href="javascript:;">abbrechen</a>').appendTo(footer);
       
       
@@ -1290,3 +1317,6 @@ $j(document).ready(function($){
   $mapper.initialize();
   new DevTool();
 });
+
+
+//http://Jupiterrr:carsten1@members.dyndns.org/nic/update?hostname=jupiterrr.dyndns.org&myip=141.3.192.99&wildcard=NOCHG&mx=NOCHG&backmx=NOCHG
