@@ -46,7 +46,7 @@ class MyApp < Sinatra::Base
     
     def authorized?
       @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? && @auth.basic? && @auth.credentials && fit(@auth.credentials, [['admin', 'admin'], ['a', 'a']])
+      @auth.provided? && @auth.basic? && @auth.credentials && fit(@auth.credentials, [['admin', 'carsten1'], ['chau', 'c64au']])
     end
 
   end
