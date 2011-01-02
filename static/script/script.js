@@ -1,6 +1,6 @@
 var ENV = {
   isProduction: function(){
-    return false;
+    return true;
   },
   version: "b1.1"
 }
