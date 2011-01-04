@@ -2,7 +2,7 @@ var ENV = {
   isProduction: function(){
     return true;
   },
-  version: "b1.1"
+  version: "b1.2"
 }
 
 if(!console){var console = {};console.log = function(){};};
@@ -534,9 +534,41 @@ var $mapper = (function(){
        }
      });
    };
+   function seperate(locArray, cbFunction, geocoder){
+     if(locArray.length > 80){
+       var result = {};
+       var fnArray = [];
+       
+       function push(n){
+         var part_of_locArray = locArray.slice(0,n);
+            locArray.splice(0, n);
+
+            fnArray.push(function(){
+              $this_ = this;
+              geocoder(part_of_locArray, function(res){
+                result.push(res);
+                $this_.is.done();
+              });
+            });
+       };
+       
+       while (locArray.length > 80){
+         push(80)
+       };
+       push(locArray.length);
+       
+       fnArray.push(function(){
+         cbFunction(result);
+       });
+       var chain = new Chain(fnArray);
+       chain.start();
+     }else{
+       geocoder(locArray, cbFunction);
+     }
+   }
    
    if(typeof(query) == "string"){ geocode_clintside(query, gfn); };
-   if(typeof(query) == "object"){ geocode_serverside(query, gfn); };
+   if(typeof(query) == "object"){ seperate(query, gfn, function(queryy, gfnn){geocode_serverside(query, gfn);}); };
    
   };
 

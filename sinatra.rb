@@ -96,9 +96,6 @@ class MyApp < Sinatra::Base
     return result.to_json
   end
   
-  get '/gemeinde.xml' do
-    content_type 'text/xml', :charset => 'utf-8'
-  end
   
 end
 
