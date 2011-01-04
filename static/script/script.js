@@ -534,11 +534,28 @@ var $mapper = (function(){
        }
      });
    };
-   function seperate(locArray, cbFunction, geocoder){
+   function seperate(locArray, cbFunction, geocoderr){
      var limit = 50;
+     console.log(locArray);
+     Object.size = function(obj) {
+         var size = 0, key;
+         for (key in obj) {
+             if (obj.hasOwnProperty(key)) size++;
+         }
+         return size;
+     };
+     Object.to_a = function(obj) {
+          var array = [];
+          for (key in obj) {
+              array.push(obj[key]);
+          }
+          return array;
+      };
+     
+     locArray = Object.to_a(locArray);
      
      if(locArray.length > limit){
-       var result = {};
+       var result = [];
        var fnArray = [];
        
        function push(n){
@@ -547,9 +564,15 @@ var $mapper = (function(){
 
             fnArray.push(function(){
               console.log("geocoder_serverside part");
+              console.log(part_of_locArray.length);
               $this_ = this;
-              geocoder(part_of_locArray, function(res){
-                result.push(res);
+              geocoderr(part_of_locArray, function(res){
+                console.log("res", res, res.length);
+                
+                var x = Object.to_a(res);
+                console.log("resultttt", result);
+                result = result.concat(x);
+                console.log("resultxxx", result);
                 $this_.is.done();
               });
             });
@@ -561,17 +584,19 @@ var $mapper = (function(){
        push(locArray.length);
        
        fnArray.push(function(){
+         console.log("result", result);
          cbFunction(result);
        });
        var chain = new Chain(fnArray);
        chain.start();
      }else{
+       console.log("geocoder_serverside no_part");
        geocoder(locArray, cbFunction);
      }
    }
    
    if(typeof(query) == "string"){ geocode_clintside(query, gfn); };
-   if(typeof(query) == "object"){ seperate(query, gfn, function(queryy, gfnn){geocode_serverside(query, gfn);}); };
+   if(typeof(query) == "object"){ seperate(query, gfn, function(queryy, gfnn){geocode_serverside(queryy, gfnn);}); };
    
   };
 
