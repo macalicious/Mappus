@@ -535,7 +535,9 @@ var $mapper = (function(){
      });
    };
    function seperate(locArray, cbFunction, geocoder){
-     if(locArray.length > 80){
+     var limit = 50;
+     
+     if(locArray.length > limit){
        var result = {};
        var fnArray = [];
        
@@ -544,6 +546,7 @@ var $mapper = (function(){
             locArray.splice(0, n);
 
             fnArray.push(function(){
+              console.log("geocoder_serverside part");
               $this_ = this;
               geocoder(part_of_locArray, function(res){
                 result.push(res);
@@ -552,8 +555,8 @@ var $mapper = (function(){
             });
        };
        
-       while (locArray.length > 80){
-         push(80)
+       while (locArray.length > limit){
+         push(limit)
        };
        push(locArray.length);
        
