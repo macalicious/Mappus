@@ -2,7 +2,7 @@ var ENV = {
   isProduction: function(){
     return true;
   },
-  version: "b1.2"
+  version: "b1.3"
 }
 
 if(!console){var console = {};console.log = function(){};};
@@ -383,9 +383,11 @@ var $mapper = (function(){
       
       
        $mapper.tempmapfn = function(){
-          var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
+          //var myLatlng = new google.maps.LatLng(50.08408, 8.2383918); //center:wiesbaden
+          var myLatlng = new google.maps.LatLng(30,60);
+          
           var myOptions = {
-            zoom: 5,
+            zoom: 2,
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
@@ -536,7 +538,6 @@ var $mapper = (function(){
    };
    function seperate(locArray, cbFunction, geocoderr){
      var limit = 50;
-     console.log(locArray);
      Object.size = function(obj) {
          var size = 0, key;
          for (key in obj) {
@@ -563,16 +564,10 @@ var $mapper = (function(){
             locArray.splice(0, n);
 
             fnArray.push(function(){
-              console.log("geocoder_serverside part");
-              console.log(part_of_locArray.length);
               $this_ = this;
               geocoderr(part_of_locArray, function(res){
-                console.log("res", res, res.length);
-                
                 var x = Object.to_a(res);
-                console.log("resultttt", result);
                 result = result.concat(x);
-                console.log("resultxxx", result);
                 $this_.is.done();
               });
             });
@@ -584,13 +579,11 @@ var $mapper = (function(){
        push(locArray.length);
        
        fnArray.push(function(){
-         console.log("result", result);
          cbFunction(result);
        });
        var chain = new Chain(fnArray);
        chain.start();
      }else{
-       console.log("geocoder_serverside no_part");
        geocoder(locArray, cbFunction);
      }
    }
