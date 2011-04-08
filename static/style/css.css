@@ -186,12 +186,17 @@ button.add:active {background-color:#EEE;}
     float: right;
     margin-right: -10px;
 }
-#datenliste .item img {
+#datenliste .item img.prof {
+    width: 40px; margin-bottom:-4px;
+    margin-left:-2px;
+    -webkit-border-radius: 5px;
+}
+#datenliste .item img.loc {
     width: 20px; margin-bottom:-4px;
     margin-left:-2px;
     opacity: 0.25;
 }
-#datenliste li.item:hover img, #datenliste li.active img {
+#datenliste li.item:hover img.loc, #datenliste li.active img.loc {
     width: 20px; margin-bottom:-4px;
     margin-left:-2px;
     opacity: 0.8;

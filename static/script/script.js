@@ -1,6 +1,6 @@
 var ENV = {
   isProduction: function(){
-    return true;
+    return false;
   },
   version: "b1.3"
 }
@@ -679,6 +679,7 @@ var $mapper = (function(){
     add: function(obj){
       var li = $j('<li class="item"></li>'); 
       var aside = $j('<aside></aside>');
+      var img = $j('<img alt="" src="' +obj.pic_square + '" class="prof" />');
       var name = $j('<strong>'+obj.name+'</strong>');
       var adressen = $j('<ul class="adressen slide"></ul>').click(function(){return false;});
       
@@ -699,14 +700,14 @@ var $mapper = (function(){
       
       if(obj.hometown_location){
         var home = true;
-        var home_img = $j('<img alt="hometown" title="hometown" src="image/Home.png" />');
-        var home_li = $j('<li><a href="#"><img alt="hometown" title="hometown" src="image/Home.png" /> ' + obj.hometown_location.name + "</a></li>");
+        var home_img = $j('<img alt="hometown" title="hometown" src="image/Home.png" class="loc"/>');
+        var home_li = $j('<li><a href="#"><img alt="hometown" title="hometown" src="image/Home.png" class="loc" /> ' + obj.hometown_location.name + "</a></li>");
         home_li.click(function(){center(obj.hometown_location); animate(obj.hometown_location);});
       }
       if(obj.current_location){
         var current = true;
-        var current_img = $j('<img alt="current location" title="current location" src="image/Nod32.png" />')
-        var current_li = $j('<li><a href="#"><img alt="current location" title="current location" src="image/Nod32.png" /> ' + obj.current_location.name + "</a></li>");
+        var current_img = $j('<img alt="current location" title="current location" src="image/Nod32.png" class="loc"/>')
+        var current_li = $j('<li><a href="#"><img alt="current location" title="current location" src="image/Nod32.png"  class="loc" /> ' + obj.current_location.name + "</a></li>");
         current_li.click(function(){center(obj.current_location); animate(obj.current_location);});
       }
       
@@ -714,6 +715,7 @@ var $mapper = (function(){
         li.append(aside);
           if (home) aside.append(home_img);
           if (current) aside.append(current_img);
+        li.append(img);
         li.append(name);
         li.append(adressen);
           if (home) adressen.append(home_li);
@@ -1081,12 +1083,13 @@ $mapper.plugins.add('facebook', (function(){
       return result;  
     };
     
+    /*
     function query(fn){
       parent.log.info("facebook plugin: query");
-      var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+      var query = FB.Data.query("select uid, name, current_location, hometown_location, picture from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
           query.wait(function(result){ fn(result); });
     };
-    
+    */
     var modal_content;
     var modal;
     
@@ -1188,6 +1191,7 @@ $mapper.plugins.add('facebook', (function(){
         
       function fb_query_cb(result){
         parent.log.trace("Facebook Query: ", {result:result});
+        
         //parent.log.trace("Facebook Query in JSON: ", JSON.stringify(result));
         //alert(JSON.stringify(result));
         var freunde = (function(result){
@@ -1225,13 +1229,14 @@ $mapper.plugins.add('facebook', (function(){
         
         ui("result", {
           freunde:freunde, 
-          click_anzeigen: function(){ anzeigen(freunde); }
+          click_anzeigen: function(){ alert(555); anzeigen(freunde); }
         });
         //parent.log.trace("Facebook Query in JSON: ", JSON.stringify(freunde['mit_adresse']));
       };
     
       function anzeigen(freunde){
-      
+        parent.log.trace("fb_plugin anzeigen", freunde);
+        
         // which locations should be shown?
         var home = false, current = false;
         modal_content.find(":checked").each(function(key, item){
@@ -1252,7 +1257,7 @@ $mapper.plugins.add('facebook', (function(){
       if(typeof(fb_freunde)!="undefined"){
         cb(fb_freunde.alle);
       }else{
-        var query = FB.Data.query("select uid, name, current_location, hometown_location from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
+        var query = FB.Data.query("select uid, name, current_location, hometown_location, pic_square from user where uid in (SELECT uid2 FROM friend WHERE uid1 = {0} )", FB.Helper.getLoggedInUser());
         query.wait(cb);
       }
     };

@@ -19,6 +19,7 @@ PLATFORMS
 DEPENDENCIES
   httparty
   json
+  rack (= 1.2.1)
   sequel
   sinatra
   sqlite3-ruby
